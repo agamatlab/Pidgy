@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Pixel Aquarium Widget</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AquaBlink.ttf</string>
+		<string>AquaBlinkInv.ttf</string>
+		<string>AquaCode0.ttf</string>
+		<string>AquaCode1.ttf</string>
+		<string>AquaCode2.ttf</string>
+		<string>AquaCode3.ttf</string>
+		<string>AquaCode4.ttf</string>
+		<string>AquaCode5.ttf</string>
+		<string>AquaCode6.ttf</string>
+		<string>AquaCode7.ttf</string>
+		<string>AquaCode8.ttf</string>
+		<string>AquaCode9.ttf</string>
+		<string>AquaCode10.ttf</string>
+		<string>AquaCode11.ttf</string>
+		<string>AquaCode12.ttf</string>
+		<string>AquaCode13.ttf</string>
+		<string>AquaCode14.ttf</string>
+		<string>AquaCode15.ttf</string>
+		<string>AquaFrames0.ttf</string>
+		<string>AquaFrames1.ttf</string>
+		<string>AquaFrames2.ttf</string>
+		<string>AquaFrames3.ttf</string>
+		<string>AquaFrames4.ttf</string>
+		<string>AquaFrames5.ttf</string>
+		<string>AquaFrames6.ttf</string>
+		<string>AquaFrames7.ttf</string>
+		<string>AquaFrames8.ttf</string>
+		<string>AquaFrames9.ttf</string>
+		<string>AquaFrames10.ttf</string>
+		<string>AquaFrames11.ttf</string>
+		<string>AquaFrames12.ttf</string>
+		<string>AquaFrames13.ttf</string>
+		<string>AquaFrames14.ttf</string>
+		<string>AquaFrames15.ttf</string>
+	</array>
+</dict>
+</plist>

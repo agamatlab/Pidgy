@@ -1,0 +1,180 @@
+name: PixelAquarium
+options:
+  bundleIdPrefix: com.aghamatlab
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    DEVELOPMENT_TEAM: 3NFUYR892M
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  PixelAquarium:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Core
+      - path: Assets/Scenes/CozyRoom
+        buildPhase: resources
+      - path: WidgetExtension/Fonts
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aghamatlab.pixelaquarium
+        CODE_SIGN_ENTITLEMENTS: config/PixelAquarium.entitlements
+        INFOPLIST_FILE: config/App-Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+    info:
+      path: config/App-Info.plist
+      properties:
+        CFBundleDisplayName: Pixel Aquarium
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSPhotoLibraryAddUsageDescription: Saves the generated wallpaper so you can set it as your Home Screen background.
+        UIAppFonts:
+        - AquaBlink.ttf
+        - AquaBlinkInv.ttf
+        - AquaCode0.ttf
+        - AquaCode1.ttf
+        - AquaCode2.ttf
+        - AquaCode3.ttf
+        - AquaCode4.ttf
+        - AquaCode5.ttf
+        - AquaCode6.ttf
+        - AquaCode7.ttf
+        - AquaCode8.ttf
+        - AquaCode9.ttf
+        - AquaCode10.ttf
+        - AquaCode11.ttf
+        - AquaCode12.ttf
+        - AquaCode13.ttf
+        - AquaCode14.ttf
+        - AquaCode15.ttf
+        - AquaFrames0.ttf
+        - AquaFrames1.ttf
+        - AquaFrames2.ttf
+        - AquaFrames3.ttf
+        - AquaFrames4.ttf
+        - AquaFrames5.ttf
+        - AquaFrames6.ttf
+        - AquaFrames7.ttf
+        - AquaFrames8.ttf
+        - AquaFrames9.ttf
+        - AquaFrames10.ttf
+        - AquaFrames11.ttf
+        - AquaFrames12.ttf
+        - AquaFrames13.ttf
+        - AquaFrames14.ttf
+        - AquaFrames15.ttf
+    dependencies:
+      - target: AquariumWidgetExtension
+  AquariumWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - WidgetExtension
+      - Core
+      - path: Assets/Scenes/CozyRoom
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aghamatlab.pixelaquarium.widget
+        CODE_SIGN_ENTITLEMENTS: config/AquariumWidget.entitlements
+        INFOPLIST_FILE: config/Widget-Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+    info:
+      path: config/Widget-Info.plist
+      properties:
+        CFBundleDisplayName: Pixel Aquarium Widget
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        UIAppFonts:
+        - AquaBlink.ttf
+        - AquaBlinkInv.ttf
+        - AquaCode0.ttf
+        - AquaCode1.ttf
+        - AquaCode2.ttf
+        - AquaCode3.ttf
+        - AquaCode4.ttf
+        - AquaCode5.ttf
+        - AquaCode6.ttf
+        - AquaCode7.ttf
+        - AquaCode8.ttf
+        - AquaCode9.ttf
+        - AquaCode10.ttf
+        - AquaCode11.ttf
+        - AquaCode12.ttf
+        - AquaCode13.ttf
+        - AquaCode14.ttf
+        - AquaCode15.ttf
+        - AquaFrames0.ttf
+        - AquaFrames1.ttf
+        - AquaFrames2.ttf
+        - AquaFrames3.ttf
+        - AquaFrames4.ttf
+        - AquaFrames5.ttf
+        - AquaFrames6.ttf
+        - AquaFrames7.ttf
+        - AquaFrames8.ttf
+        - AquaFrames9.ttf
+        - AquaFrames10.ttf
+        - AquaFrames11.ttf
+        - AquaFrames12.ttf
+        - AquaFrames13.ttf
+        - AquaFrames14.ttf
+        - AquaFrames15.ttf
+  PixelAquariumTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+    dependencies:
+      - target: PixelAquarium
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aghamatlab.pixelaquarium.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/PixelAquarium.app/PixelAquarium
+        BUNDLE_LOADER: $(TEST_HOST)
+  PixelAquariumUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - UITests
+    dependencies:
+      - target: PixelAquarium
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aghamatlab.pixelaquarium.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: PixelAquarium
+schemes:
+  PixelAquarium:
+    build:
+      targets:
+        PixelAquarium: all
+        AquariumWidgetExtension: all
+    test:
+      targets:
+        - PixelAquariumTests
+        - name: PixelAquariumUITests
+          skipped: true
+  HomeScreenWidget:
+    build:
+      targets:
+        PixelAquarium: all
+        AquariumWidgetExtension: all
+        PixelAquariumUITests: [test]
+    test:
+      targets:
+        - PixelAquariumUITests

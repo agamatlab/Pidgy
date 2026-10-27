@@ -1,0 +1,1141 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00822983430DDEECBAB678DF /* AquariumWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		019FA839AFCD9C2CD42A7FA3 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D59EBC73DE1C04ABC4B8AB /* AnimationTests.swift */; };
+		01CF651A612DA90210F5A529 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */; };
+		026391BB808CB4700B0D7AF4 /* frames.json in Resources */ = {isa = PBXBuildFile; fileRef = 11441399793949818FD79E66 /* frames.json */; };
+		040E20E50C312F3B857DB810 /* SharedConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */; };
+		0675E2E1E19CDA4D31B2AAE2 /* AquaCode12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */; };
+		08C3A219CEFA5462403A2595 /* AquariumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */; };
+		0AD07A6D6A4D6A4E49D9F2E7 /* AquariumTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDB1985075DF61B21A429A /* AquariumTimelineProvider.swift */; };
+		0AECECC8F9ED3F5CC495B9C1 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */; };
+		0C3AE04187B540F4AEA5545A /* AquariumCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */; };
+		0D35CC9D8EE8136089D67C5F /* AquaCode14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1B828013408536ADA559F98 /* AquaCode14.ttf */; };
+		0DC540AABC9D71B57B102E15 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA78EB4AA76F4C1D7C9D4 /* AppModel.swift */; };
+		0F7010A88BFADC7C03F45952 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5827F38D708834208612425 /* HomeView.swift */; };
+		1003BA21164735DDCF2E1E35 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */; };
+		1335BB3A1E42B564833A9DB5 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD73D1A6E84C9455B247478 /* DiagnosticsView.swift */; };
+		14EBD373A566CEDA5EB5AB7B /* AquaFrames8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */; };
+		1CE540D4A1897C368CF629D7 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91023A39824938906E4E42 /* AnimationClip.swift */; };
+		1E2E5A4A769EF63D042C5D4B /* AquaCode4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */; };
+		217DFCA93D797555EEFD0C72 /* AquaCode3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */; };
+		26459831F31B37A9A510CB3A /* AquaCode5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23286845638F7046680FCA93 /* AquaCode5.ttf */; };
+		268F4112920B219215394087 /* AquaBlinkInv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */; };
+		2A9949DF8426B28EB00F237F /* AquaFrames13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */; };
+		2ACE29F895625CED6017F2DD /* AquaFrames12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 509590DE50AA513401410BC9 /* AquaFrames12.ttf */; };
+		2EC342D054732937592BB791 /* AquaFrames6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */; };
+		383E396E65BECFA6E636003E /* AquaCode1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C34E89D512B871318E4B62A /* AquaCode1.ttf */; };
+		3BB5364FB1C5C9DC578BF270 /* WallpaperRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */; };
+		3E0983192BBD6D44A133458A /* AquaCode6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */; };
+		4199DE91274039C4346E8D19 /* CalibrationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744075EC871B2C69E7D07884 /* CalibrationChart.swift */; };
+		429A2AA9D8579C7B48BE606E /* PixelArtRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */; };
+		435CF729E39870A7E15B1489 /* ManualTestCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98616004E690383C865E60CC /* ManualTestCatalog.swift */; };
+		43654E35E33BF9F98E321577 /* WallpaperRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */; };
+		43FB812CCF151D0FE405FE6E /* WidgetPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */; };
+		445D0BF8306E07B7762B967C /* AquaCode10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E905164C31B77D166CD18389 /* AquaCode10.ttf */; };
+		482A61E32C0C29A4592075F7 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 42FC6DF46592FCE7CE90B014 /* manifest.json */; };
+		510013F57D907C19E5D0C576 /* wallpaper_art.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */; };
+		51538FFFC0FC9435B35411D0 /* AquaFrames7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */; };
+		51BCF7A1FDDBFF1FFF06BE98 /* AquaBlink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */; };
+		5263A87716E782FBA866184B /* frames.json in Resources */ = {isa = PBXBuildFile; fileRef = 11441399793949818FD79E66 /* frames.json */; };
+		54CBB129EBB8AF45CF83117D /* AquaCode11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */; };
+		573A8BD69571CA3758312F35 /* fish_a.png in Resources */ = {isa = PBXBuildFile; fileRef = EF057B23AED312BCBD8CA212 /* fish_a.png */; };
+		58B006957A216012210D293E /* PixelAquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAF6A13C3C9F76D332CB0CB /* PixelAquariumApp.swift */; };
+		5AB6E41F0CFF6DEC6F9E7D56 /* AquariumCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */; };
+		5CB96E940E1AE2F8E2DE7FD1 /* AquaFrames3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */; };
+		5FA5C78629ED76E8C711CAB6 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51337845B31F09C0B6FE93BB /* SetupView.swift */; };
+		628ED14E60E49006619D758E /* AquaCode12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */; };
+		62CA95969A0BBCE9FAC0082E /* AquaCode3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */; };
+		677579C007216105C1453FEE /* AquaCode4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */; };
+		6A40C0AE9FFE03E110EDEFE7 /* AquaFrames3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */; };
+		6AA58B10F05E451BFC9609DB /* AquaCode15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B9209841D2AFD0D615C134 /* AquaCode15.ttf */; };
+		6EBC9E86C8ABCC604902A4B3 /* SharedConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */; };
+		6F85F532843E88301C3600AB /* aquarium_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C9CD829704BA19B22A32B2 /* aquarium_background.png */; };
+		7255A316614B2792D56B25EB /* AquaCode7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */; };
+		752C98A186C42D63A86AA875 /* AquaFrames14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */; };
+		75C9F30335DBE40C8111290A /* AquaCode6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */; };
+		7910DAF3AA9B3F3D64D69846 /* AquaFrames7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */; };
+		7926201238FD1A675DA8812D /* fish_a.png in Resources */ = {isa = PBXBuildFile; fileRef = EF057B23AED312BCBD8CA212 /* fish_a.png */; };
+		794E46E0B0C12A0B29FA7699 /* AquaFrames8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */; };
+		7997A01D40999BB3A4ADFA8F /* AquaFrames12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 509590DE50AA513401410BC9 /* AquaFrames12.ttf */; };
+		79E49B0B094F686531983555 /* AquaFrames15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */; };
+		7C1411718045B8660347D22C /* room_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F3E87E8C5F50064FAE10D /* room_art.png */; };
+		7D51109883546027527C729C /* AquaFrames2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */; };
+		7D5F1AD71F7F613ACCC7EC5D /* AquaFrames9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */; };
+		7DFA88CC9B596C56A428508B /* HomeScreenWidgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */; };
+		7EFEB798057F9F22CA93356E /* AquaFrames10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A77B258D244E1E0970254E4E /* AquaFrames10.ttf */; };
+		8104ED5D93939F7472527949 /* AquaCode5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23286845638F7046680FCA93 /* AquaCode5.ttf */; };
+		8822A01BC156BFD531E052AC /* AquaCode7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */; };
+		884DE45AD0AF281FAD76A62E /* AquaBlinkInv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */; };
+		889546C0EA67CEC3214092F1 /* AquaFrames2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */; };
+		88B066B9203A17CDA7AA7490 /* SceneManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3901501298CD4AB9869C5512 /* SceneManifest.swift */; };
+		8995A0EAD968E5972B1422CD /* stand_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 796526F0BDB4D525E6B2E02B /* stand_art.png */; };
+		89B4241E4718B5F6D85E545D /* wallpaper_art.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */; };
+		8A1C75D077B01357EA0F1545 /* AquaFrames13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */; };
+		8E1EDB5FB9586294608BF6F0 /* AquaCode1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C34E89D512B871318E4B62A /* AquaCode1.ttf */; };
+		8E9F8E0486AED7BA76BA1DD5 /* AquaFrames11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */; };
+		8FC5FAD0BEA640FF5662E989 /* AquaCode9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690960F00CB751F6A794998C /* AquaCode9.ttf */; };
+		92B689184DA2BA9729390A40 /* AquaCode13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */; };
+		96D02EADEE69F3B4332BE461 /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73D4994485940101DB4BF9 /* CalibrationView.swift */; };
+		973495923B6EA95DDDBE7375 /* AquaCode10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E905164C31B77D166CD18389 /* AquaCode10.ttf */; };
+		9844806D9F9C3A2CE5B8FD40 /* AquaFrames1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */; };
+		99673AC73FAD4520C5F09403 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF61268E0461BC38BC0BCA1 /* PreviewView.swift */; };
+		99D5E240EEE563C1108D7C46 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 42FC6DF46592FCE7CE90B014 /* manifest.json */; };
+		9AE5523B6DBD6C4838BB683D /* room_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F3E87E8C5F50064FAE10D /* room_art.png */; };
+		9C46CA2C7151EE6B0AFE0D9F /* AquaFrames5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */; };
+		9F0421F7E55ADFFF3D744727 /* WallpaperRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */; };
+		A06ACDAC37A0BC18F5A59505 /* AquaCode15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B9209841D2AFD0D615C134 /* AquaCode15.ttf */; };
+		A18DD53D72D5F9E4D022C44F /* AquaCode8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */; };
+		A19DA1F031580CB37EAEDAE2 /* AquaFrames1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */; };
+		A33635B7DA6A04FB42002407 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91023A39824938906E4E42 /* AnimationClip.swift */; };
+		A4E84BC7713EEF7C3A53640F /* AquaCode0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */; };
+		A5D3B9D6D75FFF1FA7EAEF78 /* PixelArtRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */; };
+		A9C28CB98B3EE9E9B3A975E7 /* WidgetPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */; };
+		AB15531EA7601F53F46DABBC /* RenderingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74EFBFE517CDC0BA926B128 /* RenderingTests.swift */; };
+		AC1F52B1AE6B18638F6EB82B /* ClockAnimationDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */; };
+		AE14D04586A96F1923A9FBF1 /* AquaFrames4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */; };
+		AFBF078F65BB35E299A86C43 /* AquaFrames0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */; };
+		B05051D20A374DEF7FD71181 /* ClockAnimationDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */; };
+		B1DFDD53B88A7EFC62D20E28 /* AquaCode2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */; };
+		B1E8204A190AAA75408378FF /* AquariumAnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */; };
+		B84A2FE0BBD9C5DE7D20EFD3 /* AquaCode8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */; };
+		BC698D984C4E2A96B55F4B46 /* AquaFrames10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A77B258D244E1E0970254E4E /* AquaFrames10.ttf */; };
+		BDAE2FC82072B7227A90D850 /* CalibrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BD52FDE6F82AA77C0AD7 /* CalibrationTests.swift */; };
+		C196F4061673F26793CEFA23 /* AquaFrames0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */; };
+		C3DD19F7CE27035147C05652 /* AquaCode11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */; };
+		C5429A273C31FD344018E3E5 /* AquaCode2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */; };
+		C5D8C8383604CEEFB4BD835F /* DeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */; };
+		C71BAC5613C7EB90DD39E082 /* TestReportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A24950E531E2DC63ABA67 /* TestReportBuilder.swift */; };
+		C95ED79C825CFFA4C54549AF /* stand_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 796526F0BDB4D525E6B2E02B /* stand_art.png */; };
+		C9C263A76D3E633F201A2B13 /* WallpaperRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */; };
+		CEF996E6EDCA07E12DB8FFC8 /* AquaCode13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */; };
+		CF7C1D413A90ABBC3D365E20 /* aquarium_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C9CD829704BA19B22A32B2 /* aquarium_background.png */; };
+		D0D4CC3EA1A4D52396962ADB /* tank_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 9690AEDA61A6B20C53789149 /* tank_art.png */; };
+		D326F014B9E7B7C5E10EE1E6 /* AquaFrames9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */; };
+		D92D802CCF8DB6FB23782ACF /* AquaCode14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1B828013408536ADA559F98 /* AquaCode14.ttf */; };
+		DB49B425D52EAA34CBF9B910 /* AquaFrames6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */; };
+		DBA02DEAD41EC3ACD9CDC153 /* AquariumAnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */; };
+		DE0F659EF3AC19E1324913A0 /* SceneManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3901501298CD4AB9869C5512 /* SceneManifest.swift */; };
+		E7501E0CBD1946F004D82087 /* AquariumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A6970680721ED24F178D1 /* AquariumWidget.swift */; };
+		E8286189C226D873CF9D293B /* AquaBlink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */; };
+		E8E510120DC27E9D2A8C909F /* AquaFrames5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */; };
+		E8FBBB957B055C86A8EB614F /* AquaCode9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690960F00CB751F6A794998C /* AquaCode9.ttf */; };
+		EA709AA4414F19D76B4EA95F /* tank_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 9690AEDA61A6B20C53789149 /* tank_art.png */; };
+		EC7226D2E893476D291B5B1B /* fish_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 92604D6A5069BD3526BD399B /* fish_b.png */; };
+		EE645B1598F3679B92683D4D /* CalibrationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744075EC871B2C69E7D07884 /* CalibrationChart.swift */; };
+		EF30D5FEA738C6CF241BC6C2 /* AquaFrames4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */; };
+		F064F85B4A360FECEC2B72E3 /* AquaFrames11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */; };
+		F20AC040A674C9183749DB17 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */; };
+		F393FCABAF841EFD08ABAC31 /* DeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */; };
+		F8AC872D1B423F2FA8FFBAD8 /* AquaCode0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */; };
+		F9D37A46425E0621F2AAB6A3 /* AquaFrames15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */; };
+		FC1A0EC0C9E61ABA1A0C143D /* fish_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 92604D6A5069BD3526BD399B /* fish_b.png */; };
+		FD9DC365EA6A8C39D030F6FE /* AquaFrames14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17790DF005C0B8368D3E545C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C4779A21FDE88F9C2B497A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65E837C0C8D359167F1599FC;
+			remoteInfo = AquariumWidgetExtension;
+		};
+		3D0A139BB6DF62E78639F450 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C4779A21FDE88F9C2B497A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A54FA575BDC3C9A136CA2B4F;
+			remoteInfo = PixelAquarium;
+		};
+		5D4B5F5F56AFAE548E0CEBD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C4779A21FDE88F9C2B497A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A54FA575BDC3C9A136CA2B4F;
+			remoteInfo = PixelAquarium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A44E463B363C74164086689E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				00822983430DDEECBAB678DF /* AquariumWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenWidgetUITests.swift; sourceTree = "<group>"; };
+		0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidgetView.swift; sourceTree = "<group>"; };
+		09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaBlink.ttf; sourceTree = "<group>"; };
+		09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames2.ttf; sourceTree = "<group>"; };
+		09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode6.ttf; sourceTree = "<group>"; };
+		0BEDB1985075DF61B21A429A /* AquariumTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumTimelineProvider.swift; sourceTree = "<group>"; };
+		0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperRegistration.swift; sourceTree = "<group>"; };
+		11441399793949818FD79E66 /* frames.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = frames.json; sourceTree = "<group>"; };
+		117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperRenderer.swift; sourceTree = "<group>"; };
+		1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames9.ttf; sourceTree = "<group>"; };
+		1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames3.ttf; sourceTree = "<group>"; };
+		1EF61268E0461BC38BC0BCA1 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		23286845638F7046680FCA93 /* AquaCode5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode5.ttf; sourceTree = "<group>"; };
+		2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode2.ttf; sourceTree = "<group>"; };
+		26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames5.ttf; sourceTree = "<group>"; };
+		27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames6.ttf; sourceTree = "<group>"; };
+		29446AE7E5993228B8611802 /* PixelAquariumTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PixelAquariumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C34E89D512B871318E4B62A /* AquaCode1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode1.ttf; sourceTree = "<group>"; };
+		32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConfigurationStore.swift; sourceTree = "<group>"; };
+		3901501298CD4AB9869C5512 /* SceneManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManifest.swift; sourceTree = "<group>"; };
+		3B65E37A31E2B2AD22AE6E9E /* PixelAquarium.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PixelAquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumAnimationEngine.swift; sourceTree = "<group>"; };
+		3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames0.ttf; sourceTree = "<group>"; };
+		3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode4.ttf; sourceTree = "<group>"; };
+		42FC6DF46592FCE7CE90B014 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		43C9CD829704BA19B22A32B2 /* aquarium_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aquarium_background.png; sourceTree = "<group>"; };
+		46D59EBC73DE1C04ABC4B8AB /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
+		491A24950E531E2DC63ABA67 /* TestReportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReportBuilder.swift; sourceTree = "<group>"; };
+		4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockAnimationDriver.swift; sourceTree = "<group>"; };
+		4A73D4994485940101DB4BF9 /* CalibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
+		509590DE50AA513401410BC9 /* AquaFrames12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames12.ttf; sourceTree = "<group>"; };
+		51337845B31F09C0B6FE93BB /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode7.ttf; sourceTree = "<group>"; };
+		55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames14.ttf; sourceTree = "<group>"; };
+		5A91023A39824938906E4E42 /* AnimationClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationClip.swift; sourceTree = "<group>"; };
+		5DD73D1A6E84C9455B247478 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
+		64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceProfile.swift; sourceTree = "<group>"; };
+		690960F00CB751F6A794998C /* AquaCode9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode9.ttf; sourceTree = "<group>"; };
+		6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode13.ttf; sourceTree = "<group>"; };
+		6F7F3E87E8C5F50064FAE10D /* room_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_art.png; sourceTree = "<group>"; };
+		736F33439C446FA20DE4FD8C /* PixelAquariumUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PixelAquariumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		744075EC871B2C69E7D07884 /* CalibrationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationChart.swift; sourceTree = "<group>"; };
+		77B9209841D2AFD0D615C134 /* AquaCode15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode15.ttf; sourceTree = "<group>"; };
+		796526F0BDB4D525E6B2E02B /* stand_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stand_art.png; sourceTree = "<group>"; };
+		7D98BD52FDE6F82AA77C0AD7 /* CalibrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationTests.swift; sourceTree = "<group>"; };
+		7E5A6970680721ED24F178D1 /* AquariumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidget.swift; sourceTree = "<group>"; };
+		81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames1.ttf; sourceTree = "<group>"; };
+		8F7DA78EB4AA76F4C1D7C9D4 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		92604D6A5069BD3526BD399B /* fish_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish_b.png; sourceTree = "<group>"; };
+		9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArtRenderer.swift; sourceTree = "<group>"; };
+		9690AEDA61A6B20C53789149 /* tank_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank_art.png; sourceTree = "<group>"; };
+		97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames11.ttf; sourceTree = "<group>"; };
+		98616004E690383C865E60CC /* ManualTestCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualTestCatalog.swift; sourceTree = "<group>"; };
+		98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumCanvasView.swift; sourceTree = "<group>"; };
+		A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames13.ttf; sourceTree = "<group>"; };
+		A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames8.ttf; sourceTree = "<group>"; };
+		A1B828013408536ADA559F98 /* AquaCode14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode14.ttf; sourceTree = "<group>"; };
+		A77B258D244E1E0970254E4E /* AquaFrames10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames10.ttf; sourceTree = "<group>"; };
+		A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AquariumWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames7.ttf; sourceTree = "<group>"; };
+		B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaBlinkInv.ttf; sourceTree = "<group>"; };
+		B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode8.ttf; sourceTree = "<group>"; };
+		BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames15.ttf; sourceTree = "<group>"; };
+		BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode3.ttf; sourceTree = "<group>"; };
+		BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelBuffer.swift; sourceTree = "<group>"; };
+		CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationManager.swift; sourceTree = "<group>"; };
+		CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode12.ttf; sourceTree = "<group>"; };
+		D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlacement.swift; sourceTree = "<group>"; };
+		D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode0.ttf; sourceTree = "<group>"; };
+		D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper_art.png; sourceTree = "<group>"; };
+		E74EFBFE517CDC0BA926B128 /* RenderingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingTests.swift; sourceTree = "<group>"; };
+		E905164C31B77D166CD18389 /* AquaCode10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode10.ttf; sourceTree = "<group>"; };
+		EF057B23AED312BCBD8CA212 /* fish_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish_a.png; sourceTree = "<group>"; };
+		EFAF6A13C3C9F76D332CB0CB /* PixelAquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelAquariumApp.swift; sourceTree = "<group>"; };
+		F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode11.ttf; sourceTree = "<group>"; };
+		F5827F38D708834208612425 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames4.ttf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0036AD29F58769ED997226E2 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */,
+				9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */,
+				BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */,
+				117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		123AADF54A064AED511CFD7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */,
+				3B65E37A31E2B2AD22AE6E9E /* PixelAquarium.app */,
+				29446AE7E5993228B8611802 /* PixelAquariumTests.xctest */,
+				736F33439C446FA20DE4FD8C /* PixelAquariumUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1900D3B322AC4A37A39A3311 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		2133184BF2523DAD954C1B62 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A73D4994485940101DB4BF9 /* CalibrationView.swift */,
+				5DD73D1A6E84C9455B247478 /* DiagnosticsView.swift */,
+				F5827F38D708834208612425 /* HomeView.swift */,
+				1EF61268E0461BC38BC0BCA1 /* PreviewView.swift */,
+				51337845B31F09C0B6FE93BB /* SetupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2EC0553BE3B37D84EDBCFE80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A91023A39824938906E4E42 /* AnimationClip.swift */,
+				64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */,
+				3901501298CD4AB9869C5512 /* SceneManifest.swift */,
+				D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		58C7D532796BD60BAB4006CF /* AnimationTests */ = {
+			isa = PBXGroup;
+			children = (
+				46D59EBC73DE1C04ABC4B8AB /* AnimationTests.swift */,
+			);
+			path = AnimationTests;
+			sourceTree = "<group>";
+		};
+		5F14496C27E02144B5B66E2D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FFAEC999DA3B6EF3398330A1 /* Scenes */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		620619B77D2E34F19FE010E4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */,
+				B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */,
+				D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */,
+				2C34E89D512B871318E4B62A /* AquaCode1.ttf */,
+				2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */,
+				BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */,
+				3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */,
+				23286845638F7046680FCA93 /* AquaCode5.ttf */,
+				09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */,
+				51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */,
+				B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */,
+				690960F00CB751F6A794998C /* AquaCode9.ttf */,
+				E905164C31B77D166CD18389 /* AquaCode10.ttf */,
+				F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */,
+				CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */,
+				6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */,
+				A1B828013408536ADA559F98 /* AquaCode14.ttf */,
+				77B9209841D2AFD0D615C134 /* AquaCode15.ttf */,
+				3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */,
+				81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */,
+				09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */,
+				1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */,
+				FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */,
+				26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */,
+				27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */,
+				B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */,
+				A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */,
+				1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */,
+				A77B258D244E1E0970254E4E /* AquaFrames10.ttf */,
+				97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */,
+				509590DE50AA513401410BC9 /* AquaFrames12.ttf */,
+				A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */,
+				55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */,
+				BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7FD54165E6CBF799B5796CCE /* CalibrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				7D98BD52FDE6F82AA77C0AD7 /* CalibrationTests.swift */,
+			);
+			path = CalibrationTests;
+			sourceTree = "<group>";
+		};
+		8338C1B7290F711F25A51A4C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8F7DA78EB4AA76F4C1D7C9D4 /* AppModel.swift */,
+				98616004E690383C865E60CC /* ManualTestCatalog.swift */,
+				EFAF6A13C3C9F76D332CB0CB /* PixelAquariumApp.swift */,
+				491A24950E531E2DC63ABA67 /* TestReportBuilder.swift */,
+				2133184BF2523DAD954C1B62 /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9F5C2411AB65A92F2A4549EC /* CozyRoom */ = {
+			isa = PBXGroup;
+			children = (
+				43C9CD829704BA19B22A32B2 /* aquarium_background.png */,
+				EF057B23AED312BCBD8CA212 /* fish_a.png */,
+				92604D6A5069BD3526BD399B /* fish_b.png */,
+				11441399793949818FD79E66 /* frames.json */,
+				42FC6DF46592FCE7CE90B014 /* manifest.json */,
+				6F7F3E87E8C5F50064FAE10D /* room_art.png */,
+				796526F0BDB4D525E6B2E02B /* stand_art.png */,
+				9690AEDA61A6B20C53789149 /* tank_art.png */,
+				D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */,
+			);
+			path = CozyRoom;
+			sourceTree = "<group>";
+		};
+		B6EC56DDD1A039EA1A10E820 /* RenderingTests */ = {
+			isa = PBXGroup;
+			children = (
+				E74EFBFE517CDC0BA926B128 /* RenderingTests.swift */,
+			);
+			path = RenderingTests;
+			sourceTree = "<group>";
+		};
+		BA11A0F6AD1A08B448FE6BE4 = {
+			isa = PBXGroup;
+			children = (
+				8338C1B7290F711F25A51A4C /* App */,
+				5F14496C27E02144B5B66E2D /* Assets */,
+				D40BD3C76C0642127D10F062 /* Core */,
+				FB17D2F358E86CE2826C0891 /* Tests */,
+				C03BA427209B8BDC8D691B75 /* UITests */,
+				D56DC4947D719876DAB3D5AB /* WidgetExtension */,
+				123AADF54A064AED511CFD7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD40E133919F025AB616E273 /* Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				744075EC871B2C69E7D07884 /* CalibrationChart.swift */,
+				CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */,
+				0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */,
+			);
+			path = Calibration;
+			sourceTree = "<group>";
+		};
+		C03BA427209B8BDC8D691B75 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		D40BD3C76C0642127D10F062 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EDF203685A80B20C2D0FA2B3 /* Animation */,
+				BD40E133919F025AB616E273 /* Calibration */,
+				2EC0553BE3B37D84EDBCFE80 /* Models */,
+				0036AD29F58769ED997226E2 /* Rendering */,
+				1900D3B322AC4A37A39A3311 /* Storage */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D56DC4947D719876DAB3D5AB /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0BEDB1985075DF61B21A429A /* AquariumTimelineProvider.swift */,
+				7E5A6970680721ED24F178D1 /* AquariumWidget.swift */,
+				0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */,
+				620619B77D2E34F19FE010E4 /* Fonts */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		EDF203685A80B20C2D0FA2B3 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */,
+				4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		FB17D2F358E86CE2826C0891 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				58C7D532796BD60BAB4006CF /* AnimationTests */,
+				7FD54165E6CBF799B5796CCE /* CalibrationTests */,
+				B6EC56DDD1A039EA1A10E820 /* RenderingTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		FFAEC999DA3B6EF3398330A1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9F5C2411AB65A92F2A4549EC /* CozyRoom */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3C30FF430E3FCEE0E6B62245 /* PixelAquariumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46DB8D0F10C4A929F2942EC3 /* Build configuration list for PBXNativeTarget "PixelAquariumTests" */;
+			buildPhases = (
+				28DA1F216E31F916D9ACE820 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE4EA85DA27A1C121A1C9B34 /* PBXTargetDependency */,
+			);
+			name = PixelAquariumTests;
+			packageProductDependencies = (
+			);
+			productName = PixelAquariumTests;
+			productReference = 29446AE7E5993228B8611802 /* PixelAquariumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		65E837C0C8D359167F1599FC /* AquariumWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 019B1C6988CAE8562A97D47A /* Build configuration list for PBXNativeTarget "AquariumWidgetExtension" */;
+			buildPhases = (
+				258864F71D0A2A1022B17D2B /* Sources */,
+				430B54570C892FD423A652FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AquariumWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = AquariumWidgetExtension;
+			productReference = A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A50D8BA52C834203803D6A12 /* PixelAquariumUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F78513C12B55209D069E2A32 /* Build configuration list for PBXNativeTarget "PixelAquariumUITests" */;
+			buildPhases = (
+				B135B07A20154AC350D3D000 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C02898D167147D3BFC809D82 /* PBXTargetDependency */,
+			);
+			name = PixelAquariumUITests;
+			packageProductDependencies = (
+			);
+			productName = PixelAquariumUITests;
+			productReference = 736F33439C446FA20DE4FD8C /* PixelAquariumUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A54FA575BDC3C9A136CA2B4F /* PixelAquarium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12C0D9BDB400FAAAEF2AE115 /* Build configuration list for PBXNativeTarget "PixelAquarium" */;
+			buildPhases = (
+				466085EC21BA3D7BEAE90BDA /* Sources */,
+				4CFC40BF46B4C91CD5D09973 /* Resources */,
+				A44E463B363C74164086689E /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2DE8A958FFCF4BE53DBFCA6 /* PBXTargetDependency */,
+			);
+			name = PixelAquarium;
+			packageProductDependencies = (
+			);
+			productName = PixelAquarium;
+			productReference = 3B65E37A31E2B2AD22AE6E9E /* PixelAquarium.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C4779A21FDE88F9C2B497A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3C30FF430E3FCEE0E6B62245 = {
+						DevelopmentTeam = 3NFUYR892M;
+						ProvisioningStyle = Automatic;
+					};
+					65E837C0C8D359167F1599FC = {
+						DevelopmentTeam = 3NFUYR892M;
+						ProvisioningStyle = Automatic;
+					};
+					A50D8BA52C834203803D6A12 = {
+						DevelopmentTeam = 3NFUYR892M;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A54FA575BDC3C9A136CA2B4F;
+					};
+					A54FA575BDC3C9A136CA2B4F = {
+						DevelopmentTeam = 3NFUYR892M;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1B0DDD6C646DC0A25306D83A /* Build configuration list for PBXProject "PixelAquarium" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = BA11A0F6AD1A08B448FE6BE4;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 123AADF54A064AED511CFD7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65E837C0C8D359167F1599FC /* AquariumWidgetExtension */,
+				A54FA575BDC3C9A136CA2B4F /* PixelAquarium */,
+				3C30FF430E3FCEE0E6B62245 /* PixelAquariumTests */,
+				A50D8BA52C834203803D6A12 /* PixelAquariumUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		430B54570C892FD423A652FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51BCF7A1FDDBFF1FFF06BE98 /* AquaBlink.ttf in Resources */,
+				268F4112920B219215394087 /* AquaBlinkInv.ttf in Resources */,
+				F8AC872D1B423F2FA8FFBAD8 /* AquaCode0.ttf in Resources */,
+				8E1EDB5FB9586294608BF6F0 /* AquaCode1.ttf in Resources */,
+				445D0BF8306E07B7762B967C /* AquaCode10.ttf in Resources */,
+				54CBB129EBB8AF45CF83117D /* AquaCode11.ttf in Resources */,
+				0675E2E1E19CDA4D31B2AAE2 /* AquaCode12.ttf in Resources */,
+				92B689184DA2BA9729390A40 /* AquaCode13.ttf in Resources */,
+				0D35CC9D8EE8136089D67C5F /* AquaCode14.ttf in Resources */,
+				6AA58B10F05E451BFC9609DB /* AquaCode15.ttf in Resources */,
+				C5429A273C31FD344018E3E5 /* AquaCode2.ttf in Resources */,
+				217DFCA93D797555EEFD0C72 /* AquaCode3.ttf in Resources */,
+				1E2E5A4A769EF63D042C5D4B /* AquaCode4.ttf in Resources */,
+				8104ED5D93939F7472527949 /* AquaCode5.ttf in Resources */,
+				3E0983192BBD6D44A133458A /* AquaCode6.ttf in Resources */,
+				8822A01BC156BFD531E052AC /* AquaCode7.ttf in Resources */,
+				B84A2FE0BBD9C5DE7D20EFD3 /* AquaCode8.ttf in Resources */,
+				E8FBBB957B055C86A8EB614F /* AquaCode9.ttf in Resources */,
+				C196F4061673F26793CEFA23 /* AquaFrames0.ttf in Resources */,
+				A19DA1F031580CB37EAEDAE2 /* AquaFrames1.ttf in Resources */,
+				7EFEB798057F9F22CA93356E /* AquaFrames10.ttf in Resources */,
+				8E9F8E0486AED7BA76BA1DD5 /* AquaFrames11.ttf in Resources */,
+				7997A01D40999BB3A4ADFA8F /* AquaFrames12.ttf in Resources */,
+				8A1C75D077B01357EA0F1545 /* AquaFrames13.ttf in Resources */,
+				752C98A186C42D63A86AA875 /* AquaFrames14.ttf in Resources */,
+				F9D37A46425E0621F2AAB6A3 /* AquaFrames15.ttf in Resources */,
+				889546C0EA67CEC3214092F1 /* AquaFrames2.ttf in Resources */,
+				5CB96E940E1AE2F8E2DE7FD1 /* AquaFrames3.ttf in Resources */,
+				EF30D5FEA738C6CF241BC6C2 /* AquaFrames4.ttf in Resources */,
+				E8E510120DC27E9D2A8C909F /* AquaFrames5.ttf in Resources */,
+				2EC342D054732937592BB791 /* AquaFrames6.ttf in Resources */,
+				7910DAF3AA9B3F3D64D69846 /* AquaFrames7.ttf in Resources */,
+				794E46E0B0C12A0B29FA7699 /* AquaFrames8.ttf in Resources */,
+				7D5F1AD71F7F613ACCC7EC5D /* AquaFrames9.ttf in Resources */,
+				6F85F532843E88301C3600AB /* aquarium_background.png in Resources */,
+				7926201238FD1A675DA8812D /* fish_a.png in Resources */,
+				FC1A0EC0C9E61ABA1A0C143D /* fish_b.png in Resources */,
+				5263A87716E782FBA866184B /* frames.json in Resources */,
+				99D5E240EEE563C1108D7C46 /* manifest.json in Resources */,
+				7C1411718045B8660347D22C /* room_art.png in Resources */,
+				8995A0EAD968E5972B1422CD /* stand_art.png in Resources */,
+				D0D4CC3EA1A4D52396962ADB /* tank_art.png in Resources */,
+				89B4241E4718B5F6D85E545D /* wallpaper_art.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CFC40BF46B4C91CD5D09973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8286189C226D873CF9D293B /* AquaBlink.ttf in Resources */,
+				884DE45AD0AF281FAD76A62E /* AquaBlinkInv.ttf in Resources */,
+				A4E84BC7713EEF7C3A53640F /* AquaCode0.ttf in Resources */,
+				383E396E65BECFA6E636003E /* AquaCode1.ttf in Resources */,
+				973495923B6EA95DDDBE7375 /* AquaCode10.ttf in Resources */,
+				C3DD19F7CE27035147C05652 /* AquaCode11.ttf in Resources */,
+				628ED14E60E49006619D758E /* AquaCode12.ttf in Resources */,
+				CEF996E6EDCA07E12DB8FFC8 /* AquaCode13.ttf in Resources */,
+				D92D802CCF8DB6FB23782ACF /* AquaCode14.ttf in Resources */,
+				A06ACDAC37A0BC18F5A59505 /* AquaCode15.ttf in Resources */,
+				B1DFDD53B88A7EFC62D20E28 /* AquaCode2.ttf in Resources */,
+				62CA95969A0BBCE9FAC0082E /* AquaCode3.ttf in Resources */,
+				677579C007216105C1453FEE /* AquaCode4.ttf in Resources */,
+				26459831F31B37A9A510CB3A /* AquaCode5.ttf in Resources */,
+				75C9F30335DBE40C8111290A /* AquaCode6.ttf in Resources */,
+				7255A316614B2792D56B25EB /* AquaCode7.ttf in Resources */,
+				A18DD53D72D5F9E4D022C44F /* AquaCode8.ttf in Resources */,
+				8FC5FAD0BEA640FF5662E989 /* AquaCode9.ttf in Resources */,
+				AFBF078F65BB35E299A86C43 /* AquaFrames0.ttf in Resources */,
+				9844806D9F9C3A2CE5B8FD40 /* AquaFrames1.ttf in Resources */,
+				BC698D984C4E2A96B55F4B46 /* AquaFrames10.ttf in Resources */,
+				F064F85B4A360FECEC2B72E3 /* AquaFrames11.ttf in Resources */,
+				2ACE29F895625CED6017F2DD /* AquaFrames12.ttf in Resources */,
+				2A9949DF8426B28EB00F237F /* AquaFrames13.ttf in Resources */,
+				FD9DC365EA6A8C39D030F6FE /* AquaFrames14.ttf in Resources */,
+				79E49B0B094F686531983555 /* AquaFrames15.ttf in Resources */,
+				7D51109883546027527C729C /* AquaFrames2.ttf in Resources */,
+				6A40C0AE9FFE03E110EDEFE7 /* AquaFrames3.ttf in Resources */,
+				AE14D04586A96F1923A9FBF1 /* AquaFrames4.ttf in Resources */,
+				9C46CA2C7151EE6B0AFE0D9F /* AquaFrames5.ttf in Resources */,
+				DB49B425D52EAA34CBF9B910 /* AquaFrames6.ttf in Resources */,
+				51538FFFC0FC9435B35411D0 /* AquaFrames7.ttf in Resources */,
+				14EBD373A566CEDA5EB5AB7B /* AquaFrames8.ttf in Resources */,
+				D326F014B9E7B7C5E10EE1E6 /* AquaFrames9.ttf in Resources */,
+				CF7C1D413A90ABBC3D365E20 /* aquarium_background.png in Resources */,
+				573A8BD69571CA3758312F35 /* fish_a.png in Resources */,
+				EC7226D2E893476D291B5B1B /* fish_b.png in Resources */,
+				026391BB808CB4700B0D7AF4 /* frames.json in Resources */,
+				482A61E32C0C29A4592075F7 /* manifest.json in Resources */,
+				9AE5523B6DBD6C4838BB683D /* room_art.png in Resources */,
+				C95ED79C825CFFA4C54549AF /* stand_art.png in Resources */,
+				EA709AA4414F19D76B4EA95F /* tank_art.png in Resources */,
+				510013F57D907C19E5D0C576 /* wallpaper_art.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		258864F71D0A2A1022B17D2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CE540D4A1897C368CF629D7 /* AnimationClip.swift in Sources */,
+				B1E8204A190AAA75408378FF /* AquariumAnimationEngine.swift in Sources */,
+				5AB6E41F0CFF6DEC6F9E7D56 /* AquariumCanvasView.swift in Sources */,
+				0AD07A6D6A4D6A4E49D9F2E7 /* AquariumTimelineProvider.swift in Sources */,
+				E7501E0CBD1946F004D82087 /* AquariumWidget.swift in Sources */,
+				08C3A219CEFA5462403A2595 /* AquariumWidgetView.swift in Sources */,
+				4199DE91274039C4346E8D19 /* CalibrationChart.swift in Sources */,
+				01CF651A612DA90210F5A529 /* CalibrationManager.swift in Sources */,
+				AC1F52B1AE6B18638F6EB82B /* ClockAnimationDriver.swift in Sources */,
+				C5D8C8383604CEEFB4BD835F /* DeviceProfile.swift in Sources */,
+				A5D3B9D6D75FFF1FA7EAEF78 /* PixelArtRenderer.swift in Sources */,
+				1003BA21164735DDCF2E1E35 /* PixelBuffer.swift in Sources */,
+				DE0F659EF3AC19E1324913A0 /* SceneManifest.swift in Sources */,
+				6EBC9E86C8ABCC604902A4B3 /* SharedConfigurationStore.swift in Sources */,
+				43654E35E33BF9F98E321577 /* WallpaperRegistration.swift in Sources */,
+				3BB5364FB1C5C9DC578BF270 /* WallpaperRenderer.swift in Sources */,
+				A9C28CB98B3EE9E9B3A975E7 /* WidgetPlacement.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28DA1F216E31F916D9ACE820 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019FA839AFCD9C2CD42A7FA3 /* AnimationTests.swift in Sources */,
+				BDAE2FC82072B7227A90D850 /* CalibrationTests.swift in Sources */,
+				AB15531EA7601F53F46DABBC /* RenderingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466085EC21BA3D7BEAE90BDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33635B7DA6A04FB42002407 /* AnimationClip.swift in Sources */,
+				0DC540AABC9D71B57B102E15 /* AppModel.swift in Sources */,
+				DBA02DEAD41EC3ACD9CDC153 /* AquariumAnimationEngine.swift in Sources */,
+				0C3AE04187B540F4AEA5545A /* AquariumCanvasView.swift in Sources */,
+				EE645B1598F3679B92683D4D /* CalibrationChart.swift in Sources */,
+				0AECECC8F9ED3F5CC495B9C1 /* CalibrationManager.swift in Sources */,
+				96D02EADEE69F3B4332BE461 /* CalibrationView.swift in Sources */,
+				B05051D20A374DEF7FD71181 /* ClockAnimationDriver.swift in Sources */,
+				F393FCABAF841EFD08ABAC31 /* DeviceProfile.swift in Sources */,
+				1335BB3A1E42B564833A9DB5 /* DiagnosticsView.swift in Sources */,
+				0F7010A88BFADC7C03F45952 /* HomeView.swift in Sources */,
+				435CF729E39870A7E15B1489 /* ManualTestCatalog.swift in Sources */,
+				58B006957A216012210D293E /* PixelAquariumApp.swift in Sources */,
+				429A2AA9D8579C7B48BE606E /* PixelArtRenderer.swift in Sources */,
+				F20AC040A674C9183749DB17 /* PixelBuffer.swift in Sources */,
+				99673AC73FAD4520C5F09403 /* PreviewView.swift in Sources */,
+				88B066B9203A17CDA7AA7490 /* SceneManifest.swift in Sources */,
+				5FA5C78629ED76E8C711CAB6 /* SetupView.swift in Sources */,
+				040E20E50C312F3B857DB810 /* SharedConfigurationStore.swift in Sources */,
+				C71BAC5613C7EB90DD39E082 /* TestReportBuilder.swift in Sources */,
+				9F0421F7E55ADFFF3D744727 /* WallpaperRegistration.swift in Sources */,
+				C9C263A76D3E633F201A2B13 /* WallpaperRenderer.swift in Sources */,
+				43FB812CCF151D0FE405FE6E /* WidgetPlacement.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B135B07A20154AC350D3D000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DFA88CC9B596C56A428508B /* HomeScreenWidgetUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2DE8A958FFCF4BE53DBFCA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65E837C0C8D359167F1599FC /* AquariumWidgetExtension */;
+			targetProxy = 17790DF005C0B8368D3E545C /* PBXContainerItemProxy */;
+		};
+		C02898D167147D3BFC809D82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A54FA575BDC3C9A136CA2B4F /* PixelAquarium */;
+			targetProxy = 3D0A139BB6DF62E78639F450 /* PBXContainerItemProxy */;
+		};
+		FE4EA85DA27A1C121A1C9B34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A54FA575BDC3C9A136CA2B4F /* PixelAquarium */;
+			targetProxy = 5D4B5F5F56AFAE548E0CEBD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3B57D15FAFC212E819189818 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PixelAquarium.app/PixelAquarium";
+			};
+			name = Debug;
+		};
+		41C4337997E6BFEFF779C7DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3NFUYR892M;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		45DC45C67EB778A5DD4944D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PixelAquarium;
+			};
+			name = Debug;
+		};
+		61E34B8A4B870181682877C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = config/PixelAquarium.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "config/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		74C378759D51331B7B3BB46E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = config/PixelAquarium.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "config/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7755D3BDBFD5031A2C3D92EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PixelAquarium.app/PixelAquarium";
+			};
+			name = Release;
+		};
+		8D09C347E4B756D541BD295A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = config/AquariumWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "config/Widget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C7E93D931AFFE1A925FBF84D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3NFUYR892M;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D4C6CE4D9C14CF3568EED6B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = config/AquariumWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "config/Widget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F1BF8321E8931A64AF632715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aghamatlab.pixelaquarium.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PixelAquarium;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		019B1C6988CAE8562A97D47A /* Build configuration list for PBXNativeTarget "AquariumWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D09C347E4B756D541BD295A /* Debug */,
+				D4C6CE4D9C14CF3568EED6B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		12C0D9BDB400FAAAEF2AE115 /* Build configuration list for PBXNativeTarget "PixelAquarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74C378759D51331B7B3BB46E /* Debug */,
+				61E34B8A4B870181682877C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1B0DDD6C646DC0A25306D83A /* Build configuration list for PBXProject "PixelAquarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41C4337997E6BFEFF779C7DD /* Debug */,
+				C7E93D931AFFE1A925FBF84D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		46DB8D0F10C4A929F2942EC3 /* Build configuration list for PBXNativeTarget "PixelAquariumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B57D15FAFC212E819189818 /* Debug */,
+				7755D3BDBFD5031A2C3D92EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F78513C12B55209D069E2A32 /* Build configuration list for PBXNativeTarget "PixelAquariumUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45DC45C67EB778A5DD4944D2 /* Debug */,
+				F1BF8321E8931A64AF632715 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C4779A21FDE88F9C2B497A8 /* Project object */;
+}

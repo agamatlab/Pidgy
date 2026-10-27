@@ -1,0 +1,64 @@
+{
+  "sceneId": "cozy-room",
+  "sceneVersion": 1,
+  "wallpaperAsset": "wallpaper_art.png",
+  "staticBackgroundAsset": "tank_art.png",
+  "preferredWidgetFamily": "systemLarge",
+  "targetFPS": 8,
+  "loopDuration": 30,
+  "pixelArtScaleMode": "nearestNeighbor",
+  "artPixelPoints": 3,
+  "aquariumRegion": {
+    "x": 0.05,
+    "y": 0.1,
+    "width": 0.9,
+    "height": 0.72
+  },
+  "fishCanvas": {
+    "width": 96,
+    "height": 60
+  },
+  "fontSets": {
+    "frames": "AquaFrames",
+    "blink": "AquaBlink",
+    "blinkInverse": "AquaBlinkInv",
+    "code": "AquaCode"
+  },
+  "animatedElements": [
+    {
+      "id": "fishA",
+      "sprite": "fish_a.png",
+      "frameWidth": 14,
+      "frameHeight": 9,
+      "spriteFrames": 2,
+      "motion": "patrol",
+      "xMin": 4,
+      "xMax": 78,
+      "cyclesPerLoop": 1,
+      "phase": 0.0,
+      "baseY": 14,
+      "bobAmplitude": 2,
+      "bobCyclesPerLoop": 3,
+      "tailFramesPerSecond": 3
+    },
+    {
+      "id": "fishB",
+      "sprite": "fish_b.png",
+      "frameWidth": 12,
+      "frameHeight": 8,
+      "spriteFrames": 2,
+      "motion": "patrol",
+      "xMin": 16,
+      "xMax": 72,
+      "cyclesPerLoop": 1,
+      "phase": 0.5,
+      "baseY": 36,
+      "bobAmplitude": 1,
+      "bobCyclesPerLoop": 5,
+      "tailFramesPerSecond": 4
+    }
+  ],
+  "tankAsset": "tank_art.png",
+  "standAsset": "stand_art.png",
+  "roomAsset": "room_art.png"
+}
