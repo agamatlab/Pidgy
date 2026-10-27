@@ -127,6 +127,7 @@ struct RGBA: Equatable {
 
     static let clear = RGBA(r: 0, g: 0, b: 0, a: 0)
     static let calibrationMagenta = RGBA(r: 255, g: 0, b: 255)
+    static let calibrationCyan = RGBA(r: 0, g: 255, b: 255)
     static let fiducialGreen = RGBA(r: 0, g: 255, b: 0)
     static let water = RGBA(r: 22, g: 92, b: 110)
 }

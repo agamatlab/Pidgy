@@ -177,7 +177,7 @@ final class RenderingTests: XCTestCase {
         let wallMap = ColorMap(scale: [1.21, 0.98, 0.97], offset: [13, 0, 0])
         let widgetMap = ColorMap(scale: [2.55, 1.23, 1.46], offset: [30, 20, 38])
         let wallpaper = WallpaperRenderer.roomWallpaper(room: room, stand: stand, screen: phone, pxPerArtPixel: 9,
-                                                        widgetRect: widget, transform: zoom, tank: tank, wallpaperColorMap: wallMap)
+                                                        widgetRect: widget, transform: zoom, underlays: [(tank, widget)], wallpaperColorMap: wallMap)
         let bg = WidgetBackgroundRenderer.tank(art: tank, size: PixelSize(width: 1170, height: 1170), widgetColorMap: widgetMap)
         func shown(_ c: RGBA, _ m: ColorMap) -> [Double] {
             [m.apply(Double(c.r), channel: 0), m.apply(Double(c.g), channel: 1), m.apply(Double(c.b), channel: 2)]

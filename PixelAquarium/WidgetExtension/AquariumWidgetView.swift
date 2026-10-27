@@ -26,7 +26,7 @@ struct AquariumWidgetView: View {
     @ViewBuilder
     private var background: some View {
         if entry.settings.mode == .calibration {
-            Color(red: 1, green: 0, blue: 1)
+            entry.role == .primary ? Color(red: 1, green: 0, blue: 1) : Color(red: 0, green: 1, blue: 1)
         } else if let image = entry.background {
             Image(uiImage: image).resizable().interpolation(.none).widgetAccentedRenderingMode(.fullColor)
         } else {
@@ -37,7 +37,17 @@ struct AquariumWidgetView: View {
     @ViewBuilder
     private func content(size: CGSize) -> some View {
         if entry.settings.mode == .calibration {
-            CalibrationPattern(size: size, scale: displayScale)
+            CalibrationPattern(size: size, scale: displayScale, border: entry.role == .primary ? .calibrationMagenta : .calibrationCyan)
+        } else if let engine = entry.engine, case .layer(let prefix)? = entry.settings.theme.theme.art(for: entry.role)?.motion {
+            // Full-widget animated layer over the theme art.
+            if entry.settings.mode == .animatedAquarium {
+                ClockAnimationDriver(schedule: engine.schedule, fontPrefix: prefix, blinkFont: engine.clip.driver.blinkFont,
+                                     blinkInverseFont: engine.clip.driver.blinkInverseFont,
+                                     anchor: engine.schedule.anchor(for: entry.date), size: size)
+            }
+        } else if entry.settings.theme.theme.art(for: entry.role) == nil {
+            Text("Not used by the \(entry.settings.theme.title) theme")
+                .font(.caption).foregroundStyle(.white).frame(width: size.width, height: size.height)
         } else if let engine = entry.engine {
             let anchor = engine.schedule.anchor(for: entry.date)
             AquariumCanvasView(
@@ -95,10 +105,11 @@ struct AquariumWidgetView: View {
 struct CalibrationPattern: View {
     let size: CGSize
     let scale: CGFloat
+    var border: RGBA = .calibrationMagenta
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Color(red: 1, green: 0, blue: 1)
+            Color(.sRGB, red: Double(border.r) / 255, green: Double(border.g) / 255, blue: Double(border.b) / 255)
             ForEach(CalibrationChart.colors.indices, id: \.self) { i in
                 let r = CalibrationChart.patchRect(i, widgetSize: size)
                 let c = CalibrationChart.colors[i]

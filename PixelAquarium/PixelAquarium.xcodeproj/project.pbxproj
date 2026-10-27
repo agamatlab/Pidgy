@@ -10,27 +10,44 @@
 		00822983430DDEECBAB678DF /* AquariumWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		019FA839AFCD9C2CD42A7FA3 /* AnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D59EBC73DE1C04ABC4B8AB /* AnimationTests.swift */; };
 		01CF651A612DA90210F5A529 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */; };
+		02059D5052FE64425C36128C /* HWPortrait1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D06955CACCCA5DC75203D9D /* HWPortrait1.ttf */; };
 		026391BB808CB4700B0D7AF4 /* frames.json in Resources */ = {isa = PBXBuildFile; fileRef = 11441399793949818FD79E66 /* frames.json */; };
 		040E20E50C312F3B857DB810 /* SharedConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */; };
+		065C82C0D99A4B0FE9BE6BF5 /* HWPortrait12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4185ED6B3FDB73608D7892D3 /* HWPortrait12.ttf */; };
 		0675E2E1E19CDA4D31B2AAE2 /* AquaCode12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */; };
+		06AEF6E79CC028CB0022077E /* HWWindow14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5909CCE78212AE173F47816 /* HWWindow14.ttf */; };
 		08C3A219CEFA5462403A2595 /* AquariumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */; };
 		0AD07A6D6A4D6A4E49D9F2E7 /* AquariumTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEDB1985075DF61B21A429A /* AquariumTimelineProvider.swift */; };
 		0AECECC8F9ED3F5CC495B9C1 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */; };
 		0C3AE04187B540F4AEA5545A /* AquariumCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */; };
 		0D35CC9D8EE8136089D67C5F /* AquaCode14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1B828013408536ADA559F98 /* AquaCode14.ttf */; };
 		0DC540AABC9D71B57B102E15 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA78EB4AA76F4C1D7C9D4 /* AppModel.swift */; };
+		0F35D556777766A55D496A17 /* HWPortrait4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CAA1C788A915FCCF7F7BA2B /* HWPortrait4.ttf */; };
 		0F7010A88BFADC7C03F45952 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5827F38D708834208612425 /* HomeView.swift */; };
+		0FC14D042C752068D71686DC /* hw_room.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C7F677BF5782EABC108B31B /* hw_room.png */; };
+		0FF91792F451AB583B8D70F9 /* HWPortrait7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D26C04F98E58B04CA6C76007 /* HWPortrait7.ttf */; };
 		1003BA21164735DDCF2E1E35 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */; };
+		1172BAE38647A947F085FD72 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C45A849A84540244DD11DA /* Theme.swift */; };
+		11DD401769F1F96D952219E0 /* HWPortrait4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CAA1C788A915FCCF7F7BA2B /* HWPortrait4.ttf */; };
+		127CBBE5F775075D2D9A91F7 /* hw_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B9E0AAF0274DF8E4A8FD7A /* hw_portrait.png */; };
 		1335BB3A1E42B564833A9DB5 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD73D1A6E84C9455B247478 /* DiagnosticsView.swift */; };
+		14748FC7266B9248D40B3DDC /* HWWindow0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8E01E6BEB133EDC2287FA50 /* HWWindow0.ttf */; };
 		14EBD373A566CEDA5EB5AB7B /* AquaFrames8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */; };
+		1AC83FD927E07889AB41F422 /* HWWindow11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 342463869767C38C69630B08 /* HWWindow11.ttf */; };
+		1BAC58044C3EF098DEA76990 /* HWPortrait3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B722E7DB15B14E347DA2E5 /* HWPortrait3.ttf */; };
 		1CE540D4A1897C368CF629D7 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91023A39824938906E4E42 /* AnimationClip.swift */; };
 		1E2E5A4A769EF63D042C5D4B /* AquaCode4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */; };
 		217DFCA93D797555EEFD0C72 /* AquaCode3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */; };
+		22F313F67643648656BD2CAD /* HWWindow4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC376D88DF8EAA64EC292AB /* HWWindow4.ttf */; };
 		26459831F31B37A9A510CB3A /* AquaCode5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23286845638F7046680FCA93 /* AquaCode5.ttf */; };
 		268F4112920B219215394087 /* AquaBlinkInv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */; };
+		2933713D9A0CE6CD5D8C5766 /* HWPortrait15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFB75E4B491206915077644C /* HWPortrait15.ttf */; };
+		29665124AD37FC356D6A925B /* HWPortrait3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0B722E7DB15B14E347DA2E5 /* HWPortrait3.ttf */; };
 		2A9949DF8426B28EB00F237F /* AquaFrames13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */; };
 		2ACE29F895625CED6017F2DD /* AquaFrames12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 509590DE50AA513401410BC9 /* AquaFrames12.ttf */; };
+		2EA4901E8C048D57DFBD913D /* HWWindow10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8202EE9C3D2EB31CB0C59576 /* HWWindow10.ttf */; };
 		2EC342D054732937592BB791 /* AquaFrames6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */; };
+		35141010DCAF8883FF190227 /* hw_room.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C7F677BF5782EABC108B31B /* hw_room.png */; };
 		383E396E65BECFA6E636003E /* AquaCode1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C34E89D512B871318E4B62A /* AquaCode1.ttf */; };
 		3BB5364FB1C5C9DC578BF270 /* WallpaperRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */; };
 		3E0983192BBD6D44A133458A /* AquaCode6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */; };
@@ -40,27 +57,40 @@
 		43654E35E33BF9F98E321577 /* WallpaperRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */; };
 		43FB812CCF151D0FE405FE6E /* WidgetPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */; };
 		445D0BF8306E07B7762B967C /* AquaCode10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E905164C31B77D166CD18389 /* AquaCode10.ttf */; };
+		445F0835FF5D294B6B9FB467 /* HWPortrait7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D26C04F98E58B04CA6C76007 /* HWPortrait7.ttf */; };
 		482A61E32C0C29A4592075F7 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 42FC6DF46592FCE7CE90B014 /* manifest.json */; };
+		4D5667A12D362DEF5B63C0D7 /* HWPortrait10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B330918C6358A43FCC4BF9D3 /* HWPortrait10.ttf */; };
+		4FE96DEDE8048A5A5BC320C9 /* HWWindow13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5ECD0807C9D60B1E6ED2548 /* HWWindow13.ttf */; };
+		50A298D4001091DD845B2A21 /* HWPortrait8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 757BADA83D220035B9D63CA7 /* HWPortrait8.ttf */; };
+		50B228BB9D5A2552529CD774 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C45A849A84540244DD11DA /* Theme.swift */; };
 		510013F57D907C19E5D0C576 /* wallpaper_art.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */; };
 		51538FFFC0FC9435B35411D0 /* AquaFrames7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */; };
 		51BCF7A1FDDBFF1FFF06BE98 /* AquaBlink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */; };
+		525D9B831C8507BEB83A1A1E /* HWWindow2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A538EC52A81BD025B2FC851 /* HWWindow2.ttf */; };
 		5263A87716E782FBA866184B /* frames.json in Resources */ = {isa = PBXBuildFile; fileRef = 11441399793949818FD79E66 /* frames.json */; };
+		53BF7725C1153653EF31ED55 /* HWWindow14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5909CCE78212AE173F47816 /* HWWindow14.ttf */; };
+		53DFF232FC6E0E5A7C4AD198 /* HWWindow2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A538EC52A81BD025B2FC851 /* HWWindow2.ttf */; };
+		53F8B584593F2A2DF9AD5AAC /* HWPortrait14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 333779D0946EC705BA02DE84 /* HWPortrait14.ttf */; };
 		54CBB129EBB8AF45CF83117D /* AquaCode11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */; };
 		573A8BD69571CA3758312F35 /* fish_a.png in Resources */ = {isa = PBXBuildFile; fileRef = EF057B23AED312BCBD8CA212 /* fish_a.png */; };
 		58B006957A216012210D293E /* PixelAquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAF6A13C3C9F76D332CB0CB /* PixelAquariumApp.swift */; };
 		5AB6E41F0CFF6DEC6F9E7D56 /* AquariumCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */; };
 		5CB96E940E1AE2F8E2DE7FD1 /* AquaFrames3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */; };
 		5FA5C78629ED76E8C711CAB6 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51337845B31F09C0B6FE93BB /* SetupView.swift */; };
+		5FA9C87B7324D8201EFEA18E /* HWWindow9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A8E6B5FCB7C2A0929C4EE /* HWWindow9.ttf */; };
 		628ED14E60E49006619D758E /* AquaCode12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */; };
 		62CA95969A0BBCE9FAC0082E /* AquaCode3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */; };
+		66B3283C10DBED50E61C39D7 /* HWWindow13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5ECD0807C9D60B1E6ED2548 /* HWWindow13.ttf */; };
 		677579C007216105C1453FEE /* AquaCode4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */; };
 		6A40C0AE9FFE03E110EDEFE7 /* AquaFrames3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */; };
 		6AA58B10F05E451BFC9609DB /* AquaCode15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B9209841D2AFD0D615C134 /* AquaCode15.ttf */; };
 		6EBC9E86C8ABCC604902A4B3 /* SharedConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */; };
 		6F85F532843E88301C3600AB /* aquarium_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C9CD829704BA19B22A32B2 /* aquarium_background.png */; };
 		7255A316614B2792D56B25EB /* AquaCode7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */; };
+		732FA890D9C3B159E9B1880E /* HWPortrait8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 757BADA83D220035B9D63CA7 /* HWPortrait8.ttf */; };
 		752C98A186C42D63A86AA875 /* AquaFrames14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */; };
 		75C9F30335DBE40C8111290A /* AquaCode6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */; };
+		790F083459F7140A13AEA23D /* HWWindow5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81624738A6823D763B323ACE /* HWWindow5.ttf */; };
 		7910DAF3AA9B3F3D64D69846 /* AquaFrames7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */; };
 		7926201238FD1A675DA8812D /* fish_a.png in Resources */ = {isa = PBXBuildFile; fileRef = EF057B23AED312BCBD8CA212 /* fish_a.png */; };
 		794E46E0B0C12A0B29FA7699 /* AquaFrames8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */; };
@@ -70,8 +100,11 @@
 		7D51109883546027527C729C /* AquaFrames2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */; };
 		7D5F1AD71F7F613ACCC7EC5D /* AquaFrames9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */; };
 		7DFA88CC9B596C56A428508B /* HomeScreenWidgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */; };
+		7E79DC73C5C86E29B6C99628 /* HWWindow1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D34438E6FEA5A78C4CAFF9 /* HWWindow1.ttf */; };
 		7EFEB798057F9F22CA93356E /* AquaFrames10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A77B258D244E1E0970254E4E /* AquaFrames10.ttf */; };
 		8104ED5D93939F7472527949 /* AquaCode5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23286845638F7046680FCA93 /* AquaCode5.ttf */; };
+		849800A5A01CB687B8352DDB /* HWWindow3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9403A85BB56CBFB7A01AE670 /* HWWindow3.ttf */; };
+		86A21BD18A27D3ECA4799783 /* hw_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B9E0AAF0274DF8E4A8FD7A /* hw_portrait.png */; };
 		8822A01BC156BFD531E052AC /* AquaCode7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */; };
 		884DE45AD0AF281FAD76A62E /* AquaBlinkInv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */; };
 		889546C0EA67CEC3214092F1 /* AquaFrames2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */; };
@@ -79,50 +112,83 @@
 		8995A0EAD968E5972B1422CD /* stand_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 796526F0BDB4D525E6B2E02B /* stand_art.png */; };
 		89B4241E4718B5F6D85E545D /* wallpaper_art.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */; };
 		8A1C75D077B01357EA0F1545 /* AquaFrames13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */; };
+		8AA2CAA2396E45421C5AE8DD /* HWWindow6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BCCB16EC52BB8DF7AD536BA /* HWWindow6.ttf */; };
+		8C55A675A5083B3D0489085D /* HWPortrait9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA1EFFDEF5F2058BF8E21969 /* HWPortrait9.ttf */; };
+		8DF9F17801EEA72A6011B2F5 /* HWPortrait6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDFC46A74C7E3C93915678E0 /* HWPortrait6.ttf */; };
 		8E1EDB5FB9586294608BF6F0 /* AquaCode1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C34E89D512B871318E4B62A /* AquaCode1.ttf */; };
+		8E440D53837A7704A059F837 /* HWPortrait13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB5B74AFB73272911EA3652E /* HWPortrait13.ttf */; };
 		8E9F8E0486AED7BA76BA1DD5 /* AquaFrames11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */; };
 		8FC5FAD0BEA640FF5662E989 /* AquaCode9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690960F00CB751F6A794998C /* AquaCode9.ttf */; };
+		91B5A2F2735160495A88CCDD /* HWWindow1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D34438E6FEA5A78C4CAFF9 /* HWWindow1.ttf */; };
 		92B689184DA2BA9729390A40 /* AquaCode13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */; };
+		9443B5DC606E1CDD373CD1D0 /* HWWindow7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3221F27502EB0ED70165A8CF /* HWWindow7.ttf */; };
+		9462CF872D14EB0371F0B4CD /* HWWindow15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657F237D98D3124C16A9D339 /* HWWindow15.ttf */; };
 		96D02EADEE69F3B4332BE461 /* CalibrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73D4994485940101DB4BF9 /* CalibrationView.swift */; };
 		973495923B6EA95DDDBE7375 /* AquaCode10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E905164C31B77D166CD18389 /* AquaCode10.ttf */; };
 		9844806D9F9C3A2CE5B8FD40 /* AquaFrames1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */; };
 		99673AC73FAD4520C5F09403 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF61268E0461BC38BC0BCA1 /* PreviewView.swift */; };
 		99D5E240EEE563C1108D7C46 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 42FC6DF46592FCE7CE90B014 /* manifest.json */; };
 		9AE5523B6DBD6C4838BB683D /* room_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F3E87E8C5F50064FAE10D /* room_art.png */; };
+		9B5C2DAE98DB51D17D2089E4 /* HWPortrait11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D30C2CBB4255358113A0D9CA /* HWPortrait11.ttf */; };
 		9C46CA2C7151EE6B0AFE0D9F /* AquaFrames5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */; };
+		9E6FD1C827E0AE5586477EC0 /* HWPortrait15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFB75E4B491206915077644C /* HWPortrait15.ttf */; };
 		9F0421F7E55ADFFF3D744727 /* WallpaperRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */; };
 		A06ACDAC37A0BC18F5A59505 /* AquaCode15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B9209841D2AFD0D615C134 /* AquaCode15.ttf */; };
 		A18DD53D72D5F9E4D022C44F /* AquaCode8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */; };
 		A19DA1F031580CB37EAEDAE2 /* AquaFrames1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */; };
+		A22DDCB6B1F98C04BF82EE65 /* HWPortrait5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B19679BB290B9F3CA26AE6 /* HWPortrait5.ttf */; };
 		A33635B7DA6A04FB42002407 /* AnimationClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91023A39824938906E4E42 /* AnimationClip.swift */; };
 		A4E84BC7713EEF7C3A53640F /* AquaCode0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */; };
 		A5D3B9D6D75FFF1FA7EAEF78 /* PixelArtRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */; };
+		A7D3771D6B2A90BB7BA679B1 /* HWWindow9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F0A8E6B5FCB7C2A0929C4EE /* HWWindow9.ttf */; };
 		A9C28CB98B3EE9E9B3A975E7 /* WidgetPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */; };
 		AB15531EA7601F53F46DABBC /* RenderingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74EFBFE517CDC0BA926B128 /* RenderingTests.swift */; };
 		AC1F52B1AE6B18638F6EB82B /* ClockAnimationDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */; };
+		ACA7377C33DB37D531E6D297 /* HWWindow4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC376D88DF8EAA64EC292AB /* HWWindow4.ttf */; };
+		AD51215EA956E801FDF41A6E /* HWWindow0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8E01E6BEB133EDC2287FA50 /* HWWindow0.ttf */; };
 		AE14D04586A96F1923A9FBF1 /* AquaFrames4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */; };
+		AF6797A316F5895E618D245F /* HWWindow7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3221F27502EB0ED70165A8CF /* HWWindow7.ttf */; };
+		AF90418497140951B75A2199 /* HWWindow12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C7574EB885C1D7E17A6304 /* HWWindow12.ttf */; };
 		AFBF078F65BB35E299A86C43 /* AquaFrames0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */; };
 		B05051D20A374DEF7FD71181 /* ClockAnimationDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */; };
+		B1C53DACA44C2BABAE551ED3 /* HWWindow3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9403A85BB56CBFB7A01AE670 /* HWWindow3.ttf */; };
 		B1DFDD53B88A7EFC62D20E28 /* AquaCode2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */; };
 		B1E8204A190AAA75408378FF /* AquariumAnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */; };
+		B2AB285C266F56E074D9B4CE /* HWPortrait0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61286382307026AFAF0A7D0E /* HWPortrait0.ttf */; };
+		B39CB25E5E6F92D688BB3A2E /* HWWindow5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81624738A6823D763B323ACE /* HWWindow5.ttf */; };
 		B84A2FE0BBD9C5DE7D20EFD3 /* AquaCode8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */; };
+		BB2E0818B0CCE5398B14F8DF /* HWPortrait14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 333779D0946EC705BA02DE84 /* HWPortrait14.ttf */; };
+		BB94E6F32A4EE201FD16D5EF /* HWWindow8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0981D8606A4C8D1E750BF51A /* HWWindow8.ttf */; };
 		BC698D984C4E2A96B55F4B46 /* AquaFrames10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A77B258D244E1E0970254E4E /* AquaFrames10.ttf */; };
+		BC84EE855E3BAC9ECC30452B /* hw_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E660B787FC8A650743B0EEC /* hw_window.png */; };
+		BD6246CDE6193FA33DFC1F4D /* HWPortrait6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDFC46A74C7E3C93915678E0 /* HWPortrait6.ttf */; };
 		BDAE2FC82072B7227A90D850 /* CalibrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BD52FDE6F82AA77C0AD7 /* CalibrationTests.swift */; };
 		C196F4061673F26793CEFA23 /* AquaFrames0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */; };
 		C3DD19F7CE27035147C05652 /* AquaCode11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */; };
+		C4E07871575CD2D8DC23AFF8 /* HWWindow15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 657F237D98D3124C16A9D339 /* HWWindow15.ttf */; };
 		C5429A273C31FD344018E3E5 /* AquaCode2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2557E9BBC6A7D6F442B84E8C /* AquaCode2.ttf */; };
 		C5D8C8383604CEEFB4BD835F /* DeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */; };
 		C71BAC5613C7EB90DD39E082 /* TestReportBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491A24950E531E2DC63ABA67 /* TestReportBuilder.swift */; };
 		C95ED79C825CFFA4C54549AF /* stand_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 796526F0BDB4D525E6B2E02B /* stand_art.png */; };
+		C98149F144F865667928FB8C /* HWWindow12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C7574EB885C1D7E17A6304 /* HWWindow12.ttf */; };
 		C9C263A76D3E633F201A2B13 /* WallpaperRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */; };
+		C9C47C59C07C8B625E0B3EEA /* HWPortrait2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C848173EFDBB85E0A56D81B /* HWPortrait2.ttf */; };
+		CA26E919FC540CDC08BEDE12 /* HWWindow6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BCCB16EC52BB8DF7AD536BA /* HWWindow6.ttf */; };
+		CCE1440AB434E212A2908076 /* HWWindow8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0981D8606A4C8D1E750BF51A /* HWWindow8.ttf */; };
 		CEF996E6EDCA07E12DB8FFC8 /* AquaCode13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */; };
 		CF7C1D413A90ABBC3D365E20 /* aquarium_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C9CD829704BA19B22A32B2 /* aquarium_background.png */; };
 		D0D4CC3EA1A4D52396962ADB /* tank_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 9690AEDA61A6B20C53789149 /* tank_art.png */; };
 		D326F014B9E7B7C5E10EE1E6 /* AquaFrames9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E6F8803970827460FD8BB3D /* AquaFrames9.ttf */; };
 		D92D802CCF8DB6FB23782ACF /* AquaCode14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1B828013408536ADA559F98 /* AquaCode14.ttf */; };
+		DA45B8A8ADDB0C4138EB2B8C /* HWPortrait11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D30C2CBB4255358113A0D9CA /* HWPortrait11.ttf */; };
 		DB49B425D52EAA34CBF9B910 /* AquaFrames6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */; };
+		DB9B08D53EB7A1FE5519553B /* HWPortrait5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B19679BB290B9F3CA26AE6 /* HWPortrait5.ttf */; };
 		DBA02DEAD41EC3ACD9CDC153 /* AquariumAnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */; };
+		DC3666EE5CAE8F1F821C9BA5 /* HWPortrait10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B330918C6358A43FCC4BF9D3 /* HWPortrait10.ttf */; };
+		DC46508E892EAD7737FCE155 /* HWPortrait0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61286382307026AFAF0A7D0E /* HWPortrait0.ttf */; };
 		DE0F659EF3AC19E1324913A0 /* SceneManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3901501298CD4AB9869C5512 /* SceneManifest.swift */; };
+		DE86830BA098DAB12507AE9B /* HWPortrait1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D06955CACCCA5DC75203D9D /* HWPortrait1.ttf */; };
+		E1854102B83A80230FCE1193 /* HWWindow11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 342463869767C38C69630B08 /* HWWindow11.ttf */; };
 		E7501E0CBD1946F004D82087 /* AquariumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5A6970680721ED24F178D1 /* AquariumWidget.swift */; };
 		E8286189C226D873CF9D293B /* AquaBlink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */; };
 		E8E510120DC27E9D2A8C909F /* AquaFrames5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C9D7535B158A7E786E17A8 /* AquaFrames5.ttf */; };
@@ -130,13 +196,19 @@
 		EA709AA4414F19D76B4EA95F /* tank_art.png in Resources */ = {isa = PBXBuildFile; fileRef = 9690AEDA61A6B20C53789149 /* tank_art.png */; };
 		EC7226D2E893476D291B5B1B /* fish_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 92604D6A5069BD3526BD399B /* fish_b.png */; };
 		EE645B1598F3679B92683D4D /* CalibrationChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744075EC871B2C69E7D07884 /* CalibrationChart.swift */; };
+		EE9FBCB0B4F87AF5CCFC1E09 /* HWPortrait13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB5B74AFB73272911EA3652E /* HWPortrait13.ttf */; };
+		EEB08E0D6E87C9A15F48C930 /* HWPortrait2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C848173EFDBB85E0A56D81B /* HWPortrait2.ttf */; };
 		EF30D5FEA738C6CF241BC6C2 /* AquaFrames4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */; };
 		F064F85B4A360FECEC2B72E3 /* AquaFrames11.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */; };
 		F20AC040A674C9183749DB17 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */; };
 		F393FCABAF841EFD08ABAC31 /* DeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */; };
+		F6AD8DF21544DDBBD8579484 /* HWPortrait12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4185ED6B3FDB73608D7892D3 /* HWPortrait12.ttf */; };
+		F6C41845A0BB8194EBE430A7 /* HWPortrait9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA1EFFDEF5F2058BF8E21969 /* HWPortrait9.ttf */; };
 		F8AC872D1B423F2FA8FFBAD8 /* AquaCode0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */; };
 		F9D37A46425E0621F2AAB6A3 /* AquaFrames15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */; };
+		F9EC2C506780D0F29FC5FC92 /* hw_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E660B787FC8A650743B0EEC /* hw_window.png */; };
 		FC1A0EC0C9E61ABA1A0C143D /* fish_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 92604D6A5069BD3526BD399B /* fish_b.png */; };
+		FC64A23E8CB7BF654B613C0B /* HWWindow10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8202EE9C3D2EB31CB0C59576 /* HWWindow10.ttf */; };
 		FD9DC365EA6A8C39D030F6FE /* AquaFrames14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */; };
 /* End PBXBuildFile section */
 
@@ -181,10 +253,13 @@
 /* Begin PBXFileReference section */
 		032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenWidgetUITests.swift; sourceTree = "<group>"; };
 		0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidgetView.swift; sourceTree = "<group>"; };
+		08C45A849A84540244DD11DA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		09029A9FDC694A2EEE213CBF /* AquaBlink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaBlink.ttf; sourceTree = "<group>"; };
+		0981D8606A4C8D1E750BF51A /* HWWindow8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow8.ttf; sourceTree = "<group>"; };
 		09AB31F0A81D66B1E5AA2924 /* AquaFrames2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames2.ttf; sourceTree = "<group>"; };
 		09E2C34B91EC80DA52E5010C /* AquaCode6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode6.ttf; sourceTree = "<group>"; };
 		0BEDB1985075DF61B21A429A /* AquariumTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumTimelineProvider.swift; sourceTree = "<group>"; };
+		0CAA1C788A915FCCF7F7BA2B /* HWPortrait4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait4.ttf; sourceTree = "<group>"; };
 		0E6CC362227A5F5D1D401AAE /* WallpaperRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperRegistration.swift; sourceTree = "<group>"; };
 		11441399793949818FD79E66 /* frames.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = frames.json; sourceTree = "<group>"; };
 		117EEDB04E713389DFE05A2C /* WallpaperRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperRenderer.swift; sourceTree = "<group>"; };
@@ -197,65 +272,98 @@
 		27AC0BC2A75B7C82DDB1D611 /* AquaFrames6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames6.ttf; sourceTree = "<group>"; };
 		29446AE7E5993228B8611802 /* PixelAquariumTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PixelAquariumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C34E89D512B871318E4B62A /* AquaCode1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode1.ttf; sourceTree = "<group>"; };
+		2C848173EFDBB85E0A56D81B /* HWPortrait2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait2.ttf; sourceTree = "<group>"; };
+		3221F27502EB0ED70165A8CF /* HWWindow7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow7.ttf; sourceTree = "<group>"; };
 		32C4FDB9A1C6EB438642380C /* SharedConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConfigurationStore.swift; sourceTree = "<group>"; };
+		333779D0946EC705BA02DE84 /* HWPortrait14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait14.ttf; sourceTree = "<group>"; };
+		342463869767C38C69630B08 /* HWWindow11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow11.ttf; sourceTree = "<group>"; };
 		3901501298CD4AB9869C5512 /* SceneManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManifest.swift; sourceTree = "<group>"; };
 		3B65E37A31E2B2AD22AE6E9E /* PixelAquarium.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PixelAquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCCB16EC52BB8DF7AD536BA /* HWWindow6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow6.ttf; sourceTree = "<group>"; };
 		3D2E1166E601FE00CD1491AE /* AquariumAnimationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumAnimationEngine.swift; sourceTree = "<group>"; };
 		3E5A0123DCF9010E7CE5349A /* AquaFrames0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames0.ttf; sourceTree = "<group>"; };
 		3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode4.ttf; sourceTree = "<group>"; };
+		4185ED6B3FDB73608D7892D3 /* HWPortrait12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait12.ttf; sourceTree = "<group>"; };
 		42FC6DF46592FCE7CE90B014 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		43C9CD829704BA19B22A32B2 /* aquarium_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aquarium_background.png; sourceTree = "<group>"; };
 		46D59EBC73DE1C04ABC4B8AB /* AnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTests.swift; sourceTree = "<group>"; };
 		491A24950E531E2DC63ABA67 /* TestReportBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReportBuilder.swift; sourceTree = "<group>"; };
 		4A64886BC2C20AB544B84476 /* ClockAnimationDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockAnimationDriver.swift; sourceTree = "<group>"; };
 		4A73D4994485940101DB4BF9 /* CalibrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationView.swift; sourceTree = "<group>"; };
+		4E660B787FC8A650743B0EEC /* hw_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hw_window.png; sourceTree = "<group>"; };
 		509590DE50AA513401410BC9 /* AquaFrames12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames12.ttf; sourceTree = "<group>"; };
 		51337845B31F09C0B6FE93BB /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
 		51DAD8BD1C793FDC07106D00 /* AquaCode7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode7.ttf; sourceTree = "<group>"; };
 		55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames14.ttf; sourceTree = "<group>"; };
 		5A91023A39824938906E4E42 /* AnimationClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationClip.swift; sourceTree = "<group>"; };
 		5DD73D1A6E84C9455B247478 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
+		61286382307026AFAF0A7D0E /* HWPortrait0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait0.ttf; sourceTree = "<group>"; };
 		64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceProfile.swift; sourceTree = "<group>"; };
+		657F237D98D3124C16A9D339 /* HWWindow15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow15.ttf; sourceTree = "<group>"; };
 		690960F00CB751F6A794998C /* AquaCode9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode9.ttf; sourceTree = "<group>"; };
+		6A538EC52A81BD025B2FC851 /* HWWindow2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow2.ttf; sourceTree = "<group>"; };
+		6C7F677BF5782EABC108B31B /* hw_room.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hw_room.png; sourceTree = "<group>"; };
 		6F06E9A4ABF2D7FFBE1697FD /* AquaCode13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode13.ttf; sourceTree = "<group>"; };
+		6F0A8E6B5FCB7C2A0929C4EE /* HWWindow9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow9.ttf; sourceTree = "<group>"; };
 		6F7F3E87E8C5F50064FAE10D /* room_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_art.png; sourceTree = "<group>"; };
 		736F33439C446FA20DE4FD8C /* PixelAquariumUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PixelAquariumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		744075EC871B2C69E7D07884 /* CalibrationChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationChart.swift; sourceTree = "<group>"; };
+		74B19679BB290B9F3CA26AE6 /* HWPortrait5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait5.ttf; sourceTree = "<group>"; };
+		757BADA83D220035B9D63CA7 /* HWPortrait8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait8.ttf; sourceTree = "<group>"; };
 		77B9209841D2AFD0D615C134 /* AquaCode15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode15.ttf; sourceTree = "<group>"; };
 		796526F0BDB4D525E6B2E02B /* stand_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stand_art.png; sourceTree = "<group>"; };
 		7D98BD52FDE6F82AA77C0AD7 /* CalibrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationTests.swift; sourceTree = "<group>"; };
 		7E5A6970680721ED24F178D1 /* AquariumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidget.swift; sourceTree = "<group>"; };
+		81624738A6823D763B323ACE /* HWWindow5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow5.ttf; sourceTree = "<group>"; };
 		81E79C51149B8ACC8C5BAE9F /* AquaFrames1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames1.ttf; sourceTree = "<group>"; };
+		8202EE9C3D2EB31CB0C59576 /* HWWindow10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow10.ttf; sourceTree = "<group>"; };
+		84C7574EB885C1D7E17A6304 /* HWWindow12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow12.ttf; sourceTree = "<group>"; };
+		8D06955CACCCA5DC75203D9D /* HWPortrait1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait1.ttf; sourceTree = "<group>"; };
 		8F7DA78EB4AA76F4C1D7C9D4 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		92604D6A5069BD3526BD399B /* fish_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish_b.png; sourceTree = "<group>"; };
+		9403A85BB56CBFB7A01AE670 /* HWWindow3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow3.ttf; sourceTree = "<group>"; };
 		9571D98A1A1659E91B6B67A8 /* PixelArtRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelArtRenderer.swift; sourceTree = "<group>"; };
 		9690AEDA61A6B20C53789149 /* tank_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank_art.png; sourceTree = "<group>"; };
 		97B6E60F21F3FFE3C92D6DF1 /* AquaFrames11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames11.ttf; sourceTree = "<group>"; };
 		98616004E690383C865E60CC /* ManualTestCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualTestCatalog.swift; sourceTree = "<group>"; };
 		98C51FF0AD0FA7714DD18A3C /* AquariumCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumCanvasView.swift; sourceTree = "<group>"; };
 		A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames13.ttf; sourceTree = "<group>"; };
+		A0B722E7DB15B14E347DA2E5 /* HWPortrait3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait3.ttf; sourceTree = "<group>"; };
 		A11C37CCB1595CBA1431C0E4 /* AquaFrames8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames8.ttf; sourceTree = "<group>"; };
 		A1B828013408536ADA559F98 /* AquaCode14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode14.ttf; sourceTree = "<group>"; };
 		A77B258D244E1E0970254E4E /* AquaFrames10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames10.ttf; sourceTree = "<group>"; };
 		A9B09E706ED9F849D4A24E46 /* AquariumWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AquariumWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9B9E0AAF0274DF8E4A8FD7A /* hw_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hw_portrait.png; sourceTree = "<group>"; };
+		B330918C6358A43FCC4BF9D3 /* HWPortrait10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait10.ttf; sourceTree = "<group>"; };
 		B73894A079DDA0C359A0CF6C /* AquaFrames7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames7.ttf; sourceTree = "<group>"; };
 		B75E34AD7C2B66DC17C79BBC /* AquaBlinkInv.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaBlinkInv.ttf; sourceTree = "<group>"; };
 		B8E60089516BCC47E6DD0621 /* AquaCode8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode8.ttf; sourceTree = "<group>"; };
+		BA1EFFDEF5F2058BF8E21969 /* HWPortrait9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait9.ttf; sourceTree = "<group>"; };
+		BB5B74AFB73272911EA3652E /* HWPortrait13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait13.ttf; sourceTree = "<group>"; };
 		BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames15.ttf; sourceTree = "<group>"; };
 		BDB25248AB0DC5832ED8C20D /* AquaCode3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode3.ttf; sourceTree = "<group>"; };
 		BE9E58F32B01B9ED01F45142 /* PixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelBuffer.swift; sourceTree = "<group>"; };
+		C5ECD0807C9D60B1E6ED2548 /* HWWindow13.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow13.ttf; sourceTree = "<group>"; };
 		CA81B014D6C9F5D14CDC8384 /* CalibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationManager.swift; sourceTree = "<group>"; };
+		CDFC46A74C7E3C93915678E0 /* HWPortrait6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait6.ttf; sourceTree = "<group>"; };
 		CF1BBDDB9CE23E7AFA4E3BE8 /* AquaCode12.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode12.ttf; sourceTree = "<group>"; };
 		D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlacement.swift; sourceTree = "<group>"; };
+		D26C04F98E58B04CA6C76007 /* HWPortrait7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait7.ttf; sourceTree = "<group>"; };
+		D30C2CBB4255358113A0D9CA /* HWPortrait11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait11.ttf; sourceTree = "<group>"; };
+		D5D34438E6FEA5A78C4CAFF9 /* HWWindow1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow1.ttf; sourceTree = "<group>"; };
 		D5D474C0FE95502EC39B4820 /* AquaCode0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode0.ttf; sourceTree = "<group>"; };
 		D8B6259EE2ED3A2CD9D7EEBA /* wallpaper_art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper_art.png; sourceTree = "<group>"; };
+		DFB75E4B491206915077644C /* HWPortrait15.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWPortrait15.ttf; sourceTree = "<group>"; };
+		E5909CCE78212AE173F47816 /* HWWindow14.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow14.ttf; sourceTree = "<group>"; };
 		E74EFBFE517CDC0BA926B128 /* RenderingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingTests.swift; sourceTree = "<group>"; };
 		E905164C31B77D166CD18389 /* AquaCode10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode10.ttf; sourceTree = "<group>"; };
 		EF057B23AED312BCBD8CA212 /* fish_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish_a.png; sourceTree = "<group>"; };
 		EFAF6A13C3C9F76D332CB0CB /* PixelAquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelAquariumApp.swift; sourceTree = "<group>"; };
 		F54E2C2345CEA1E041E69080 /* AquaCode11.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaCode11.ttf; sourceTree = "<group>"; };
 		F5827F38D708834208612425 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F8E01E6BEB133EDC2287FA50 /* HWWindow0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow0.ttf; sourceTree = "<group>"; };
 		FA0A7F948BA72F2ECCA8D720 /* AquaFrames4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AquaFrames4.ttf; sourceTree = "<group>"; };
+		FEC376D88DF8EAA64EC292AB /* HWWindow4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HWWindow4.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -307,6 +415,7 @@
 				5A91023A39824938906E4E42 /* AnimationClip.swift */,
 				64FA04B7E0017ABD204D94C2 /* DeviceProfile.swift */,
 				3901501298CD4AB9869C5512 /* SceneManifest.swift */,
+				08C45A849A84540244DD11DA /* Theme.swift */,
 				D0F0CFAD2DABE13EA645E58F /* WidgetPlacement.swift */,
 			);
 			path = Models;
@@ -365,6 +474,38 @@
 				A070EB2B46F9751B3FEDBEF9 /* AquaFrames13.ttf */,
 				55890DCA0FBE7110AFED42B1 /* AquaFrames14.ttf */,
 				BD3BD56C86A44FA2C537E5E5 /* AquaFrames15.ttf */,
+				61286382307026AFAF0A7D0E /* HWPortrait0.ttf */,
+				8D06955CACCCA5DC75203D9D /* HWPortrait1.ttf */,
+				2C848173EFDBB85E0A56D81B /* HWPortrait2.ttf */,
+				A0B722E7DB15B14E347DA2E5 /* HWPortrait3.ttf */,
+				0CAA1C788A915FCCF7F7BA2B /* HWPortrait4.ttf */,
+				74B19679BB290B9F3CA26AE6 /* HWPortrait5.ttf */,
+				CDFC46A74C7E3C93915678E0 /* HWPortrait6.ttf */,
+				D26C04F98E58B04CA6C76007 /* HWPortrait7.ttf */,
+				757BADA83D220035B9D63CA7 /* HWPortrait8.ttf */,
+				BA1EFFDEF5F2058BF8E21969 /* HWPortrait9.ttf */,
+				B330918C6358A43FCC4BF9D3 /* HWPortrait10.ttf */,
+				D30C2CBB4255358113A0D9CA /* HWPortrait11.ttf */,
+				4185ED6B3FDB73608D7892D3 /* HWPortrait12.ttf */,
+				BB5B74AFB73272911EA3652E /* HWPortrait13.ttf */,
+				333779D0946EC705BA02DE84 /* HWPortrait14.ttf */,
+				DFB75E4B491206915077644C /* HWPortrait15.ttf */,
+				F8E01E6BEB133EDC2287FA50 /* HWWindow0.ttf */,
+				D5D34438E6FEA5A78C4CAFF9 /* HWWindow1.ttf */,
+				6A538EC52A81BD025B2FC851 /* HWWindow2.ttf */,
+				9403A85BB56CBFB7A01AE670 /* HWWindow3.ttf */,
+				FEC376D88DF8EAA64EC292AB /* HWWindow4.ttf */,
+				81624738A6823D763B323ACE /* HWWindow5.ttf */,
+				3BCCB16EC52BB8DF7AD536BA /* HWWindow6.ttf */,
+				3221F27502EB0ED70165A8CF /* HWWindow7.ttf */,
+				0981D8606A4C8D1E750BF51A /* HWWindow8.ttf */,
+				6F0A8E6B5FCB7C2A0929C4EE /* HWWindow9.ttf */,
+				8202EE9C3D2EB31CB0C59576 /* HWWindow10.ttf */,
+				342463869767C38C69630B08 /* HWWindow11.ttf */,
+				84C7574EB885C1D7E17A6304 /* HWWindow12.ttf */,
+				C5ECD0807C9D60B1E6ED2548 /* HWWindow13.ttf */,
+				E5909CCE78212AE173F47816 /* HWWindow14.ttf */,
+				657F237D98D3124C16A9D339 /* HWWindow15.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -444,6 +585,16 @@
 			path = UITests;
 			sourceTree = "<group>";
 		};
+		C17E6A3654198FA75C34967F /* MidnightManor */ = {
+			isa = PBXGroup;
+			children = (
+				A9B9E0AAF0274DF8E4A8FD7A /* hw_portrait.png */,
+				6C7F677BF5782EABC108B31B /* hw_room.png */,
+				4E660B787FC8A650743B0EEC /* hw_window.png */,
+			);
+			path = MidnightManor;
+			sourceTree = "<group>";
+		};
 		D40BD3C76C0642127D10F062 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				9F5C2411AB65A92F2A4549EC /* CozyRoom */,
+				C17E6A3654198FA75C34967F /* MidnightManor */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -660,10 +812,45 @@
 				7910DAF3AA9B3F3D64D69846 /* AquaFrames7.ttf in Resources */,
 				794E46E0B0C12A0B29FA7699 /* AquaFrames8.ttf in Resources */,
 				7D5F1AD71F7F613ACCC7EC5D /* AquaFrames9.ttf in Resources */,
+				B2AB285C266F56E074D9B4CE /* HWPortrait0.ttf in Resources */,
+				02059D5052FE64425C36128C /* HWPortrait1.ttf in Resources */,
+				4D5667A12D362DEF5B63C0D7 /* HWPortrait10.ttf in Resources */,
+				9B5C2DAE98DB51D17D2089E4 /* HWPortrait11.ttf in Resources */,
+				065C82C0D99A4B0FE9BE6BF5 /* HWPortrait12.ttf in Resources */,
+				8E440D53837A7704A059F837 /* HWPortrait13.ttf in Resources */,
+				53F8B584593F2A2DF9AD5AAC /* HWPortrait14.ttf in Resources */,
+				9E6FD1C827E0AE5586477EC0 /* HWPortrait15.ttf in Resources */,
+				C9C47C59C07C8B625E0B3EEA /* HWPortrait2.ttf in Resources */,
+				1BAC58044C3EF098DEA76990 /* HWPortrait3.ttf in Resources */,
+				11DD401769F1F96D952219E0 /* HWPortrait4.ttf in Resources */,
+				DB9B08D53EB7A1FE5519553B /* HWPortrait5.ttf in Resources */,
+				BD6246CDE6193FA33DFC1F4D /* HWPortrait6.ttf in Resources */,
+				445F0835FF5D294B6B9FB467 /* HWPortrait7.ttf in Resources */,
+				732FA890D9C3B159E9B1880E /* HWPortrait8.ttf in Resources */,
+				8C55A675A5083B3D0489085D /* HWPortrait9.ttf in Resources */,
+				14748FC7266B9248D40B3DDC /* HWWindow0.ttf in Resources */,
+				91B5A2F2735160495A88CCDD /* HWWindow1.ttf in Resources */,
+				2EA4901E8C048D57DFBD913D /* HWWindow10.ttf in Resources */,
+				1AC83FD927E07889AB41F422 /* HWWindow11.ttf in Resources */,
+				C98149F144F865667928FB8C /* HWWindow12.ttf in Resources */,
+				66B3283C10DBED50E61C39D7 /* HWWindow13.ttf in Resources */,
+				53BF7725C1153653EF31ED55 /* HWWindow14.ttf in Resources */,
+				9462CF872D14EB0371F0B4CD /* HWWindow15.ttf in Resources */,
+				525D9B831C8507BEB83A1A1E /* HWWindow2.ttf in Resources */,
+				B1C53DACA44C2BABAE551ED3 /* HWWindow3.ttf in Resources */,
+				ACA7377C33DB37D531E6D297 /* HWWindow4.ttf in Resources */,
+				790F083459F7140A13AEA23D /* HWWindow5.ttf in Resources */,
+				CA26E919FC540CDC08BEDE12 /* HWWindow6.ttf in Resources */,
+				9443B5DC606E1CDD373CD1D0 /* HWWindow7.ttf in Resources */,
+				CCE1440AB434E212A2908076 /* HWWindow8.ttf in Resources */,
+				5FA9C87B7324D8201EFEA18E /* HWWindow9.ttf in Resources */,
 				6F85F532843E88301C3600AB /* aquarium_background.png in Resources */,
 				7926201238FD1A675DA8812D /* fish_a.png in Resources */,
 				FC1A0EC0C9E61ABA1A0C143D /* fish_b.png in Resources */,
 				5263A87716E782FBA866184B /* frames.json in Resources */,
+				86A21BD18A27D3ECA4799783 /* hw_portrait.png in Resources */,
+				0FC14D042C752068D71686DC /* hw_room.png in Resources */,
+				F9EC2C506780D0F29FC5FC92 /* hw_window.png in Resources */,
 				99D5E240EEE563C1108D7C46 /* manifest.json in Resources */,
 				7C1411718045B8660347D22C /* room_art.png in Resources */,
 				8995A0EAD968E5972B1422CD /* stand_art.png in Resources */,
@@ -710,10 +897,45 @@
 				51538FFFC0FC9435B35411D0 /* AquaFrames7.ttf in Resources */,
 				14EBD373A566CEDA5EB5AB7B /* AquaFrames8.ttf in Resources */,
 				D326F014B9E7B7C5E10EE1E6 /* AquaFrames9.ttf in Resources */,
+				DC46508E892EAD7737FCE155 /* HWPortrait0.ttf in Resources */,
+				DE86830BA098DAB12507AE9B /* HWPortrait1.ttf in Resources */,
+				DC3666EE5CAE8F1F821C9BA5 /* HWPortrait10.ttf in Resources */,
+				DA45B8A8ADDB0C4138EB2B8C /* HWPortrait11.ttf in Resources */,
+				F6AD8DF21544DDBBD8579484 /* HWPortrait12.ttf in Resources */,
+				EE9FBCB0B4F87AF5CCFC1E09 /* HWPortrait13.ttf in Resources */,
+				BB2E0818B0CCE5398B14F8DF /* HWPortrait14.ttf in Resources */,
+				2933713D9A0CE6CD5D8C5766 /* HWPortrait15.ttf in Resources */,
+				EEB08E0D6E87C9A15F48C930 /* HWPortrait2.ttf in Resources */,
+				29665124AD37FC356D6A925B /* HWPortrait3.ttf in Resources */,
+				0F35D556777766A55D496A17 /* HWPortrait4.ttf in Resources */,
+				A22DDCB6B1F98C04BF82EE65 /* HWPortrait5.ttf in Resources */,
+				8DF9F17801EEA72A6011B2F5 /* HWPortrait6.ttf in Resources */,
+				0FF91792F451AB583B8D70F9 /* HWPortrait7.ttf in Resources */,
+				50A298D4001091DD845B2A21 /* HWPortrait8.ttf in Resources */,
+				F6C41845A0BB8194EBE430A7 /* HWPortrait9.ttf in Resources */,
+				AD51215EA956E801FDF41A6E /* HWWindow0.ttf in Resources */,
+				7E79DC73C5C86E29B6C99628 /* HWWindow1.ttf in Resources */,
+				FC64A23E8CB7BF654B613C0B /* HWWindow10.ttf in Resources */,
+				E1854102B83A80230FCE1193 /* HWWindow11.ttf in Resources */,
+				AF90418497140951B75A2199 /* HWWindow12.ttf in Resources */,
+				4FE96DEDE8048A5A5BC320C9 /* HWWindow13.ttf in Resources */,
+				06AEF6E79CC028CB0022077E /* HWWindow14.ttf in Resources */,
+				C4E07871575CD2D8DC23AFF8 /* HWWindow15.ttf in Resources */,
+				53DFF232FC6E0E5A7C4AD198 /* HWWindow2.ttf in Resources */,
+				849800A5A01CB687B8352DDB /* HWWindow3.ttf in Resources */,
+				22F313F67643648656BD2CAD /* HWWindow4.ttf in Resources */,
+				B39CB25E5E6F92D688BB3A2E /* HWWindow5.ttf in Resources */,
+				8AA2CAA2396E45421C5AE8DD /* HWWindow6.ttf in Resources */,
+				AF6797A316F5895E618D245F /* HWWindow7.ttf in Resources */,
+				BB94E6F32A4EE201FD16D5EF /* HWWindow8.ttf in Resources */,
+				A7D3771D6B2A90BB7BA679B1 /* HWWindow9.ttf in Resources */,
 				CF7C1D413A90ABBC3D365E20 /* aquarium_background.png in Resources */,
 				573A8BD69571CA3758312F35 /* fish_a.png in Resources */,
 				EC7226D2E893476D291B5B1B /* fish_b.png in Resources */,
 				026391BB808CB4700B0D7AF4 /* frames.json in Resources */,
+				127CBBE5F775075D2D9A91F7 /* hw_portrait.png in Resources */,
+				35141010DCAF8883FF190227 /* hw_room.png in Resources */,
+				BC84EE855E3BAC9ECC30452B /* hw_window.png in Resources */,
 				482A61E32C0C29A4592075F7 /* manifest.json in Resources */,
 				9AE5523B6DBD6C4838BB683D /* room_art.png in Resources */,
 				C95ED79C825CFFA4C54549AF /* stand_art.png in Resources */,
@@ -743,6 +965,7 @@
 				1003BA21164735DDCF2E1E35 /* PixelBuffer.swift in Sources */,
 				DE0F659EF3AC19E1324913A0 /* SceneManifest.swift in Sources */,
 				6EBC9E86C8ABCC604902A4B3 /* SharedConfigurationStore.swift in Sources */,
+				1172BAE38647A947F085FD72 /* Theme.swift in Sources */,
 				43654E35E33BF9F98E321577 /* WallpaperRegistration.swift in Sources */,
 				3BB5364FB1C5C9DC578BF270 /* WallpaperRenderer.swift in Sources */,
 				A9C28CB98B3EE9E9B3A975E7 /* WidgetPlacement.swift in Sources */,
@@ -783,6 +1006,7 @@
 				5FA5C78629ED76E8C711CAB6 /* SetupView.swift in Sources */,
 				040E20E50C312F3B857DB810 /* SharedConfigurationStore.swift in Sources */,
 				C71BAC5613C7EB90DD39E082 /* TestReportBuilder.swift in Sources */,
+				50B228BB9D5A2552529CD774 /* Theme.swift in Sources */,
 				9F0421F7E55ADFFF3D744727 /* WallpaperRegistration.swift in Sources */,
 				C9C263A76D3E633F201A2B13 /* WallpaperRenderer.swift in Sources */,
 				43FB812CCF151D0FE405FE6E /* WidgetPlacement.swift in Sources */,

@@ -37,13 +37,7 @@ enum CalibrationManager {
     /// `expectedWidgetSize` (pixels, from the widget's reported size) replaces the magenta box
     /// size when close: iOS softens ~3 px at widget edges, which shrinks the box.
     static func detect(screenshot: PixelBuffer, wallpaperSize: PixelSize, expectedWidgetSize: PixelSize? = nil) -> Detection {
-        var rect = detectWidgetRect(in: screenshot)
-        if let box = rect, let size = expectedWidgetSize,
-           abs(box.width - size.width) <= 16, abs(box.height - size.height) <= 16 {
-            let cx = Double(box.x) + Double(box.width) / 2, cy = Double(box.y) + Double(box.height) / 2
-            rect = PixelRect(x: Int((cx - Double(size.width) / 2).rounded()), y: Int((cy - Double(size.height) / 2).rounded()),
-                             width: size.width, height: size.height)
-        }
+        let rect = detectWidgetRect(in: screenshot).map { snap($0, to: expectedWidgetSize) }
         let expected = WallpaperRenderer.fiducialCenters(size: wallpaperSize)
         var wall: [CGPoint] = [], screen: [CGPoint] = []
         for (i, found) in detectFiducials(in: screenshot).enumerated() {
@@ -56,13 +50,26 @@ enum CalibrationManager {
         return Detection(widgetRect: rect, fiducialsFound: wall.count, transform: transform)
     }
 
-    /// Bounding box of calibration-magenta pixels. Rounded corners do not affect the box.
-    static func detectWidgetRect(in img: PixelBuffer, minimumPixels: Int = 5000) -> PixelRect? {
+    /// Replaces the box size with the widget's reported size when close: iOS softens ~3 px at
+    /// widget edges, which shrinks the detected box.
+    static func snap(_ box: PixelRect, to size: PixelSize?) -> PixelRect {
+        guard let size, abs(box.width - size.width) <= 16, abs(box.height - size.height) <= 16 else { return box }
+        let cx = Double(box.x) + Double(box.width) / 2, cy = Double(box.y) + Double(box.height) / 2
+        return PixelRect(x: Int((cx - Double(size.width) / 2).rounded()), y: Int((cy - Double(size.height) / 2).rounded()),
+                         width: size.width, height: size.height)
+    }
+
+    /// Bounding box of pixels in a calibration border colour (magenta = Large widget, cyan =
+    /// Medium widget): channels that are 255 in the colour must be high, 0 channels low.
+    static func detectWidgetRect(in img: PixelBuffer, color: RGBA = .calibrationMagenta, minimumPixels: Int = 5000) -> PixelRect? {
         var minX = Int.max, minY = Int.max, maxX = -1, maxY = -1, count = 0
+        let want = [color.r, color.g, color.b].map { $0 > 127 }
         for y in 0..<img.height {
             for x in 0..<img.width {
                 let c = img.pixel(x, y)
-                if c.r > 180, c.b > 180, c.g < 80, abs(Int(c.r) - Int(c.b)) < 60 {
+                let v = [Int(c.r), Int(c.g), Int(c.b)]
+                let highs = (0..<3).filter { want[$0] }.map { v[$0] }
+                if (0..<3).allSatisfy({ want[$0] ? v[$0] > 180 : v[$0] < 80 }), (highs.max()! - highs.min()!) < 60 {
                     count += 1
                     minX = min(minX, x); maxX = max(maxX, x)
                     minY = min(minY, y); maxY = max(maxY, y)
@@ -106,12 +113,14 @@ enum CalibrationManager {
         var widgetColorMap: ColorMap
         /// Outside-widget agreement after the fit (0-255); large = wrong wallpaper applied.
         var wallpaperResidual: Double
+        /// The Medium widget, when one is on screen.
+        var secondaryRect: PixelRect?
     }
 
     /// One screenshot does everything: widget in Calibration mode (magenta border + colour
     /// chart) over the generated wallpaper.
     static func calibrate(screenshot: PixelBuffer, wallpaper: PixelBuffer, widgetPointSize: CGSize?,
-                          displayScale: Double) throws -> Calibration {
+                          displayScale: Double, secondaryPointSize: CGSize? = nil) throws -> Calibration {
         let expected = widgetPointSize.map {
             PixelSize(width: Int(($0.width * displayScale).rounded()), height: Int(($0.height * displayScale).rounded()))
         }
@@ -128,25 +137,29 @@ enum CalibrationManager {
         guard let rect = d.widgetRect else {
             throw CalibrationError.message("The magenta calibration widget was not found. Set Calibration mode, wait until the widget shows the colour chart, then take the screenshot.")
         }
+        let secondary = detectWidgetRect(in: screenshot, color: .calibrationCyan).map {
+            snap($0, to: secondaryPointSize.map { PixelSize(width: Int(($0.width * displayScale).rounded()), height: Int(($0.height * displayScale).rounded())) })
+        }
+        let widgets = [rect] + (secondary.map { [$0] } ?? [])
         var transform = d.transform ?? .identity
         var score: Double?
         if d.transform == nil {
-            let r = WallpaperRegistration.register(screenshot: screenshot, wallpaper: wallpaper, exclude: rect)
+            let r = WallpaperRegistration.register(screenshot: screenshot, wallpaper: wallpaper, exclude: widgets)
             transform = r.transform
             score = r.score
         }
         let wallMap = WallpaperRegistration.fitWallpaperColors(screenshot: screenshot, wallpaper: wallpaper,
-                                                               transform: transform, exclude: rect) ?? .identity
+                                                               transform: transform, exclude: widgets) ?? .identity
         let pointSize = widgetPointSize ?? CGSize(width: Double(rect.width) / displayScale, height: Double(rect.height) / displayScale)
         let observed = CalibrationChart.readPatches(screenshot: screenshot, widgetRect: rect, widgetPointSize: pointSize)
         let widgetMap = CalibrationChart.fitWidgetMap(observed: observed) ?? .identity
-        let residual = wallpaperResidual(screenshot: screenshot, wallpaper: wallpaper, transform: transform, map: wallMap, exclude: rect)
+        let residual = wallpaperResidual(screenshot: screenshot, wallpaper: wallpaper, transform: transform, map: wallMap, exclude: widgets)
         return Calibration(widgetRect: rect, transform: transform, registrationScore: score, fiducialsFound: d.fiducialsFound,
-                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual)
+                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual, secondaryRect: secondary)
     }
 
     private static func wallpaperResidual(screenshot: PixelBuffer, wallpaper: PixelBuffer, transform: WallpaperTransform,
-                                          map: ColorMap, exclude: PixelRect) -> Double {
+                                          map: ColorMap, exclude: [PixelRect]) -> Double {
         let pts = WallpaperRegistration.samplePoints(screen: PixelSize(width: screenshot.width, height: screenshot.height),
                                                      exclude: exclude, step: 12)
         var errs: [Double] = []

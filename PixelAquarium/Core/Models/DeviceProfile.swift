@@ -15,6 +15,8 @@ struct CalibrationProfile: Codable, Equatable {
     var widgetBoundsPixels: PixelRect
     /// Same rectangle normalized to the screen; descriptive only, not portable to other devices.
     var widgetBoundsNormalized: NormalizedRect
+    /// Observed rectangle of the secondary (Medium) widget, if one was placed.
+    var secondaryBoundsPixels: PixelRect?
     var widgetContentInsets = PixelInsets()
     var wallpaperTransform = WallpaperTransform.identity
     /// How the Home Screen shows wallpaper file colours.
@@ -36,6 +38,8 @@ struct CalibrationProfile: Codable, Equatable {
         widgetBoundsNormalized = widgetBounds.normalized(in: device.screenPixelSize)
         homeScreenAppearance = appearance
     }
+
+    func bounds(_ role: WidgetRole) -> PixelRect? { role == .primary ? widgetBoundsPixels : secondaryBoundsPixels }
 
     mutating func setWidgetBounds(_ rect: PixelRect) {
         widgetBoundsPixels = rect

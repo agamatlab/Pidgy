@@ -3,6 +3,7 @@ import WidgetKit
 
 struct AquariumEntry: TimelineEntry {
     let date: Date
+    let role: WidgetRole
     let settings: WidgetSettings
     let background: UIImage?
     let posterFrame: CGImage?
@@ -13,6 +14,7 @@ struct AquariumEntry: TimelineEntry {
 /// One entry, no scheduled refresh. Animation never comes from timeline reloads (PRD FR-07);
 /// the app requests a reload only when settings or calibration change.
 struct AquariumTimelineProvider: TimelineProvider {
+    let role: WidgetRole
     private let store = SharedConfigurationStore.shared
 
     func placeholder(in context: Context) -> AquariumEntry {
@@ -39,15 +41,17 @@ struct AquariumTimelineProvider: TimelineProvider {
         } catch {
             loadError = error.localizedDescription
         }
+        // Calibrated background for this widget, else the theme's own art for it.
+        let themeArt = settings.theme.theme.art(for: role).flatMap { SceneBundle.image($0.staticArt) }
         let background = settings.mode == .calibration ? nil :
-            (UIImage(contentsOfFile: store.widgetBackgroundURL.path) ?? SceneBundle.staticBackgroundURL().flatMap { UIImage(contentsOfFile: $0.path) })
+            (UIImage(contentsOfFile: store.backgroundURL(role).path) ?? themeArt.flatMap { UIImage(contentsOfFile: $0.path) })
         if recordHeartbeat {
-            store.heartbeat = WidgetHeartbeat(renderedAt: Date(), mode: settings.mode,
-                                              displayWidthPoints: context.displaySize.width,
-                                              displayHeightPoints: context.displaySize.height,
-                                              backgroundLoaded: background != nil, error: loadError)
+            store.setHeartbeat(WidgetHeartbeat(renderedAt: Date(), mode: settings.mode,
+                                               displayWidthPoints: context.displaySize.width,
+                                               displayHeightPoints: context.displaySize.height,
+                                               backgroundLoaded: background != nil, error: loadError), role: role)
         }
-        return AquariumEntry(date: Date(), settings: settings, background: background,
+        return AquariumEntry(date: Date(), role: role, settings: settings, background: background,
                              posterFrame: poster, engine: engine, error: loadError)
     }
 }

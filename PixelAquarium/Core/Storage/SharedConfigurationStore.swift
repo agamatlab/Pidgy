@@ -30,6 +30,7 @@ enum SceneStyle: String, Codable, CaseIterable, Identifiable {
 /// Settings shared between the app and the widget extension.
 struct WidgetSettings: Codable, Equatable {
     var mode: WidgetMode = .calibration
+    var theme: ThemeId = .aquarium
     var style: SceneStyle = .tank
     /// Small status box in the widget: mode, rendering mode, render time, live system timer.
     var showDebugOverlay = true
@@ -45,6 +46,7 @@ struct WidgetSettings: Codable, Equatable {
         let d = WidgetSettings()
         mode = try c.decodeIfPresent(WidgetMode.self, forKey: .mode) ?? d.mode
         style = try c.decodeIfPresent(SceneStyle.self, forKey: .style) ?? d.style
+        theme = try c.decodeIfPresent(ThemeId.self, forKey: .theme) ?? d.theme
         showDebugOverlay = try c.decodeIfPresent(Bool.self, forKey: .showDebugOverlay) ?? d.showDebugOverlay
         showFrameCode = try c.decodeIfPresent(Bool.self, forKey: .showFrameCode) ?? d.showFrameCode
         showCanvasBounds = try c.decodeIfPresent(Bool.self, forKey: .showCanvasBounds) ?? d.showCanvasBounds
@@ -118,6 +120,9 @@ final class SharedConfigurationStore {
 
     var wallpaperURL: URL { baseURL.appendingPathComponent("wallpaper.png") }
     var widgetBackgroundURL: URL { baseURL.appendingPathComponent("widget_background.png") }
+    func backgroundURL(_ role: WidgetRole) -> URL {
+        role == .primary ? widgetBackgroundURL : baseURL.appendingPathComponent("widget_background_\(role.rawValue).png")
+    }
     private var settingsURL: URL { baseURL.appendingPathComponent("settings.json") }
     private var profileURL: URL { baseURL.appendingPathComponent("calibration_profile.json") }
     private var testsURL: URL { baseURL.appendingPathComponent("manual_tests.json") }
@@ -147,6 +152,14 @@ final class SharedConfigurationStore {
         set { write(newValue, to: heartbeatURL) }
     }
 
+    func heartbeat(_ role: WidgetRole) -> WidgetHeartbeat? {
+        role == .primary ? heartbeat : read(baseURL.appendingPathComponent("widget_heartbeat_\(role.rawValue).json"))
+    }
+
+    func setHeartbeat(_ hb: WidgetHeartbeat, role: WidgetRole) {
+        if role == .primary { heartbeat = hb } else { write(hb, to: baseURL.appendingPathComponent("widget_heartbeat_\(role.rawValue).json")) }
+    }
+
     var lastReloadRequest: Date? {
         get { (read(reloadURL) as Stamp?)?.date }
         set { write(newValue.map(Stamp.init), to: reloadURL) }
@@ -160,7 +173,7 @@ final class SharedConfigurationStore {
     var hasWidgetBackground: Bool { FileManager.default.fileExists(atPath: widgetBackgroundURL.path) }
 
     func resetCalibration() {
-        for url in [profileURL, alignmentURL, widgetBackgroundURL, wallpaperURL] {
+        for url in [profileURL, alignmentURL, wallpaperURL] + WidgetRole.allCases.map(backgroundURL) {
             try? FileManager.default.removeItem(at: url)
         }
         var s = settings

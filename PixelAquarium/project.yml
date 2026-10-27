@@ -21,6 +21,8 @@ targets:
       - Core
       - path: Assets/Scenes/CozyRoom
         buildPhase: resources
+      - path: Assets/Scenes/MidnightManor
+        buildPhase: resources
       - path: WidgetExtension/Fonts
         buildPhase: resources
     settings:
@@ -73,6 +75,38 @@ targets:
         - AquaFrames13.ttf
         - AquaFrames14.ttf
         - AquaFrames15.ttf
+        - HWPortrait0.ttf
+        - HWPortrait1.ttf
+        - HWPortrait2.ttf
+        - HWPortrait3.ttf
+        - HWPortrait4.ttf
+        - HWPortrait5.ttf
+        - HWPortrait6.ttf
+        - HWPortrait7.ttf
+        - HWPortrait8.ttf
+        - HWPortrait9.ttf
+        - HWPortrait10.ttf
+        - HWPortrait11.ttf
+        - HWPortrait12.ttf
+        - HWPortrait13.ttf
+        - HWPortrait14.ttf
+        - HWPortrait15.ttf
+        - HWWindow0.ttf
+        - HWWindow1.ttf
+        - HWWindow2.ttf
+        - HWWindow3.ttf
+        - HWWindow4.ttf
+        - HWWindow5.ttf
+        - HWWindow6.ttf
+        - HWWindow7.ttf
+        - HWWindow8.ttf
+        - HWWindow9.ttf
+        - HWWindow10.ttf
+        - HWWindow11.ttf
+        - HWWindow12.ttf
+        - HWWindow13.ttf
+        - HWWindow14.ttf
+        - HWWindow15.ttf
     dependencies:
       - target: AquariumWidgetExtension
   AquariumWidgetExtension:
@@ -82,6 +116,8 @@ targets:
       - WidgetExtension
       - Core
       - path: Assets/Scenes/CozyRoom
+        buildPhase: resources
+      - path: Assets/Scenes/MidnightManor
         buildPhase: resources
     settings:
       base:
@@ -133,6 +169,38 @@ targets:
         - AquaFrames13.ttf
         - AquaFrames14.ttf
         - AquaFrames15.ttf
+        - HWPortrait0.ttf
+        - HWPortrait1.ttf
+        - HWPortrait2.ttf
+        - HWPortrait3.ttf
+        - HWPortrait4.ttf
+        - HWPortrait5.ttf
+        - HWPortrait6.ttf
+        - HWPortrait7.ttf
+        - HWPortrait8.ttf
+        - HWPortrait9.ttf
+        - HWPortrait10.ttf
+        - HWPortrait11.ttf
+        - HWPortrait12.ttf
+        - HWPortrait13.ttf
+        - HWPortrait14.ttf
+        - HWPortrait15.ttf
+        - HWWindow0.ttf
+        - HWWindow1.ttf
+        - HWWindow2.ttf
+        - HWWindow3.ttf
+        - HWWindow4.ttf
+        - HWWindow5.ttf
+        - HWWindow6.ttf
+        - HWWindow7.ttf
+        - HWWindow8.ttf
+        - HWWindow9.ttf
+        - HWWindow10.ttf
+        - HWWindow11.ttf
+        - HWWindow12.ttf
+        - HWWindow13.ttf
+        - HWWindow14.ttf
+        - HWWindow15.ttf
   PixelAquariumTests:
     type: bundle.unit-test
     platform: iOS

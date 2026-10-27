@@ -58,6 +58,38 @@
 		<string>AquaFrames13.ttf</string>
 		<string>AquaFrames14.ttf</string>
 		<string>AquaFrames15.ttf</string>
+		<string>HWPortrait0.ttf</string>
+		<string>HWPortrait1.ttf</string>
+		<string>HWPortrait2.ttf</string>
+		<string>HWPortrait3.ttf</string>
+		<string>HWPortrait4.ttf</string>
+		<string>HWPortrait5.ttf</string>
+		<string>HWPortrait6.ttf</string>
+		<string>HWPortrait7.ttf</string>
+		<string>HWPortrait8.ttf</string>
+		<string>HWPortrait9.ttf</string>
+		<string>HWPortrait10.ttf</string>
+		<string>HWPortrait11.ttf</string>
+		<string>HWPortrait12.ttf</string>
+		<string>HWPortrait13.ttf</string>
+		<string>HWPortrait14.ttf</string>
+		<string>HWPortrait15.ttf</string>
+		<string>HWWindow0.ttf</string>
+		<string>HWWindow1.ttf</string>
+		<string>HWWindow2.ttf</string>
+		<string>HWWindow3.ttf</string>
+		<string>HWWindow4.ttf</string>
+		<string>HWWindow5.ttf</string>
+		<string>HWWindow6.ttf</string>
+		<string>HWWindow7.ttf</string>
+		<string>HWWindow8.ttf</string>
+		<string>HWWindow9.ttf</string>
+		<string>HWWindow10.ttf</string>
+		<string>HWWindow11.ttf</string>
+		<string>HWWindow12.ttf</string>
+		<string>HWWindow13.ttf</string>
+		<string>HWWindow14.ttf</string>
+		<string>HWWindow15.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>

@@ -11,20 +11,20 @@ enum WallpaperRegistration {
         var score: Double
     }
 
-    /// Screen areas usable for matching: below the status bar, above the dock, outside `exclude`.
-    static func samplePoints(screen: PixelSize, exclude: PixelRect?, step: Int) -> [(Int, Int)] {
-        let ex = exclude.map { PixelRect(x: $0.x - 24, y: $0.y - 24, width: $0.width + 48, height: $0.height + 48) }
+    /// Screen areas usable for matching: below the status bar, above the dock, outside every widget.
+    static func samplePoints(screen: PixelSize, exclude: [PixelRect], step: Int) -> [(Int, Int)] {
+        let exs = exclude.map { PixelRect(x: $0.x - 24, y: $0.y - 24, width: $0.width + 48, height: $0.height + 48) }
         var pts: [(Int, Int)] = []
         for y in stride(from: Int(Double(screen.height) * 0.06), to: Int(Double(screen.height) * 0.84), by: step) {
             for x in stride(from: step / 2, to: screen.width, by: step) {
-                if let ex, x >= ex.x, x < ex.maxX, y >= ex.y, y < ex.maxY { continue }
+                if exs.contains(where: { x >= $0.x && x < $0.maxX && y >= $0.y && y < $0.maxY }) { continue }
                 pts.append((x, y))
             }
         }
         return pts
     }
 
-    static func register(screenshot: PixelBuffer, wallpaper: PixelBuffer, exclude: PixelRect?) -> Result {
+    static func register(screenshot: PixelBuffer, wallpaper: PixelBuffer, exclude: [PixelRect]) -> Result {
         let shotLum = luminance(screenshot), wallLum = luminance(wallpaper)
         // Coarse steps of 8 px would alias against the 5-10 px dither patterns, so the coarse
         // search runs on blurred images (smooth score), the fine search on sharp ones.
@@ -117,7 +117,7 @@ enum WallpaperRegistration {
     /// (block averages are insensitive to sub-pixel misregistration of the dither patterns).
     /// Blocks that disagree strongly (icons, labels) are dropped and the fit repeated.
     static func fitWallpaperColors(screenshot: PixelBuffer, wallpaper: PixelBuffer, transform: WallpaperTransform,
-                                   exclude: PixelRect?) -> ColorMap? {
+                                   exclude: [PixelRect]) -> ColorMap? {
         let b = 24
         var src: [[Double]] = [], dst: [[Double]] = []
         let size = PixelSize(width: screenshot.width, height: screenshot.height)

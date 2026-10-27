@@ -48,7 +48,7 @@ final class AppModel: ObservableObject {
 
     /// Asks WidgetKit for a reload; the system decides when it happens.
     func requestWidgetReload() {
-        WidgetCenter.shared.reloadTimelines(ofKind: SharedConfigurationStore.widgetKind)
+        WidgetCenter.shared.reloadAllTimelines()
         let now = Date()
         store.lastReloadRequest = now
         lastReloadRequest = now
@@ -64,26 +64,33 @@ final class AppModel: ObservableObject {
         return try storeWallpaper(png, name: "Calibration")
     }
 
-    /// The aquarium scene at native resolution, art pixels = `artPixelPoints` points (same as the fish).
-    /// Tank style: room with the stand under the calibrated widget (default spot before
-    /// calibration). Seamless style: full-screen water.
+    /// Object styles (aquarium tank, Midnight Manor): the theme's room with furniture and each
+    /// widget's own art painted under its calibrated spot (default spots before calibration).
+    /// Aquarium seamless style: full-screen water.
+    var usesObjectStyle: Bool { settings.theme != .aquarium || settings.style == .tank }
+
     func exportAquariumWallpaper() async throws -> URL {
         let size = device.screenPixelSize
-        let k = Int(device.displayScale.rounded()) * (engine?.manifest.artPixelPoints ?? 3)
-        if settings.style == .tank {
-            guard let room = SceneBundle.assetURL(\.roomAsset).flatMap(PixelBuffer.load(url:)),
-                  let stand = SceneBundle.assetURL(\.standAsset).flatMap(PixelBuffer.load(url:)) else {
+        let theme = settings.theme.theme
+        let k = Int(device.displayScale.rounded()) * theme.artPixelPoints
+        if usesObjectStyle {
+            guard let room = SceneBundle.image(theme.roomArt).flatMap(PixelBuffer.load(url:)) else {
                 throw AppError.message("Room art missing from the app bundle")
             }
+            let stand = theme.standArt.flatMap { SceneBundle.image($0) }.flatMap(PixelBuffer.load(url:))
             let rect = profile?.widgetBoundsPixels, transform = profile?.wallpaperTransform ?? .identity
             let wallMap = profile?.wallpaperColorMap ?? .identity
-            let tank = SceneBundle.assetURL(\.tankAsset).flatMap(PixelBuffer.load(url:))
+            let underlays = WidgetRole.allCases.compactMap { role -> (art: PixelBuffer, rect: PixelRect)? in
+                guard let r = profile?.bounds(role), let file = theme.art(for: role)?.staticArt,
+                      let art = SceneBundle.image(file).flatMap(PixelBuffer.load(url:)) else { return nil }
+                return (art, r)
+            }
             let png = await Task.detached {
                 WallpaperRenderer.roomWallpaper(room: room, stand: stand, screen: size, pxPerArtPixel: k,
                                                 widgetRect: rect, transform: transform,
-                                                tank: tank, wallpaperColorMap: wallMap).pngData()
+                                                underlays: underlays, wallpaperColorMap: wallMap).pngData()
             }.value
-            return try storeWallpaper(png, name: "Room")
+            return try storeWallpaper(png, name: settings.theme == .aquarium ? "Room" : "MidnightManor")
         }
         guard let url = SceneBundle.wallpaperArtURL(), let art = PixelBuffer.load(url: url) else {
             throw AppError.message("Wallpaper art missing from the app bundle")
@@ -119,30 +126,37 @@ final class AppModel: ObservableObject {
         profile = p
     }
 
-    /// Crops the stored wallpaper under the calibrated widget rect into the widget background.
+    /// Writes each widget's background. Object styles: the widget's art (tint-compensated) over
+    /// the wall cut from the stored wallpaper. Seamless style: the wallpaper crop itself.
     func generateWidgetBackground() async throws {
         let store = store
-        if settings.style == .tank {
-            // Needs only the widget's pixel size and (if calibrated) its colour change.
-            let scale = device.displayScale
-            let size = profile.map { PixelSize(width: $0.widgetBoundsPixels.width, height: $0.widgetBoundsPixels.height) }
-                ?? store.heartbeat.map { PixelSize(width: Int(($0.displayWidthPoints * scale).rounded()),
-                                                   height: Int(($0.displayHeightPoints * scale).rounded())) }
-            guard let size else { throw AppError.message("Add the widget to the Home Screen first") }
-            guard let art = SceneBundle.assetURL(\.tankAsset).flatMap(PixelBuffer.load(url:)) else {
-                throw AppError.message("Tank art missing from the app bundle")
-            }
+        if usesObjectStyle {
+            let theme = settings.theme.theme, scale = device.displayScale
             let map = profile?.widgetColorMap ?? .identity
             let profile = profile
-            let png = await Task.detached { () -> Data? in
-                // Calibrated: the wall around the lid comes from the stored wallpaper.
-                let wall = profile.flatMap { p in
-                    PixelBuffer.load(url: store.wallpaperURL).map { WidgetBackgroundRenderer.background(wallpaper: $0, profile: p) }
+            var written = 0
+            for role in WidgetRole.allCases {
+                guard let file = theme.art(for: role)?.staticArt else {
+                    try? FileManager.default.removeItem(at: store.backgroundURL(role))
+                    continue
                 }
-                return WidgetBackgroundRenderer.tank(art: art, size: size, widgetColorMap: map, wall: wall).pngData()
-            }.value
-            guard let png else { throw AppError.message("Could not encode the tank image") }
-            try png.write(to: store.widgetBackgroundURL, options: .atomic)
+                let rect = profile?.bounds(role)
+                let size = rect.map { PixelSize(width: $0.width, height: $0.height) }
+                    ?? store.heartbeat(role).map { PixelSize(width: Int(($0.displayWidthPoints * scale).rounded()),
+                                                             height: Int(($0.displayHeightPoints * scale).rounded())) }
+                guard let size, let art = SceneBundle.image(file).flatMap(PixelBuffer.load(url:)) else { continue }
+                let png = await Task.detached { () -> Data? in
+                    // Calibrated: anything outside the object's outline shows the wall behind it.
+                    let wall = profile.flatMap { p in rect.flatMap { r in
+                        PixelBuffer.load(url: store.wallpaperURL).map { WidgetBackgroundRenderer.background(wallpaper: $0, profile: p, rect: r) }
+                    } }
+                    return WidgetBackgroundRenderer.tank(art: art, size: size, widgetColorMap: map, wall: wall).pngData()
+                }.value
+                guard let png else { continue }
+                try png.write(to: store.backgroundURL(role), options: .atomic)
+                written += 1
+            }
+            guard written > 0 else { throw AppError.message("Add the theme's widgets to the Home Screen first") }
             backgroundVersion += 1
             requestWidgetReload()
             return
@@ -163,13 +177,15 @@ final class AppModel: ObservableObject {
     func calibrate(screenshot: PixelBuffer) async throws -> CalibrationManager.Calibration {
         let url = store.wallpaperURL
         let pointSize = store.heartbeat.map { CGSize(width: $0.displayWidthPoints, height: $0.displayHeightPoints) }
+        let secondarySize = store.heartbeat(.secondary).map { CGSize(width: $0.displayWidthPoints, height: $0.displayHeightPoints) }
         let scale = device.displayScale
         let result = try await Task.detached { () throws -> CalibrationManager.Calibration in
             guard let wallpaper = PixelBuffer.load(url: url) else {
                 throw AppError.message("Generate the aquarium wallpaper first (step 1).")
             }
             return try CalibrationManager.calibrate(screenshot: screenshot, wallpaper: wallpaper,
-                                                     widgetPointSize: pointSize, displayScale: scale)
+                                                     widgetPointSize: pointSize, displayScale: scale,
+                                                     secondaryPointSize: secondarySize)
         }.value
         if result.wallpaperResidual > 20 {
             throw AppError.message(String(format: "The wallpaper on your Home Screen is not the one generated in step 1 (difference %.0f/255). Apply that exact image from Photos, then take a new screenshot.", result.wallpaperResidual))
@@ -181,13 +197,14 @@ final class AppModel: ObservableObject {
         p.displayScale = device.displayScale
         p.homeScreenAppearance = device.appearance
         p.setWidgetBounds(result.widgetRect)
+        p.secondaryBoundsPixels = result.secondaryRect
         p.wallpaperTransform = result.transform
         p.wallpaperColorMap = result.wallpaperColorMap
         p.widgetColorMap = result.widgetColorMap
         saveProfile(p)
         var aligned: URL?
-        if settings.style == .tank {
-            // New room wallpaper with stand and tank base under the widget (stored as the new
+        if usesObjectStyle {
+            // New room wallpaper with furniture and each widget's art under it (stored as the new
             // reference, so the widget's wall pixels are cut from it). Same image size, so iOS
             // applies the same zoom when it is applied.
             aligned = try await exportAquariumWallpaper()

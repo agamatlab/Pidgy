@@ -12,9 +12,9 @@ enum WallpaperRenderer {
     /// corners iOS rounds off show the tank's square base instead of the wall. The result is
     /// pre-compensated by `wallpaperColorMap` so the room shows its designed colours, matching
     /// the (also compensated) widget.
-    static func roomWallpaper(room: PixelBuffer, stand: PixelBuffer, screen: PixelSize, pxPerArtPixel k: Int,
+    static func roomWallpaper(room: PixelBuffer, stand: PixelBuffer?, screen: PixelSize, pxPerArtPixel k: Int,
                               widgetRect: PixelRect?, transform: WallpaperTransform,
-                              tank: PixelBuffer? = nil, wallpaperColorMap: ColorMap = .identity) -> PixelBuffer {
+                              underlays: [(art: PixelBuffer, rect: PixelRect)] = [], wallpaperColorMap: ColorMap = .identity) -> PixelBuffer {
         let ox = (room.width * k - screen.width) / 2, oy = (room.height * k - screen.height) / 2
         var centerX = Double(room.width) / 2, bottom = Double(room.height) * 0.72
         if let r = widgetRect {
@@ -25,9 +25,9 @@ enum WallpaperRenderer {
         var art = room
         // 2 art px of overlap: the opaque widget hides the stand's top edge, so small
         // calibration errors never open a gap between tank and stand.
-        art.blit(stand, x: Int((centerX - Double(stand.width) / 2).rounded()), y: Int(bottom.rounded()) - 2)
+        if let stand { art.blit(stand, x: Int((centerX - Double(stand.width) / 2).rounded()), y: Int(bottom.rounded()) - 2) }
         var out = sceneWallpaper(art: art, screen: screen, pxPerArtPixel: k)
-        if let tank, let r = widgetRect {
+        for (tank, r) in underlays {
             let area = transform.toWallpaper(r.cgRect).insetBy(dx: -2, dy: -2)
             for wy in max(0, Int(area.minY))..<min(out.height, Int(area.maxY) + 1) {
                 for wx in max(0, Int(area.minX))..<min(out.width, Int(area.maxX) + 1) {
@@ -122,8 +122,8 @@ enum WidgetBackgroundRenderer {
     /// Samples `wallpaper` under the calibrated widget rect (screen pixels), nearest-neighbour,
     /// then pre-compensates colours: content = widget⁻¹(wallpaperMap(file)), so after iOS
     /// alters the widget it shows what iOS shows for the wallpaper next to it.
-    static func background(wallpaper: PixelBuffer, profile: CalibrationProfile) -> PixelBuffer {
-        let rect = profile.widgetBoundsPixels
+    static func background(wallpaper: PixelBuffer, profile: CalibrationProfile, rect: PixelRect? = nil) -> PixelBuffer {
+        let rect = rect ?? profile.widgetBoundsPixels
         let t = profile.wallpaperTransform
         let map = profile.wallpaperColorMap.then(profile.widgetColorMap.inverse)
         var out = PixelBuffer(width: rect.width, height: rect.height)

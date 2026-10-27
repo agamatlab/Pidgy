@@ -54,6 +54,15 @@ final class CalibrationTests: XCTestCase {
         XCTAssertEqual(d.widgetRect, PixelRect(x: 70, y: 640, width: 460, height: 420))
     }
 
+    /// Midnight Manor: the Large widget shows a magenta border, the Medium one cyan; both are found.
+    func testFindsLargeAndMediumWidgets() {
+        var shot = WallpaperRenderer.calibrationWallpaper(size: screen)
+        shot.fillRect(x: 40, y: 120, width: 520, height: 240, .calibrationCyan)
+        shot.fillRect(x: 40, y: 420, width: 520, height: 520, .calibrationMagenta)
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationCyan), PixelRect(x: 40, y: 120, width: 520, height: 240))
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationMagenta), PixelRect(x: 40, y: 420, width: 520, height: 520))
+    }
+
     func testProfilePersistsAcrossStoreInstances() throws {
         let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         let device = DeviceInfo(modelIdentifier: "iPhone18,3", modelName: "iPhone", osVersion: "iOS 27.0",
