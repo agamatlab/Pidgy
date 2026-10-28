@@ -1036,19 +1036,45 @@ scene("hw_ghost_a_fg", { w: QS, h: QS },
     c.vline(hx, DOOR_Y0 - 2, DOOR_Y1 - DOOR_Y0 + 2, "k"); c.vline(hx + w, DOOR_Y0 - 6, DOOR_Y1 - DOOR_Y0 + 10, "V")
     c.circ(hx + 2, DOOR_Y0 + 32, 1, "J")
   }, lamp(DOOR_X0 + 9, DOOR_Y0 + 18, { r: 40, color: "#ffb35c", power: 0.8 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }))
-anim("hw_ghost_a_fx", { w: QS, h: QS, frames: 240, fps: 8 }, clip(inQ, (c) => {
-  const f = c.frame
-  GHOST_BOX = null
-  if (f < 12) { const t = easeIO(f / 12); ghost(c, 60, lerp(70, 44, t), f, { peek: f > 8, s: 0.8 + 0.2 * t }) }              // drifts out of the passage
-  else if (f < 84) {                                                                                                         // two loops over the shelves
-    const t = (f - 12) / 72, a = -Math.PI / 2 + t * TAU * 2
-    const x = 34 + Math.cos(a) * 18, y = 40 + Math.sin(a) * 14 + Math.sin(t * TAU * 4) * 2
-    ghost(c, x, y, f, { turn: Math.sin(a + Math.PI / 2) > 0 ? 0.75 : 0.25 })
+// what may cover the ghost in the current frame (set by the frame's path, read by the clips below)
+let OCC = {}
+const covers = (key) => (x, y) => !!OCC[key] && nearGhost(x, y)
+// the door panel alone (it swings open on the right of the doorway)
+scene("hw_ghost_a_door", { w: QS, h: QS }, (c) => {
+  const hx = DOOR_X1, w = 14
+  c.poly([hx, DOOR_Y0 - 2, hx + w, DOOR_Y0 - 6, hx + w, DOOR_Y1 + 4, hx, DOOR_Y1], "W")
+  for (let y = DOOR_Y0 + 2; y < DOOR_Y1 - 2; y += 11) {
+    for (let x = hx + 1; x < hx + w - 1; x++) { const t = (x - hx) / w; c.vline(x, Math.round(y - 4 * t), 8 + Math.round(t), BOOKS[Math.floor(rnd(x * 7 + y) * BOOKS.length)]) }
+    c.line(hx, y + 9, hx + w - 1, y + 6, "V"); c.line(hx, y + 10, hx + w - 1, y + 7, "k")
   }
-  else if (f < 100) { const t = easeIO((f - 84) / 16); ghost(c, lerp(34, 74, t), lerp(26, 50, t), f, { turn: 0.25, s: 1 - 0.25 * t }) } // into the passage, behind the door
-}),
-  // iOS draws the animated layer above every image, so what the ghost goes behind is part of it
-  clip(nearGhost, stamp("hw_ghost_a_fg", 0, 0)))
+  c.line(hx, DOOR_Y0 - 2, hx + w, DOOR_Y0 - 6, "V"); c.line(hx, DOOR_Y1, hx + w, DOOR_Y1 + 4, "k")
+  c.vline(hx, DOOR_Y0 - 2, DOOR_Y1 - DOOR_Y0 + 2, "k"); c.vline(hx + w, DOOR_Y0 - 6, DOOR_Y1 - DOOR_Y0 + 10, "V"); c.circ(hx + 2, DOOR_Y0 + 32, 1, "J")
+}, lamp(DOOR_X0 + 9, DOOR_Y0 + 18, { r: 40, color: "#ffb35c", power: 0.8 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }))
+// A: out from behind the door, two loops over the shelves through the doorway, back behind the door.
+const A_DOOR = [80, 58], A_GATE = [62, 50], A_C = [40, 40]
+const A_R = Math.hypot(A_GATE[0] - A_C[0], A_GATE[1] - A_C[1]), A_A0 = Math.atan2(A_GATE[1] - A_C[1], A_GATE[0] - A_C[0])
+anim("hw_ghost_a_fx", { w: QS, h: QS, frames: 240, fps: 8 },
+  clip(inQ, (c) => {
+    const f = c.frame
+    GHOST_BOX = null; OCC = {}
+    if (f < 16) {                                                    // slides out from behind the door
+      const t = easeIO(f / 16)
+      OCC = { door: true }
+      ghost(c, lerp(A_DOOR[0], A_GATE[0], t), lerp(A_DOOR[1], A_GATE[1], t), f, { s: lerp(0.6, 1, t), turn: 0.8 + 0.2 * t })  // turns to face us as it comes out
+    } else if (f < 84) {                                             // two loops, leaving and returning through the gate point
+      const t = (f - 16) / 68, a = A_A0 - t * TAU * 2
+      const x = A_C[0] + Math.cos(a) * A_R, y = A_C[1] + Math.sin(a) * A_R * 0.8
+      // performs for us: faces front, leaning into the turns, waving now and then, a "boo" mid-loop
+      const lean = Math.sin(a) > 0 ? 0.06 : 0.94
+      ghost(c, x, y, f, { turn: lean, wave: (f % 32) < 10, peek: f >= 44 && f < 54 })
+    } else if (f < 100) {                                            // back behind the door
+      const t = easeIO((f - 84) / 16)
+      OCC = { door: true }
+      ghost(c, lerp(A_GATE[0], A_DOOR[0], t), lerp(A_GATE[1], A_DOOR[1], t), f, { s: lerp(1, 0.6, t), turn: 0.2 * t, wave: t < 0.4 })  // waves goodbye
+    }
+  }),
+  // iOS draws the animated layer above every image, so what covers the ghost is part of it
+  clip(covers("door"), stamp("hw_ghost_a_door", 0, 0)))
 scene("hw_ghost_a_preview", { w: QS, h: QS, bg: "w" }, stamp("hw_ghost_a", 0, 0), stamp("hw_ghost_a_fx", 0, 0), stamp("hw_ghost_a_fg", 0, 0))
 
 // --- B, bottom right: fireplace and wingback chair standing on the floor (widget's bottom edge)
@@ -1077,19 +1103,66 @@ scene("hw_ghost_b_fg", { w: QS, h: QS },
   ...[[62, 60], [70, 60], [78, 60]].map(([x, y]) => px(x, y, "r")), vline(57, 57, 18, "R"),
   rect(54, 81, 32, 4, "b"), line(56, 85, 55, 90, "v", 2), line(84, 85, 85, 90, "v", 2),
   lamp(26, 78, { r: 70, color: "#ff8c3a", power: 1.1 }), lamp(40, 26, { r: 30, color: "#ffc070", power: 0.6 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }))
-anim("hw_ghost_b_fx", { w: QS, h: QS, frames: 240, fps: 8 }, clip(inQ, (c) => {
+// occluder pieces for B (each lit like the scene)
+const B_LIGHT = () => [lamp(26, 78, { r: 70, color: "#ff8c3a", power: 1.1 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" })]
+scene("hw_ghost_b_surround", { w: QS, h: QS },
+  rect(6, 40, 40, 52, "3"), (c) => { for (let y = 40; y < 92; y += 5) for (let x = 6 + ((y / 5) % 2) * 4; x < 46; x += 8) c.box(x, y, Math.min(8, 46 - x), 5, "2") },
+  poly([14, 92, 14, 64, 20, 58, 26, 56, 32, 58, 38, 64, 38, 92], "_"),
+  rect(2, 34, 48, 6, "4"), hline(2, 34, 48, "i"), hline(2, 39, 48, "1"), ...B_LIGHT())
+scene("hw_ghost_b_fire", { w: QS, h: QS }, rect(16, 84, 20, 3, "W"), line(17, 86, 35, 82, "v", 2))
+// the fire burns all the time, in every frame: tongues flickering to their own beats and sparks
+// rising, kept inside the firebox opening (periods divide the 240-frame loop)
+const inFirebox = (x, y) => x >= 15 && x < 38 && y < 87 && (y >= 66 || ((x + 0.5 - 26) / 11) ** 2 + ((y + 0.5 - 66) / 9) ** 2 <= 1)
+const fire = (c) => {
   const f = c.frame
-  GHOST_BOX = null
-  if (f >= 124 && f < 140) { const t = easeIO((f - 124) / 16); ghost(c, lerp(36, 52, t), lerp(58, 30, t), f, { turn: 0.25 }) }       // out from behind the fireplace
-  else if (f >= 140 && f < 172) { const t = (f - 140) / 32; ghost(c, 52, 30 + Math.sin(t * TAU) * 2, f, { turn: easeIO(t) }) }      // 360 spin
-  else if (f >= 172 && f < 196) { const t = easeIO((f - 172) / 24); ghost(c, lerp(52, 70, t), lerp(30, 70, t), f, { turn: 0.25 }) }  // behind the chair
-  else if (f >= 196 && f < 212) { const t = easeIO((f - 196) / 8); ghost(c, 70, lerp(70, 40, t), f, { wave: true, peek: f > 204 }) } // pops up, waves
-  else if (f >= 212 && f < 236) {                                                                                          // into the fire and up the chimney
-    const t = easeIO((f - 212) / 24), s2 = lerp(1, 0.45, t)
-    ghost(c, lerp(70, 26, t), lerp(40, 72, t) - Math.sin(t * Math.PI) * 10, f, { s: s2, turn: 0.75 })
+  c.flame(26, 84, 12, "lFfo", { seed: 5, wind: 0.05 }); c.flame(20, 85, 7, "lFfo", { seed: 8, period: 8 }); c.flame(31, 85, 7, "lFfo", { seed: 11, period: 5 })
+  for (let i = 0; i < 3; i++) {
+    const t = ((f + i * 9) % 24) / 24
+    c.px(Math.round(21 + i * 5 + Math.sin((f + i * 7) * TAU / 24) * 1.5), Math.round(79 - t * 18), t < 0.5 ? "F" : "o")
   }
-}),
-  clip(nearGhost, stamp("hw_ghost_b_fg", 0, 0)))
+}
+scene("hw_ghost_b_chair", { w: QS, h: QS },
+  rect(56, 56, 28, 22, "b"), ellipse(70, 56, 14, 5, "b"), rect(52, 64, 7, 18, "A"), rect(81, 64, 7, 18, "A"),
+  ellipse(55, 64, 3, 3, "A"), ellipse(84, 64, 3, 3, "A"), rect(58, 74, 24, 7, "A"), hline(58, 74, 24, "R"),
+  ...[[62, 60], [70, 60], [78, 60]].map(([x, y]) => px(x, y, "r")), vline(57, 57, 18, "R"),
+  rect(54, 81, 32, 4, "b"), line(56, 85, 55, 90, "v", 2), line(84, 85, 85, 90, "v", 2), ...B_LIGHT())
+// B: from behind the chimney, a spin in front of the fireplace, behind the chair, up and waving,
+// then into the firebox behind the stones and the flames.
+const B_HIDE = [30, 46], B_SPIN = [58, 30], B_CHAIR = [70, 72], B_UP = [70, 42], B_MOUTH = [26, 72]
+anim("hw_ghost_b_fx", { w: QS, h: QS, frames: 240, fps: 8 },
+  clip(inFirebox, fire),
+  clip(inQ, (c) => {
+    const f = c.frame
+    GHOST_BOX = null; OCC = {}
+    if (f >= 124 && f < 142) {                                       // out from behind the chimney
+      const t = easeIO((f - 124) / 18)
+      OCC = { surround: true }                                       // behind the chimney until clear of it
+      ghost(c, lerp(B_HIDE[0], B_SPIN[0], t), lerp(B_HIDE[1], B_SPIN[1], t), f, { turn: 0.2 * (1 - t) })
+    } else if (f >= 142 && f < 172) {                                // spin, in front of everything
+      const t = (f - 142) / 30
+      ghost(c, B_SPIN[0], B_SPIN[1] + Math.sin(t * TAU) * 2, f, { turn: easeIO(t), wave: t > 0.85 })  // a full twirl, front to front
+    } else if (f >= 172 && f < 194) {                                // down behind the chair
+      const t = easeIO((f - 172) / 22)
+      OCC = { chair: true }                                          // the chair is in front of it all the way down
+      ghost(c, lerp(B_SPIN[0], B_CHAIR[0], t), lerp(B_SPIN[1], B_CHAIR[1], t), f, { turn: 0.06, peek: t > 0.5 })
+    } else if (f >= 194 && f < 212) {                                // pops up from behind it, waving
+      const t = easeIO((f - 194) / 10)
+      OCC = { chair: true }
+      ghost(c, B_CHAIR[0], lerp(B_CHAIR[1], B_UP[1], t), f, { wave: f > 200, peek: f > 204 })
+    } else if (f >= 212 && f < 226) {                                // flies to just in front of the firebox
+      const t = easeIO((f - 212) / 14)
+      OCC = { chair: true }
+      ghost(c, lerp(B_UP[0], B_MOUTH[0], t), lerp(B_UP[1], B_MOUTH[1], t) - Math.sin(t * Math.PI) * 8, f, { s: lerp(1, 0.7, t), turn: 0.94, wave: t < 0.5 })
+    } else if (f >= 226 && f < 238) {                                // inside the opening: shrinks away into the flames
+      const t = easeIO((f - 226) / 12)
+      OCC = { surround: true, fire: true }                           // it is wholly inside the opening now, so nothing pops
+      ghost(c, B_MOUTH[0], lerp(B_MOUTH[1], 84, t), f, { s: lerp(0.7, 0.35, t), turn: 0, wave: true })
+    }
+  }),
+  clip(covers("surround"), stamp("hw_ghost_b_surround", 0, 0)),
+  clip(covers("fire"), stamp("hw_ghost_b_fire", 0, 0)),
+  clip((x, y) => covers("fire")(x, y) && inFirebox(x, y), fire),
+  clip(covers("chair"), stamp("hw_ghost_b_chair", 0, 0)))
 scene("hw_ghost_b_preview", { w: QS, h: QS, bg: "w" }, stamp("hw_ghost_b", 0, 0), stamp("hw_ghost_b_fx", 0, 0), stamp("hw_ghost_b_fg", 0, 0))
 
 // the floor the app lays under the bottom-right widget, wide enough for any screen position

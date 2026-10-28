@@ -23,6 +23,7 @@ enum WallpaperRenderer {
     static func roomWallpaper(room: PixelBuffer, attachments: [Attachment], screen: PixelSize, pxPerArtPixel k: Int,
                               transform: WallpaperTransform,
                               underlays: [(art: PixelBuffer, rect: PixelRect)] = [], glows: [PixelRect] = [],
+                              fillets: [(rect: PixelRect, insets: [Int])] = [],
                               wallpaperColorMap: ColorMap = .identity) -> PixelBuffer {
         let ox = (room.width * k - screen.width) / 2, oy = (room.height * k - screen.height) / 2
         var art = room
@@ -52,8 +53,37 @@ enum WallpaperRenderer {
             }
         }
         for r in glows { edgeGlow(&out, around: r, transform: transform) }
+        for f in fillets { cornerFillets(&out, rect: f.rect, insets: f.insets, transform: transform) }
         if wallpaperColorMap != .identity { out.applyColorMap(wallpaperColorMap.inverse) }
         return out
+    }
+
+    /// Wooden corner pieces in the four corners iOS cuts off a widget, following the measured curve
+    /// (`insets`: px in from the side, per row from the top/bottom edge). Their colours come from the
+    /// woodwork round the widget (the upright beside it, the lit lip of the board above), so they
+    /// carry the same light; the edge along the curve is the lit lip, where iOS's rim lands.
+    static func cornerFillets(_ img: inout PixelBuffer, rect r: PixelRect, insets: [Int], transform t: WallpaperTransform) {
+        guard let radius = insets.first, radius > 0 else { return }
+        func wall(_ sx: Double, _ sy: Double) -> RGBA? {
+            let w = t.toWallpaper(CGPoint(x: sx, y: sy)), x = Int(w.x), y = Int(w.y)
+            return x >= 0 && y >= 0 && x < img.width && y < img.height ? img.pixel(x, y) : nil
+        }
+        // sampled from the shelf board above, a quarter in (clear of the sconce in the middle):
+        // its lit lip touching the widget, and its wood a little higher up
+        let lip = wall(Double(r.x + r.width / 4), Double(r.y) - 2) ?? RGBA(r: 99, g: 64, b: 41)
+        let body = wall(Double(r.x + r.width / 4), Double(r.y) - 3 - 6 * t.scale) ?? RGBA(r: 67, g: 42, b: 29)
+        let edge = max(2.0, 4.0 / t.scale)                               // lip width in screen px
+        let area = t.toWallpaper(r.cgRect)
+        for wy in max(0, Int(area.minY))..<min(img.height, Int(area.maxY) + 1) {
+            for wx in max(0, Int(area.minX))..<min(img.width, Int(area.maxX) + 1) {
+                let p = t.toScreen(CGPoint(x: Double(wx) + 0.5, y: Double(wy) + 0.5))
+                let dx = min(p.x - Double(r.x), Double(r.maxX) - p.x), dy = min(p.y - Double(r.y), Double(r.maxY) - p.y)
+                guard dx >= 0, dy >= 0, dx < Double(radius), Int(dy) < insets.count else { continue }
+                let inset = Double(insets[Int(dy)])
+                guard dx < inset else { continue }
+                img.set(wx, wy, inset - dx <= edge ? lip : body)
+            }
+        }
     }
 
     /// Warm candle light on the wall along a widget's rounded outline, inside and out. iOS draws a

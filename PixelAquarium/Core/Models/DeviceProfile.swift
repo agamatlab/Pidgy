@@ -18,6 +18,8 @@ struct CalibrationProfile: Codable, Equatable {
     /// Observed rectangle of every calibrated widget, keyed by `WidgetRole.rawValue`.
     /// `widgetBoundsPixels` mirrors the first one found (used by the single-widget styles).
     var roleBounds: [String: PixelRect]?
+    /// iOS's measured corner curve per widget (px inset per row from the top), keyed like `roleBounds`.
+    var cornerInsets: [String: [Int]]?
     var widgetContentInsets = PixelInsets()
     var wallpaperTransform = WallpaperTransform.identity
     /// How the Home Screen shows wallpaper file colours.

@@ -54,9 +54,11 @@ enum BookshelfRoom {
             }
             row += 1
         }
-        // compartment backs inside the widgets: dark panelling (shows only at rounded corners)
+        // compartment backs inside the widgets: lit plank panelling (a near-black back made iOS's
+        // light rim stand out), each plank with a lit edge and a dark seam
         for r in boxes { for y in max(0, r.y)..<min(size.height, r.maxY) { for x in max(0, r.x)..<min(size.width, r.maxX) {
-            img.set(x, y, (x - r.x) % 9 == 0 ? woodDark : wood)
+            let k = (x - r.x) % 9
+            img.set(x, y, k == 0 ? woodDark : k == 1 ? woodLight : woodMid)
         } } }
         // boards (front lip lit along the top, shadow under) and uprights (lit left edge)
         // The wood row/column touching a widget's edge is always the lit one: iOS's light rim lands
@@ -87,11 +89,31 @@ enum BookshelfRoom {
                 if !inWidget(kx, ky), kx >= 0, ky >= 0, kx < size.width, ky < size.height { img.set(kx, ky, giltLight) }
             }
         }
+        // rounded inner corners: pixel-art quarter circles of wood inside each compartment's corners,
+        // far wider than the curve iOS cuts (~12 art px), so that curve always falls on wood
+        for r in boxes { roundCorners(&img, r, radius: 20) }
         // ceiling from the room art, floor below
         for y in 0..<min(top, p.room.height) { for x in 0..<min(size.width, p.room.width) { img.set(x, y, p.room.pixel(x, y)) } }
         img.blit(p.floor, x: (size.width - p.floor.width) / 2, y: floorY - 2)
         light(&img, top: top, floorY: floorY, boards: boards, widgets: boxes)
         return img
+    }
+
+    /// Fills a compartment's four inner corners with wood cut to a quarter circle, the cut edge a
+    /// lit lip with a dark line inside it, and a brass stud in each corner piece.
+    static func roundCorners(_ img: inout PixelBuffer, _ r: PixelRect, radius R: Int) {
+        let rad = Double(R)
+        for (cx, cy, sx, sy) in [(r.x, r.y, 1, 1), (r.maxX - 1, r.y, -1, 1), (r.x, r.maxY - 1, 1, -1), (r.maxX - 1, r.maxY - 1, -1, -1)] {
+            for ly in 0..<R { for lx in 0..<R {
+                let x = cx + sx * lx, y = cy + sy * ly
+                guard x >= 0, y >= 0, x < img.width, y < img.height else { continue }
+                let d = hypot(rad - (Double(lx) + 0.5), rad - (Double(ly) + 0.5))   // from the circle's centre
+                if d > rad + 1 { img.set(x, y, (lx + ly) % 7 == 0 ? wood : woodMid) }
+                else if d > rad { img.set(x, y, woodLight) }                       // lit lip along the curve
+                else if d > rad - 1 { img.set(x, y, woodDark) }                    // shadow just inside it
+            } }
+            img.set(cx + sx * 3, cy + sy * 3, giltLight); img.set(cx + sx * 4, cy + sy * 3, gilt); img.set(cx + sx * 3, cy + sy * 4, gilt)
+        }
     }
 
     /// Fixed positions kept as they are; gaps between them filled at about `pitch`.
@@ -117,7 +139,10 @@ enum BookshelfRoom {
             drawCandle(&img, x: x, baseY: y)
             lamps.append((Double(x), Double(y - 10), 56, 0.85))
         }
-        for r in widgets { lamps.append((Double(r.x + r.width / 2), Double(r.y - 12), Double(max(r.width, r.height)) * 0.9, 0.8)) }
+        for r in widgets {
+            lamps.append((Double(r.x + r.width / 2), Double(r.y - 12), Double(max(r.width, r.height)) * 0.9, 0.8))   // the sconce above
+            lamps.append((Double(r.x + r.width / 2), Double(r.y + r.height / 2), Double(max(r.width, r.height)) * 0.8, 0.75)) // inside the compartment
+        }
         let amb = (r: 0.33, g: 0.31, b: 0.5), warm = (r: 1.0, g: 0.72, b: 0.42)
         for y in top..<floorY + 60 where y < img.height {
             for x in 0..<img.width {

@@ -201,6 +201,8 @@ final class RenderingTests: XCTestCase {
         let a = PixelRect(x: 75, y: 283, width: 552, height: 552), b = PixelRect(x: 693, y: 1519, width: 552, height: 552)
         var p = CalibrationProfile(device: device, widgetBounds: a, appearance: "dark")
         p.roleBounds = ["small": a, "small2": b]
+        let curve = (0..<80).map { i in Int((80 - (6400.0 - Double((80 - i) * (80 - i))).squareRoot()).rounded()) }
+        p.cornerInsets = ["small": curve, "small2": curve]
         p.wallpaperTransform = WallpaperTransform(scale: 1.118, translationX: -85, translationY: -268)
         let theme = Theme.hauntedWindow
         let wallpaper = try XCTUnwrap(ThemeWallpaper.render(theme: theme, profile: p, screen: phone, pxPerArtPixel: 6))

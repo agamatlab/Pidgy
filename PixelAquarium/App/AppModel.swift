@@ -74,6 +74,10 @@ final class AppModel: ObservableObject {
         let theme = settings.theme.theme
         let k = Int(device.displayScale.rounded()) * theme.artPixelPoints
         if usesObjectStyle {
+            if let file = theme.fixedWallpaper, let url = SceneBundle.image(file),
+               let fixed = PixelBuffer.load(url: url), fixed.width == size.width, fixed.height == size.height {
+                return try storeWallpaper(try Data(contentsOf: url), name: "Haunted")
+            }
             let profile = profile
             let png = await Task.detached { ThemeWallpaper.render(theme: theme, profile: profile, screen: size, pxPerArtPixel: k)?.pngData() }.value
             guard let png else { throw AppError.message("Room art missing from the app bundle") }
@@ -192,6 +196,7 @@ final class AppModel: ObservableObject {
         p.homeScreenAppearance = device.appearance
         p.setWidgetBounds(result.widgetRect)
         p.roleBounds = Dictionary(uniqueKeysWithValues: result.rects.map { ($0.key.rawValue, $0.value) })
+        p.cornerInsets = Dictionary(uniqueKeysWithValues: result.corners.map { ($0.key.rawValue, $0.value) })
         p.wallpaperTransform = result.transform
         p.wallpaperColorMap = result.wallpaperColorMap
         p.widgetColorMap = result.widgetColorMap

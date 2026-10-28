@@ -97,6 +97,23 @@ final class CalibrationTests: XCTestCase {
         XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationYellow), small)
     }
 
+    /// The corner curve is measured from the border's rounded corner, row by row.
+    func testMeasuresCornerCurve() {
+        var shot = PixelBuffer(width: 600, height: 600, fill: RGBA(r: 60, g: 40, b: 50))
+        let r = PixelRect(x: 100, y: 100, width: 400, height: 400), radius = 60.0
+        for y in r.y..<r.maxY { for x in r.x..<r.maxX {
+            let dx = max(0, Double(r.x) + radius - (Double(x) + 0.5)), dy = max(0, Double(r.y) + radius - (Double(y) + 0.5))
+            if dx * dx + dy * dy <= radius * radius { shot.set(x, y, .calibrationYellow) }
+        } }
+        let ins = CalibrationManager.cornerInsets(in: shot, rect: r, color: .calibrationYellow)
+        // a 60 px circle: the top pixel row already starts ~52 px in, and the curve meets the side
+        // after ~53 rows
+        XCTAssertEqual(ins.first ?? 0, 52, accuracy: 2)
+        XCTAssertEqual(ins.last ?? 99, 0, accuracy: 1)
+        XCTAssertEqual(ins.count, 53, accuracy: 2)
+        XCTAssertGreaterThan(ins[10], ins[40])
+    }
+
     func testProfilePersistsAcrossStoreInstances() throws {
         let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         let device = DeviceInfo(modelIdentifier: "iPhone18,3", modelName: "iPhone", osVersion: "iOS 27.0",

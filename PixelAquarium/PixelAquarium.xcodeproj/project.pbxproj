@@ -96,6 +96,7 @@
 		445F0835FF5D294B6B9FB467 /* HWPortrait7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D26C04F98E58B04CA6C76007 /* HWPortrait7.ttf */; };
 		47400B3817A6437AE0366B85 /* HWGhostA5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 879A5F3C252EDD7F6D0471AE /* HWGhostA5.ttf */; };
 		482A61E32C0C29A4592075F7 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 42FC6DF46592FCE7CE90B014 /* manifest.json */; };
+		49999724D92F49D7E423213D /* hw_haunted_wallpaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0149F17E1C2ECFC8760581DE /* hw_haunted_wallpaper.png */; };
 		4D5667A12D362DEF5B63C0D7 /* HWPortrait10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B330918C6358A43FCC4BF9D3 /* HWPortrait10.ttf */; };
 		4E36A50A2FFD5409373978E3 /* hw_library.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D97B81D2AC9C1ECFB278128 /* hw_library.png */; };
 		4F15C395F392E085AC975429 /* HWWindowTall12.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 129B0EA6E0A192F9C16048B1 /* HWWindowTall12.ttf */; };
@@ -134,6 +135,7 @@
 		655772F23486ED6494DD3091 /* HWGhostB3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5077984914E2B6CDEC037535 /* HWGhostB3.ttf */; };
 		66B3283C10DBED50E61C39D7 /* HWWindow13.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5ECD0807C9D60B1E6ED2548 /* HWWindow13.ttf */; };
 		677579C007216105C1453FEE /* AquaCode4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F34CE6B8FB893A81DA28C75 /* AquaCode4.ttf */; };
+		68349B8EA9FE4FAD0D0E83A2 /* hw_haunted_wallpaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0149F17E1C2ECFC8760581DE /* hw_haunted_wallpaper.png */; };
 		6A40C0AE9FFE03E110EDEFE7 /* AquaFrames3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF24E5D147F47E3F7107A6A /* AquaFrames3.ttf */; };
 		6AA58B10F05E451BFC9609DB /* AquaCode15.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77B9209841D2AFD0D615C134 /* AquaCode15.ttf */; };
 		6C95FA79248730936A8556A6 /* HWGhostA14.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA43C763E2D2E4B1F801E349 /* HWGhostA14.ttf */; };
@@ -382,6 +384,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0149F17E1C2ECFC8760581DE /* hw_haunted_wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hw_haunted_wallpaper.png; sourceTree = "<group>"; };
 		032704102DA183CE0F25E9CB /* HomeScreenWidgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenWidgetUITests.swift; sourceTree = "<group>"; };
 		0747A42A0F37C939380B4AB6 /* AquariumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidgetView.swift; sourceTree = "<group>"; };
 		08C45A849A84540244DD11DA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -843,6 +846,7 @@
 				F7E79970EB42EC0D317FD44B /* hw_ghost_b_fg.png */,
 				DC164FFC58EC178046305818 /* hw_ghost_b.png */,
 				3CA2D5CE40DF79AD31F438B6 /* hw_ghost_frame.png */,
+				0149F17E1C2ECFC8760581DE /* hw_haunted_wallpaper.png */,
 				5D97B81D2AC9C1ECFB278128 /* hw_library.png */,
 				1FCECDFFF1D7370E7B880F6C /* hw_library2.png */,
 				A9B9E0AAF0274DF8E4A8FD7A /* hw_portrait.png */,
@@ -1166,6 +1170,7 @@
 				11A778C348ED09AC03C415B9 /* hw_ghost_b.png in Resources */,
 				54F93E9F9006E071EEE82AF6 /* hw_ghost_b_fg.png in Resources */,
 				D9662A3770202417F3149078 /* hw_ghost_frame.png in Resources */,
+				68349B8EA9FE4FAD0D0E83A2 /* hw_haunted_wallpaper.png in Resources */,
 				4E36A50A2FFD5409373978E3 /* hw_library.png in Resources */,
 				8D5A54DF5E4EA27F2B12E15D /* hw_library2.png in Resources */,
 				86A21BD18A27D3ECA4799783 /* hw_portrait.png in Resources */,
@@ -1314,6 +1319,7 @@
 				DE2AB947E23F6B5D9B3F63C3 /* hw_ghost_b.png in Resources */,
 				1DEFA5FE122B5491D60C9B90 /* hw_ghost_b_fg.png in Resources */,
 				B9A1B6FE2BE496BE34AB28CD /* hw_ghost_frame.png in Resources */,
+				49999724D92F49D7E423213D /* hw_haunted_wallpaper.png in Resources */,
 				3C1DAD2360A595D531312519 /* hw_library.png in Resources */,
 				CCE985EFA9DFD49D591A29A1 /* hw_library2.png in Resources */,
 				127CBBE5F775075D2D9A91F7 /* hw_portrait.png in Resources */,

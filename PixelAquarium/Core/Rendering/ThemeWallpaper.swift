@@ -45,8 +45,12 @@ enum ThemeWallpaper {
             return (art, r)
         }
         let glows = WidgetRole.allCases.compactMap { role in theme.art(for: role)?.edgeGlow == true ? profile?.bounds(role) : nil }
+        let fillets = theme.roundedCompartments ? WidgetRole.allCases.compactMap { role -> (rect: PixelRect, insets: [Int])? in
+            guard theme.art(for: role) != nil, let r = profile?.bounds(role), let ins = profile?.cornerInsets?[role.rawValue], !ins.isEmpty else { return nil }
+            return (r, ins)
+        } : []
         return WallpaperRenderer.roomWallpaper(room: room, attachments: attachments, screen: size, pxPerArtPixel: k,
-                                               transform: transform, underlays: underlays, glows: glows,
+                                               transform: transform, underlays: underlays, glows: glows, fillets: fillets,
                                                wallpaperColorMap: profile?.wallpaperColorMap ?? .identity)
     }
 }

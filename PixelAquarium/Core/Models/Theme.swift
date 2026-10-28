@@ -84,6 +84,12 @@ struct Theme {
     /// Build the wall as a bookcase laid out round the calibrated widgets (BookshelfRoom);
     /// `roomArt` then only supplies the ceiling.
     var adaptiveBookshelf = false
+    /// Fill the corners iOS rounds off with woodwork that follows the measured curve, so each
+    /// widget reads as a compartment with carved rounded corners.
+    var roundedCompartments = false
+    /// A finished wallpaper used exactly as it is (for screens of its size) instead of composing
+    /// one; the widgets are cut from it like from a composed one.
+    var fixedWallpaper: String? = nil
     var primary: WidgetArt?
     var secondary: WidgetArt?
     var small: WidgetArt? = nil
@@ -109,6 +115,7 @@ struct Theme {
     /// widgets that blend into the wall (no frames). Top left: out of a secret door, loops, back
     /// in. Bottom right: out from behind the fireplace, a spin, behind the chair, out of the screen.
     static let hauntedWindow = Theme(id: .hauntedWindow, artPixelPoints: 2, roomArt: "hw_library2.png", adaptiveBookshelf: true,
+                                     fixedWallpaper: "hw_haunted_wallpaper.png",
                                      primary: nil, secondary: nil,
                                      small: WidgetArt(staticArt: "hw_ghost_a.png", motion: .layer(fontPrefix: "HWGhostA"),
                                                       over: "hw_sconce.png", foreground: "hw_ghost_a_fg.png"),

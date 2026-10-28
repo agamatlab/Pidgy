@@ -14,11 +14,9 @@ struct AquariumWidgetView: View {
                 if entry.settings.mode != .calibration {
                     background.frame(width: geo.size.width, height: geo.size.height)
                 }
+                // What the animated character goes behind is part of its frames (chosen per moment),
+                // so no still foreground is drawn over it: that hid the ghost behind the doorframe.
                 content(size: geo.size)
-                if let fg = entry.foreground {
-                    Image(uiImage: fg).resizable().interpolation(.none).widgetAccentedRenderingMode(.fullColor)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                }
                 if (entry.settings.showDebugOverlay && entry.settings.mode != .calibration) || entry.error != nil {
                     debugOverlay(size: geo.size)
                 }

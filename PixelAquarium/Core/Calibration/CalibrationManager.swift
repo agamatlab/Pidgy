@@ -99,6 +99,34 @@ enum CalibrationManager {
         return best.map { refineEdges($0.box, in: img, want: want) }
     }
 
+    /// True when a pixel is in a calibration border colour.
+    static func isBorder(_ c: RGBA, _ color: RGBA) -> Bool {
+        let want = [color.r, color.g, color.b].map { $0 > 127 }, v = [Int(c.r), Int(c.g), Int(c.b)]
+        let highs = (0..<3).filter { want[$0] }.map { v[$0] }
+        return (0..<3).allSatisfy { want[$0] ? v[$0] > 180 : v[$0] < 80 } && (highs.max()! - highs.min()!) < 60
+    }
+
+    /// The shape iOS cuts the widget's corners to, measured on its top-left corner: for each row
+    /// from the top, how many px in from the left edge the widget starts (rows until it reaches
+    /// the edge). iOS uses a continuous ("squircle") corner, so it is measured, not assumed.
+    static func cornerInsets(in img: PixelBuffer, rect: PixelRect, color: RGBA, maxRadius: Int = 160) -> [Int] {
+        var out: [Int] = []
+        for dy in 0..<min(maxRadius, rect.height / 2) {
+            let y = rect.y + dy
+            guard y >= 0, y < img.height else { break }
+            var inset = maxRadius
+            for dx in 0..<min(maxRadius, rect.width / 2) where rect.x + dx >= 0 && rect.x + dx < img.width {
+                if isBorder(img.pixel(rect.x + dx, y), color) { inset = dx; break }
+            }
+            if inset == maxRadius { if out.isEmpty { continue } else { break } }
+            out.append(inset)
+            if inset <= 0 { break }
+        }
+        // the first rows may miss the top edge by a pixel: start the curve at its widest
+        if let first = out.first, first < (out.max() ?? first) { out[0] = out.max()! }
+        return out
+    }
+
     /// Exact pixel edges around a coarse box: outermost rows/columns (within 6 px of it) that
     /// are mostly border-coloured.
     private static func refineEdges(_ box: PixelRect, in img: PixelBuffer, want: [Bool]) -> PixelRect {
@@ -151,6 +179,8 @@ enum CalibrationManager {
         var wallpaperResidual: Double
         /// Every widget found, by role. `widgetRect` is the first of Large, Medium, Small.
         var rects: [WidgetRole: PixelRect]
+        /// iOS's corner curve for each widget (see `cornerInsets`).
+        var corners: [WidgetRole: [Int]] = [:]
     }
 
     /// One screenshot does everything: every widget in Calibration mode (coloured border + colour
@@ -188,8 +218,10 @@ enum CalibrationManager {
         let observed = CalibrationChart.readPatches(screenshot: screenshot, widgetRect: rect, widgetPointSize: pointSize)
         let widgetMap = CalibrationChart.fitWidgetMap(observed: observed) ?? .identity
         let residual = wallpaperResidual(screenshot: screenshot, wallpaper: wallpaper, transform: transform, map: wallMap, exclude: widgets)
+        var corners: [WidgetRole: [Int]] = [:]
+        for (role, r) in rects { corners[role] = cornerInsets(in: screenshot, rect: r, color: role.calibrationColor) }
         return Calibration(widgetRect: rect, transform: transform, registrationScore: score, fiducialsFound: d.fiducialsFound,
-                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual, rects: rects)
+                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual, rects: rects, corners: corners)
     }
 
     private static func wallpaperResidual(screenshot: PixelBuffer, wallpaper: PixelBuffer, transform: WallpaperTransform,
