@@ -5,3 +5,4 @@ PixelAquarium/build/
 *.xcresult
 xcuserdata/
 __pycache__/
+.agents/
