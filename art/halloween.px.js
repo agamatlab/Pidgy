@@ -33,8 +33,10 @@ pal({
   // potion glass, bone shadow, velvet highlight, raven sheen, crystal-ball glow
   r: "#6a1028", R: "#c8325a", p: "#1a3470", P: "#4a86d8", x: "#8f8468", A: "#9a2c34", Q: "#3c4468",
   G: "#7a4ac8", T: "#c8a8ff",
+  // stone
+  "1": "#22202c", "2": "#3a3846", "3": "#58566a", "4": "#7c7a90",
 })
-ramps("kdDeE", "wWvV", "yYjJ", "fFl", "oO", "gnN", "sSzZ", "Mm", "cC", "bBA", "hHq", "rR", "pP", "xti", "dQ", "GT")
+ramps("kdDeE", "wWvV", "yYjJ", "fFl", "oO", "gnN", "sSzZ", "Mm", "cC", "bBA", "hHq", "rR", "pP", "xti", "dQ", "GT", "1234")
 
 const rr = (x0, y0, w, h, r) => (x, y) => {
   if (x < x0 || y < y0 || x >= x0 + w || y >= y0 + h) return false
@@ -285,36 +287,36 @@ sprite("_crow", { w: 6, h: 4 }, rect(1, 1, 3, 2, "k"), px(4, 0, "k"), px(5, 0, "
 sprite("_hay", { w: 12, h: 8, outline: "k" }, ellipse(6, 5, 5, 3, "Y"), ellipse(5, 4, 3, 2, "j"), px(3, 3, "J"), px(8, 6, "y"))
 sprite("_pine", { w: 7, h: 14 }, poly([3, 0, 6, 13, 0, 13], "h"), hline(1, 9, 5, "q"))
 
-function farm() {
+function farm(AB = ARCH_BASE, H = HZ, VB = VIEW_BOTTOM) {
   return [
-    grad(0, ARCH_BASE, WW2, HZ - ARCH_BASE, "sSzZ", "v", 0.5),
-    scatter("_star_*", 14, ARCH_BASE + 2, 168, 22, 40, {}),
-    circ(155, 38, 8, "m"), circ(152, 36, 2, "M"), circ(158, 41, 2, "M"), px(156, 35, "M"),
+    grad(0, AB, WW2, H - AB, "sSzZ", "v", 0.5),
+    scatter("_star_*", 14, AB + 2, 168, H - AB - 10, Math.round(40 * (H - AB) / 32), {}),
+    circ(155, AB + 14, 8, "m"), circ(152, AB + 12, 2, "M"), circ(158, AB + 17, 2, "M"), px(156, AB + 11, "M"),
     // far forest line and hills
-    ...Array.from({ length: 26 }, (_, i) => stamp("_pine", 12 + i * 7 + (i % 3), HZ - 13 + (i % 2) * 2)),
-    poly([0, HZ, 40, HZ - 3, 90, HZ, 140, HZ - 4, WW2, HZ - 1, WW2, VIEW_BOTTOM, 0, VIEW_BOTTOM], "h"),
-    poly([0, HZ + 5, 70, HZ + 3, 130, HZ + 6, WW2, HZ + 3, WW2, VIEW_BOTTOM, 0, VIEW_BOTTOM], "H"),
-    ...Array.from({ length: 3 }, (_, i) => hline(0, HZ + 8 + i * 3, WW2, "q")),
+    ...Array.from({ length: 26 }, (_, i) => stamp("_pine", 12 + i * 7 + (i % 3), H - 13 + (i % 2) * 2)),
+    poly([0, H, 40, H - 3, 90, H, 140, H - 4, WW2, H - 1, WW2, VB, 0, VB], "h"),
+    poly([0, H + 5, 70, H + 3, 130, H + 6, WW2, H + 3, WW2, VB, 0, VB], "H"),
+    ...Array.from({ length: 3 }, (_, i) => hline(0, H + 8 + i * 3, WW2, "q")),
     // path to the barn
-    poly([97, VIEW_BOTTOM, 104, VIEW_BOTTOM, 101, HZ + 6, 99, HZ + 6], "x"),
+    poly([97, VB, 104, VB, 101, H + 6, 99, H + 6], "x"),
     // farmhouse + barn
-    poly([84, HZ + 7, 84, HZ - 4, 96, HZ - 12, 108, HZ - 4, 108, HZ + 7], "b"), poly([86, HZ - 4, 96, HZ - 10, 106, HZ - 4], "B"),
-    rect(93, HZ + 1, 6, 6, "k"), line(93, HZ + 1, 98, HZ + 6, "B"), line(98, HZ + 1, 93, HZ + 6, "B"),
-    rect(94, HZ - 7, 4, 3, "F"), vline(96, HZ - 7, 3, "k"),
-    poly([110, HZ + 7, 110, HZ - 1, 118, HZ - 6, 126, HZ - 1, 126, HZ + 7], "k"), rect(114, HZ + 1, 3, 3, "f"), rect(119, HZ + 1, 3, 3, "F"),
-    rect(122, HZ - 9, 2, 4, "k"),
+    poly([84, H + 7, 84, H - 4, 96, H - 12, 108, H - 4, 108, H + 7], "b"), poly([86, H - 4, 96, H - 10, 106, H - 4], "B"),
+    rect(93, H + 1, 6, 6, "k"), line(93, H + 1, 98, H + 6, "B"), line(98, H + 1, 93, H + 6, "B"),
+    rect(94, H - 7, 4, 3, "F"), vline(96, H - 7, 3, "k"),
+    poly([110, H + 7, 110, H - 1, 118, H - 6, 126, H - 1, 126, H + 7], "k"), rect(114, H + 1, 3, 3, "f"), rect(119, H + 1, 3, 3, "F"),
+    rect(122, H - 9, 2, 4, "k"),
     // windmill tower (blades animated)
-    poly([139, HZ + 7, 141, HZ - 9, 145, HZ - 9, 147, HZ + 7], "k"), line(141, HZ + 4, 146, HZ - 5, "c"), rect(140, HZ - 12, 6, 3, "k"),
+    poly([139, H + 7, 141, H - 9, 145, H - 9, 147, H + 7], "k"), line(141, H + 4, 146, H - 5, "c"), rect(140, H - 12, 6, 3, "k"),
     // graveyard (left pane), dead tree
-    stamp("_tomb", 22, HZ + 2), stamp("_tomb", 34, HZ + 4), stamp("_tomb", 46, HZ + 1), stamp("_tomb", 56, HZ + 5),
-    vline(29, HZ + 3, 6, "k"), hline(27, HZ + 5, 5, "k"),
-    line(16, VIEW_BOTTOM, 19, HZ - 14, "k", 2), line(18, HZ - 4, 10, HZ - 14, "k"), line(18, HZ - 9, 26, HZ - 18, "k"), line(15, HZ - 12, 12, HZ - 17, "k"),
+    stamp("_tomb", 22, H + 2), stamp("_tomb", 34, H + 4), stamp("_tomb", 46, H + 1), stamp("_tomb", 56, H + 5),
+    vline(29, H + 3, 6, "k"), hline(27, H + 5, 5, "k"),
+    line(16, VB, 19, H - 14, "k", 2), line(18, H - 4, 10, H - 14, "k"), line(18, H - 9, 26, H - 18, "k"), line(15, H - 12, 12, H - 17, "k"),
     // fence with crows, haystacks, scarecrow, pumpkins
-    hline(60, HZ + 9, 120, "k"), hline(60, HZ + 12, 120, "k"), ...Array.from({ length: 11 }, (_, i) => vline(62 + i * 11, HZ + 7, 8, "k")),
-    stamp("_crow", 73, HZ + 5), stamp("_crow", 128, HZ + 5, { flip: "x" }), stamp("_crow", 161, HZ + 5),
-    stamp("_hay", 150, HZ + 6), stamp("_hay", 162, HZ + 8),
-    vline(80, HZ - 1, 12, "k"), hline(75, HZ + 2, 11, "W"), circ(80, HZ - 2, 2, "v"), poly([77, HZ - 4, 83, HZ - 4, 81, HZ - 7, 79, HZ - 7], "k"), rect(78, HZ + 2, 5, 5, "b"),
-    stamp("_pumpkin", 40, VIEW_BOTTOM - 7), stamp("_pumpkin", 116, VIEW_BOTTOM - 6), stamp("_jack_big", 170, VIEW_BOTTOM - 11),
+    hline(60, H + 9, 120, "k"), hline(60, H + 12, 120, "k"), ...Array.from({ length: 11 }, (_, i) => vline(62 + i * 11, H + 7, 8, "k")),
+    stamp("_crow", 73, H + 5), stamp("_crow", 128, H + 5, { flip: "x" }), stamp("_crow", 161, H + 5),
+    stamp("_hay", 150, H + 6), stamp("_hay", 162, H + 8),
+    vline(80, H - 1, 12, "k"), hline(75, H + 2, 11, "W"), circ(80, H - 2, 2, "v"), poly([77, H - 4, 83, H - 4, 81, H - 7, 79, H - 7], "k"), rect(78, H + 2, 5, 5, "b"),
+    stamp("_pumpkin", 40, VB - 7), stamp("_pumpkin", 116, VB - 6), stamp("_jack_big", 170, VB - 11),
   ]
 }
 
@@ -380,36 +382,192 @@ const cloud = (c, x, y, w) => {
   x = Math.round(x)
   c.ellipse(x, y, w, 2, "c"); c.ellipse(x - w / 2, y - 1, w / 2, 2, "c"); c.ellipse(x + w / 3, y - 2, w / 2.5, 2, "C")
 }
-anim("hw_window_fx", { w: WW2, h: WH2, frames: 240, fps: 8 },
-  clip(inView, (c) => {
+// the farm's moving things, for a view whose sky starts at AB and horizon is H
+const farmFx = (c, AB, H) => {
     const p = c.phase, f = c.frame
-    cloud(c, -30 + ((p + 0.2) % 1) * 255, 34, 13)
-    cloud(c, -30 + ((p * 2 + 0.65) % 1) * 255, 42, 9)
+    cloud(c, -30 + ((p + 0.2) % 1) * 255, AB + 10, 13)
+    cloud(c, -30 + ((p * 2 + 0.65) % 1) * 255, AB + 18, 9)
     // windmill blades
     for (let b = 0; b < 4; b++) {
       const a = p * TAU * 2 + b * TAU / 4
-      c.line(143, HZ - 11, Math.round(143 + Math.cos(a) * 11), Math.round(HZ - 11 + Math.sin(a) * 11), "k", 2)
+      c.line(143, H - 11, Math.round(143 + Math.cos(a) * 11), Math.round(H - 11 + Math.sin(a) * 11), "k", 2)
     }
-    c.px(143, HZ - 11, "v")
+    c.px(143, H - 11, "v")
     // bats
     for (let i = 0; i < 3; i++) {
       const q = (p * (i + 1) + i * 0.37) % 1
-      bat(c, -6 + q * 207, 32 + i * 6 + Math.sin(q * TAU * 3) * 3, (f + i) % 2 === 0)
+      bat(c, -6 + q * 207, AB + 8 + i * 6 + Math.sin(q * TAU * 3) * 3, (f + i) % 2 === 0)
     }
     // ghost drifting over the graves
-    const gx = Math.round(40 + Math.sin(p * TAU) * 16), gy = Math.round(HZ - 4 + Math.sin(p * TAU * 3) * 2)
+    const gx = Math.round(40 + Math.sin(p * TAU) * 16), gy = Math.round(H - 4 + Math.sin(p * TAU * 3) * 2)
     c.ellipse(gx, gy, 3, 3, "i"); c.rect(gx - 3, gy, 7, 4, "i")
     for (let k = 0; k < 7; k += 2) c.px(gx - 3 + k, gy + 4 + ((k + f) % 2), "i")
     c.px(gx - 1, gy - 1, "k"); c.px(gx + 1, gy - 1, "k"); c.px(gx, gy + 1, "C")
     // flickering farmhouse window + wisps
     const fl = [0, 1, 1, 0, 1, 2, 1, 1][f % 8]
-    if (fl === 0) c.rect(94, HZ - 7, 2, 3, "f")
-    if (fl === 2) c.rect(94, HZ - 7, 2, 2, "l")
+    if (fl === 0) c.rect(94, H - 7, 2, 3, "f")
+    if (fl === 2) c.rect(94, H - 7, 2, 2, "l")
     for (let i = 0; i < 2; i++) {
-      const x = Math.round(120 + i * 30 + Math.sin((p + i * 0.4) * TAU) * 10), y = Math.round(HZ + 9 + Math.sin((p * 3 + i) * TAU) * 2)
+      const x = Math.round(120 + i * 30 + Math.sin((p + i * 0.4) * TAU) * 10), y = Math.round(H + 9 + Math.sin((p * 3 + i) * TAU) * 2)
       c.px(x, y, "U"); c.px(x - 1, y, "u"); c.px(x + 1, y, "u"); c.px(x, y - 1, "u")
     }
-  }))
+}
+anim("hw_window_fx", { w: WW2, h: WH2, frames: 240, fps: 8 }, clip(inView, (c) => farmFx(c, ARCH_BASE, HZ)))
+
+// ===================================================================== tall library window (LARGE widget, 195x195)
+// A pointed Gothic arch: a stained-glass rose in the head, two clear lancets below looking out
+// on the same animated farm, a deep carved casing and a sill. The casing is the widget edge.
+const TS = 195, T_X0 = 22, T_X1 = 173, T_CX = 97.5, T_HW = 75.5, T_APEX = 10, T_SPRING = 84, T_SILL = 170
+const T_GLASS = 90                                     // clear glass starts below the transom
+const tArch = (x) => {                                 // pointed arch: two arcs meeting at the apex
+  const t = Math.abs(x + 0.5 - T_CX) / T_HW
+  return T_SPRING - (T_SPRING - T_APEX) * Math.sqrt(Math.max(0, 1 - t * t)) * (1 - 0.35 * t)
+}
+const inTOpen = (x, y) => x >= T_X0 && x < T_X1 && y < T_SILL && y >= tArch(x)
+const onTMullion = (x, y) => Math.abs(x + 0.5 - T_CX) < 3 && y >= T_SPRING - 10
+const inTStained = (x, y) => inTOpen(x, y) && y < T_GLASS - 3
+const inTView = (x, y) => inTOpen(x, y) && y >= T_GLASS && !onTMullion(x, y)
+const ROSE_X = 97, ROSE_Y = 48, ROSE_R = 22
+
+const roseWindow = (c) => {
+  const cols = ["R", "G", "F", "P", "n", "E", "R", "F", "G", "P", "n", "E"]
+  for (let y = 0; y < T_GLASS; y++) for (let x = 0; x < TS; x++) {
+    if (!inTStained(x, y)) continue
+    const dx = x + 0.5 - ROSE_X, dy = y + 0.5 - ROSE_Y, r = Math.hypot(dx, dy)
+    if (r < ROSE_R) {
+      const sector = Math.floor(((Math.atan2(dy, dx) + Math.PI) / TAU) * 12)
+      c.px(x, y, r < 6 ? "F" : r < 9 ? "l" : cols[sector])
+    } else {
+      // leaded diamond lattice in deep blues and purples around the rose
+      const u = Math.floor((x + y) / 6), v = Math.floor((x - y + 200) / 6)
+      c.px(x, y, (u + v) % 3 === 0 ? "p" : (u + v) % 3 === 1 ? "D" : "e")
+      if ((x + y) % 6 === 0 || (x - y + 200) % 6 === 0) c.px(x, y, "k")
+    }
+  }
+  c.ring(ROSE_X, ROSE_Y, ROSE_R, "k"); c.ring(ROSE_X, ROSE_Y, ROSE_R + 1, "V"); c.ring(ROSE_X, ROSE_Y, 9, "k")
+  for (let k = 0; k < 12; k++) { const a = k * TAU / 12; c.line(Math.round(ROSE_X + Math.cos(a) * 9), Math.round(ROSE_Y + Math.sin(a) * 9), Math.round(ROSE_X + Math.cos(a) * ROSE_R), Math.round(ROSE_Y + Math.sin(a) * ROSE_R), "k") }
+}
+
+scene("hw_window_tall", { w: TS, h: TS },
+  layer("casing", clip(rr(0, 0, TS, TS + 2 * WCR, WCR), rect(0, 0, TS, TS, "W"),
+    hline(0, 0, TS, "w"), hline(0, 1, TS, "V"), hline(0, 2, TS, "v"),
+    // carved arch mouldings following the opening, three steps deep
+    (c) => { for (let x = T_X0 - 8; x < T_X1 + 8; x++) {
+      const xx = Math.min(Math.max(x, T_X0), T_X1 - 1), t = Math.round(tArch(xx))
+      c.px(x, t - 1, "w"); c.px(x, t - 2, "V"); c.px(x, t - 3, "j"); c.px(x, t - 5, "v"); c.px(x, t - 7, "V"); c.px(x, t - 8, "w") } },
+    vline(T_X0 - 1, T_SPRING - 30, T_SILL - T_SPRING + 30, "w"), vline(T_X0 - 3, T_SPRING - 30, T_SILL - T_SPRING + 30, "j"), vline(T_X0 - 5, T_SPRING - 30, T_SILL - T_SPRING + 30, "V"),
+    vline(T_X1, T_SPRING - 30, T_SILL - T_SPRING + 30, "w"), vline(T_X1 + 2, T_SPRING - 30, T_SILL - T_SPRING + 30, "v"), vline(T_X1 + 4, T_SPRING - 30, T_SILL - T_SPRING + 30, "w"),
+    // corner rosettes and a carved skull keystone
+    circ(9, 10, 5, "v"), circ(9, 10, 3, "j"), px(8, 9, "J"), circ(TS - 10, 10, 5, "v"), circ(TS - 10, 10, 3, "j"), px(TS - 11, 9, "J"),
+    ...[9, TS - 10].map((x) => [vline(x, 20, 140, "v"), vline(x + 1, 20, 140, "w"), ...[40, 70, 100, 130].map((y) => circ(x, y, 2, "V"))]).flat())),
+  layer("view", clip(inTView, ...farm(T_GLASS, 140, T_SILL))),
+  glow("m", { r: 7, strength: 0.3, bands: 3, where: inTView }),
+  glow("F", { r: 3, strength: 0.3, bands: 2, where: inTView }),
+  layer("rose", clip(inTStained, roseWindow)),
+  layer("transom", clip(inTOpen, rect(0, T_GLASS - 3, TS, 3, "w"), hline(0, T_GLASS - 3, TS, "V"))),
+  // central mullion with capital, and two lancet heads
+  layer("mullion", rect(Math.round(T_CX) - 3, T_SPRING - 10, 6, T_SILL - T_SPRING + 10, "v"), vline(Math.round(T_CX) - 3, T_SPRING - 10, T_SILL - T_SPRING + 10, "V"),
+    vline(Math.round(T_CX) + 2, T_SPRING - 10, T_SILL - T_SPRING + 10, "w"), rect(Math.round(T_CX) - 5, T_GLASS - 1, 10, 3, "V"), hline(Math.round(T_CX) - 5, T_GLASS - 1, 10, "J"),
+    (c) => { for (const cx of [60, 135]) for (let x = cx - 37; x < cx + 37; x++) {
+      const t = Math.abs(x + 0.5 - cx) / 37, y = Math.round(T_GLASS + 12 * (1 - Math.sqrt(Math.max(0, 1 - (1 - t) * (1 - t)))))
+      if (inTOpen(x, y)) { c.px(x, y, "w"); c.px(x, y - 1, "V") } } }),
+  layer("glassglint", { light: true, density: 0.3 }, clip(inTView, poly([34, 100, 40, 96, 30, 140, 27, 140], "Z"), poly([112, 100, 117, 96, 108, 136, 105, 136], "Z"))),
+  layer("ivy", (c) => {
+    for (let i = 0; i < 40; i++) { const x = 190 - Math.round(i * 1.2), y = 3 + Math.round(Math.sin(i * 0.45) * 2)
+      c.px(x, y, "g"); if (i % 3 === 0) { c.px(x - 1, y - 1, "n"); c.px(x, y - 1, "N"); c.px(x + 1, y - 1, "n") } }
+  }),
+  layer("sill",
+    rect(0, T_SILL, TS, TS - T_SILL, "v"), hline(0, T_SILL, TS, "J"), hline(0, T_SILL + 1, TS, "V"), hline(0, T_SILL + 4, TS, "w"),
+    rect(0, T_SILL + 5, TS, TS - T_SILL - 5, "W"), hline(0, TS - 1, TS, "w"),
+    ...Array.from({ length: 12 }, (_, i) => rect(6 + i * 16, T_SILL + 9, 8, 8, "v")),
+    (c) => { candle(c, 30, T_SILL - 12, 12); candle(c, 37, T_SILL - 7, 7); c.ellipse(34, T_SILL, 7, 1, "t")
+             candle(c, 160, T_SILL - 9, 9); c.ellipse(161, T_SILL, 4, 1, "t") },
+    stamp("_jack_big", 120, T_SILL - 16), stamp("_cobweb", 3, 18)),
+  glow("Fl", { r: 7, strength: 0.32, bands: 3, where: (x, y) => !inTView(x, y) }))
+
+anim("hw_window_tall_fx", { w: TS, h: TS, frames: 240, fps: 8 }, clip(inTView, (c) => farmFx(c, T_GLASS, 140)))
+
+// ===================================================================== library wall (Haunted wallpaper)
+// A frontal wall of bookshelves from floor to ceiling, so a window or a frame placed anywhere
+// sits among the shelves. Ceiling beams with a chandelier on top, a floor with a rug below.
+// The app pastes the window seat under the Large window and the hanging wire above the frame.
+const RW2 = 220, RH2 = 478, SHELF_TOP = 40, FLOOR2 = 404
+const BAY = 44                                        // bookcase bay width (5 bays)
+sprite("hw_window_seat", { w: 205, h: 52 }, (c) => {
+  // cushioned window seat with drawers, candles, a stack of books and a sleeping cat
+  c.rect(0, 10, 205, 42, "W"); c.hline(0, 10, 205, "V"); c.hline(0, 11, 205, "v")
+  for (let i = 0; i < 4; i++) { const x = 6 + i * 50; c.rect(x, 22, 44, 24, "v"); c.box(x, 22, 44, 24, "w"); c.hline(x + 1, 23, 42, "V"); c.ellipse(x + 22, 34, 3, 2, "Y"); c.px(x + 21, 33, "J") }
+  c.rect(2, 2, 201, 9, "b"); c.hline(2, 2, 201, "A"); c.hline(2, 10, 201, "r")
+  for (let x = 8; x < 200; x += 16) { c.px(x, 6, "r"); c.px(x + 1, 6, "A") }
+  c.ellipse(30, 0, 14, 4, "A"); c.ellipse(28, -1, 10, 2, "R"); c.ellipse(170, 0, 14, 4, "p"); c.ellipse(168, -1, 10, 2, "P")
+  for (const [x, w, col] of [[90, 26, "A"], [92, 22, "g"], [95, 18, "p"]]) { const y = [0, -3, -6][[90, 92, 95].indexOf(x)]; c.rect(x, y, w, 3, col); c.hline(x, y, w, "j") }
+  c.ellipse(132, -1, 8, 4, "k"); c.ellipse(127, -3, 3, 3, "k"); c.px(125, -6, "k"); c.px(128, -6, "k"); c.line(140, 0, 145, -2, "k")
+}, lamp(60, -10, { r: 40, color: "#ffb35c", power: 0.6 }))
+
+sprite("hw_frame_hanger", { w: 60, h: 22 }, (c) => {
+  // brass nail with a hanging wire to the frame's two eyelets
+  c.circ(30, 3, 2, "Y"); c.px(29, 2, "J"); c.px(30, 5, "y")
+  c.line(30, 4, 6, 21, "x"); c.line(30, 4, 54, 21, "x"); c.line(30, 5, 7, 21, "t")
+})
+
+scene("hw_library2", { w: RW2, h: RH2, bg: "k" },
+  // ceiling: beams and boards
+  layer("ceiling", rect(0, 0, RW2, SHELF_TOP, "w"), ...Array.from({ length: 12 }, (_, i) => vline(i * 20 + 6, 0, SHELF_TOP, "1")),
+    rect(0, 10, RW2, 7, "W"), hline(0, 10, RW2, "v"), hline(0, 17, RW2, "k"), rect(0, 28, RW2, 6, "W"), hline(0, 28, RW2, "v"), hline(0, 34, RW2, "k"),
+    rect(0, SHELF_TOP - 4, RW2, 4, "V"), hline(0, SHELF_TOP - 4, RW2, "j"), hline(0, SHELF_TOP - 1, RW2, "k")),
+  // bookcases: bays with uprights, shelves every 34 px, books of varied height and colour
+  layer("cases", (c) => {
+    c.rect(0, SHELF_TOP, RW2, FLOOR2 - SHELF_TOP, "w")
+    let i = 0
+    for (let y = SHELF_TOP + 4; y < FLOOR2 - 30; y += 34) {
+      for (let x = 0; x < RW2;) {
+        if (x % BAY < 5) { x++; continue }
+        const bw = 2 + Math.floor(rnd(i) * 4), bh = 18 + Math.floor(rnd(i + 999) * 12)
+        if (rnd(i + 77) < 0.07) { x += 6; i++; continue }               // gap
+        const col = BOOKS[Math.floor(rnd(i * 3 + 1) * BOOKS.length)], lean = rnd(i + 55) < 0.05
+        if (lean) c.poly([x, y + 30, x + bw, y + 30, x + bw + 6, y + 30 - bh, x + 6, y + 30 - bh], col)
+        else { c.rect(x, y + 30 - bh, bw, bh, col); c.vline(x + bw - 1, y + 30 - bh, bh, "k"); if (bw >= 3) { c.hline(x, y + 30 - bh + 3, bw, "j"); c.hline(x, y + 26, bw, "j") } }
+        x += bw + (lean ? 6 : 0); i++
+      }
+      c.rect(0, y + 30, RW2, 4, "v"); c.hline(0, y + 30, RW2, "V"); c.hline(0, y + 33, RW2, "k")
+    }
+    for (let x = 0; x < RW2; x += BAY) { c.rect(x, SHELF_TOP, 5, FLOOR2 - SHELF_TOP, "W"); c.vline(x, SHELF_TOP, FLOOR2 - SHELF_TOP, "V"); c.vline(x + 4, SHELF_TOP, FLOOR2 - SHELF_TOP, "k")
+      for (let y = SHELF_TOP + 20; y < FLOOR2; y += 34) c.circ(x + 2, y, 1, "j") }
+  }),
+  // curios between the books: skulls, potions, candles, an hourglass, a crystal ball
+  layer("curios", (c) => {
+    skull(c, 60, SHELF_TOP + 20); candle(c, 74, SHELF_TOP + 14, 18)
+    bottle(c, 150, SHELF_TOP + 54, 7, 18, "Q", "R", "flask"); bottle(c, 160, SHELF_TOP + 50, 5, 22, "Q", "N", "tall")
+    c.circ(30, SHELF_TOP + 130, 7, "G"); c.circ(28, SHELF_TOP + 128, 3, "T"); c.rect(26, SHELF_TOP + 136, 9, 2, "Y")
+    skull(c, 186, SHELF_TOP + 156); candle(c, 200, SHELF_TOP + 150, 14)
+    c.rect(110, SHELF_TOP + 210, 7, 2, "Y"); c.rect(110, SHELF_TOP + 222, 7, 2, "Y"); c.poly([111, SHELF_TOP + 212, 116, SHELF_TOP + 212, 114, SHELF_TOP + 217, 113, SHELF_TOP + 217], "i"); c.poly([113, SHELF_TOP + 218, 114, SHELF_TOP + 218, 116, SHELF_TOP + 222, 111, SHELF_TOP + 222], "i")
+    candle(c, 50, SHELF_TOP + 282, 12); skull(c, 160, SHELF_TOP + 290); bottle(c, 176, SHELF_TOP + 288, 6, 16, "Q", "G", "flask")
+    // more candles along the shelves so the whole wall is warmly lit
+    for (const [x, y] of [[140, SHELF_TOP + 82], [20, SHELF_TOP + 218], [196, SHELF_TOP + 252], [96, SHELF_TOP + 150], [120, SHELF_TOP + 320], [176, SHELF_TOP + 14]]) candle(c, x, y, 10)
+    for (const [x, y] of [[74, SHELF_TOP + 13], [200, SHELF_TOP + 149], [50, SHELF_TOP + 281], [141, SHELF_TOP + 81], [21, SHELF_TOP + 217],
+                          [197, SHELF_TOP + 251], [97, SHELF_TOP + 149], [121, SHELF_TOP + 319], [177, SHELF_TOP + 13]])
+      c.lamp(x + 1, y, { r: 58, color: "#ffb35c", power: 0.85 })
+  }),
+  layer("webs", stamp("_cobweb", 5, SHELF_TOP), stamp("_cobweb", RW2 - 27, SHELF_TOP, { flip: "x" }), stamp("_cobweb", 93, SHELF_TOP + 34)),
+  // chandelier hanging from the beam
+  layer("chandelier", (c) => {
+    c.vline(110, 17, 6, "1"); c.ellipse(110, 26, 18, 3, "2"); c.ellipse(110, 26, 16, 2, "1")
+    for (let k = 0; k < 7; k++) { const x = Math.round(110 + Math.cos(k * TAU / 7) * 16), y = Math.round(26 + Math.sin(k * TAU / 7) * 2)
+      c.rect(x, y - 6, 2, 6, "t"); c.px(x, y - 7, "F"); c.px(x, y - 8, "l"); if (k % 2 === 0) c.lamp(x, y - 8, { r: 70, color: "#ffc070", power: 0.8 }) }
+  }),
+  layer("bats", ...[[24, 18], [176, 18], [60, 35]].map(([x, y]) => stamp("_bat_hang", x, y))),
+  // floor: planks and a rug with jack-o'-lanterns, a cauldron
+  layer("floor", rect(0, FLOOR2, RW2, RH2 - FLOOR2, "W"), hline(0, FLOOR2, RW2, "k"), hline(0, FLOOR2 + 1, RW2, "V"),
+    ...Array.from({ length: 10 }, (_, i) => hline(0, FLOOR2 + 6 + i * 7, RW2, "w")),
+    ...Array.from({ length: 10 }, (_, i) => Array.from({ length: 5 }, (_, j) => vline((j * 47 + i * 19) % RW2, FLOOR2 + i * 7, 6, "w"))).flat(),
+    rect(30, FLOOR2 + 26, 160, 40, "b"), box(30, FLOOR2 + 26, 160, 40, "j"), rect(34, FLOOR2 + 30, 152, 32, "A"),
+    ...Array.from({ length: 18 }, (_, i) => poly([36 + i * 8, FLOOR2 + 28, 39 + i * 8, FLOOR2 + 25, 42 + i * 8, FLOOR2 + 28, 39 + i * 8, FLOOR2 + 31], "j")),
+    ellipse(110, FLOOR2 + 46, 24, 9, "b"), poly([110, FLOOR2 + 40, 116, FLOOR2 + 46, 110, FLOOR2 + 52, 104, FLOOR2 + 46], "j"),
+    stamp("_jack_big", 8, FLOOR2 + 6), stamp("_jack_big", 190, FLOOR2 + 4, { flip: "x" }), stamp("_pumpkin", 176, FLOOR2 + 14, { flip: "x" }),
+    lamp(21, FLOOR2 + 12, { r: 34, color: "#ff9a30", power: 0.7 }), lamp(202, FLOOR2 + 10, { r: 34, color: "#ff9a30", power: 0.7 })),
+  lighting({ cell: 2, smooth: true, ambient: 0.34, ambientColor: "#8478c0", emit: "lFfI" }),
+  glow("lF", { r: 7, strength: 0.4, bands: 4 }),
+  post({ bloom: { above: 0.7, strength: 0.45 }, vignette: 0.25 }))
 
 // ===================================================================== portrait (LARGE widget, 195x195)
 // Baroque gilt frame with acanthus corners and a nameplate; the witch with a crow, a crystal
@@ -537,6 +695,454 @@ anim("hw_portrait_fx", { w: PS, h: PS, frames: 240, fps: 8 },
     for (let k = 0; k < 3; k++) { c.line(58, sy + 1 + k, 55, sy + k + (k === 1 ? leg : 0), "k"); c.line(62, sy + 1 + k, 65, sy + k + (k === 1 ? leg : 0), "k") }
   }))
 
+// ===================================================================== ghost frame (SMALL widget, 92x92)
+// Carved dark-wood frame with a gilt oval; inside, a foggy graveyard where a ghost floats.
+const GS = 92, GCR = 10, OCX = 46, OCY = 47, ORX = 33, ORY = 37
+const inOval = (x, y) => ((x + 0.5 - OCX) / ORX) ** 2 + ((y + 0.5 - OCY) / ORY) ** 2 <= 1
+const inOvalRing = (x, y, d) => ((x + 0.5 - OCX) / (ORX + d)) ** 2 + ((y + 0.5 - OCY) / (ORY + d)) ** 2 <= 1
+
+sprite("_scroll", { w: 14, h: 14 }, (c) => {
+  // small corner scroll (top-left), gilt on wood
+  c.circ(4, 4, 3, "j"); c.circ(4, 4, 1, "W"); c.px(3, 3, "J")
+  c.line(7, 3, 13, 2, "Y"); c.line(3, 7, 2, 13, "Y"); c.line(6, 6, 11, 11, "j")
+  c.px(10, 2, "J"); c.px(2, 10, "J"); c.px(9, 9, "J")
+})
+
+scene("hw_ghost_frame", { w: GS, h: GS },
+  layer("wood", clip(rr(0, 0, GS, GS, GCR),
+    rect(0, 0, GS, GS, "W"),
+    // carved grooves following the oval
+    (c) => { for (let y = 0; y < GS; y++) for (let x = 0; x < GS; x++) {
+      if (inOval(x, y)) continue
+      const r = Math.sqrt(((x + 0.5 - OCX) / ORX) ** 2 + ((y + 0.5 - OCY) / ORY) ** 2)
+      const band = Math.floor((r - 1) * 40)
+      if (band === 3 || band === 9) c.px(x, y, "w"); else if (band === 4 || band === 10) c.px(x, y, "V"); else if (band > 12) c.px(x, y, band % 2 ? "v" : "W")
+    } },
+    box(0, 0, GS, GS, "w"), box(1, 1, GS - 2, GS - 2, "v"))),
+  layer("corners", stamp("_scroll", 3, 3), stamp("_scroll", GS - 17, 3, { flip: "x" }),
+    stamp("_scroll", 3, GS - 17, { flip: "y" }), stamp("_scroll", GS - 17, GS - 17, { flip: "xy" })),
+  // gilt oval rim with beads
+  layer("rim", (c) => { for (let y = 0; y < GS; y++) for (let x = 0; x < GS; x++) {
+    if (inOval(x, y) || !inOvalRing(x, y, 3)) continue
+    c.px(x, y, inOvalRing(x, y, 1) ? "J" : inOvalRing(x, y, 2) ? "j" : "y")
+  }
+    for (let k = 0; k < 24; k++) { const a = k * TAU / 24; c.px(Math.round(OCX + Math.cos(a) * (ORX + 5)), Math.round(OCY + Math.sin(a) * (ORY + 5)), "J") } }),
+  // bat crest on top
+  layer("crest", poly([OCX - 9, 4, OCX - 3, 6, OCX, 3, OCX + 3, 6, OCX + 9, 4, OCX + 5, 9, OCX, 7, OCX - 5, 9], "j"), px(OCX - 1, 5, "R"), px(OCX + 1, 5, "R")),
+  // the scene inside
+  layer("night", clip(inOval,
+    grad(0, 8, GS, 80, "sSzZ", "v", 0.5),
+    scatter("_star_*", 14, 12, 64, 30, 14, {}),
+    circ(30, 24, 6, "m"), circ(28, 23, 1, "M"), circ(32, 26, 1, "M"),
+    poly([0, 66, 20, 62, 46, 65, 70, 60, GS, 64, GS, GS, 0, GS], "h"),
+    ...Array.from({ length: 9 }, (_, i) => stamp("_pine", 8 + i * 9, 50 + (i % 2) * 2)),
+    poly([0, 72, 40, 70, GS, 73, GS, GS, 0, GS], "H"),
+    stamp("_tomb", 20, 64), stamp("_tomb", 58, 66), stamp("_tomb", 40, 70),
+    vline(31, 60, 9, "k"), hline(29, 62, 5, "k"),
+    line(70, 76, 73, 52, "k", 2), line(72, 60, 64, 52, "k"), line(72, 56, 78, 48, "k"),
+    // low fog bank (static part)
+    ...Array.from({ length: 3 }, (_, i) => dither(0, 74 + i * 3, GS, 3, "H", "c", 0.25 + i * 0.2)))),
+  glow("m", { r: 5, strength: 0.3, bands: 3, where: inOval }))
+
+anim("hw_ghost_fx", { w: GS, h: GS, frames: 240, fps: 8 },
+  clip(inOval, (c) => {
+    const p = c.phase, f = c.frame
+    // drifting fog wisps
+    for (let i = 0; i < 3; i++) {
+      const x = Math.round(-30 + ((p * (i % 2 ? 1 : 2) + i * 0.33) % 1) * 152), y = 70 + i * 4
+      c.ellipse(x, y, 14, 1, i % 2 ? "C" : "c"); c.ellipse(x + 8, y - 1, 7, 1, "C")
+    }
+    // the ghost: lazy figure-eight, bobbing, hem waving
+    const gx = Math.round(OCX + Math.sin(p * TAU) * 13), gy = Math.round(42 + Math.sin(p * TAU * 2) * 5)
+    const lean = Math.round(Math.cos(p * TAU) * 1.5)
+    // faint haze around it
+    for (let dy = -14; dy <= 18; dy++) for (let dx = -14; dx <= 14; dx++) {
+      const d = dx * dx / 196 + dy * dy / 324
+      if (d < 1 && d > 0.55 && (dx + dy + f) % 3 === 0) c.px(gx + dx, gy + dy, "Z")
+    }
+    c.circ(gx, gy - 6, 8, "i")                                               // head
+    c.poly([gx - 8, gy - 6, gx + 8, gy - 6, gx + 10 + lean, gy + 10, gx - 10 + lean, gy + 10], "i")  // body
+    for (let k = 0; k < 5; k++) {                                            // wavy hem
+      const hx = gx - 10 + lean + k * 5, wave = (k + Math.floor(f / 2)) % 2
+      c.poly([hx, gy + 10, hx + 5, gy + 10, hx + 2 + wave, gy + 14 + wave], "i")
+    }
+    c.vline(gx + 6, gy - 10, 16, "t"); c.vline(gx + 7, gy - 6, 14, "t")    // shading
+    // arms wave
+    const arm = Math.round(Math.sin(p * TAU * 4) * 2)
+    c.line(gx - 8, gy, gx - 13, gy - 3 + arm, "i", 2); c.line(gx + 8, gy, gx + 13, gy - 3 - arm, "i", 2)
+    // face: eyes look where it drifts, blink, says "boo" now and then
+    const look = Math.cos(p * TAU) > 0 ? 1 : -1
+    const blink = [40, 41, 130, 131, 136, 137, 200].includes(f)
+    if (blink) { c.hline(gx - 4 + look, gy - 7, 3, "k"); c.hline(gx + 2 + look, gy - 7, 3, "k") }
+    else { c.rect(gx - 4 + look, gy - 9, 2, 3, "k"); c.rect(gx + 2 + look, gy - 9, 2, 3, "k"); c.px(gx - 4 + look, gy - 9, "Q"); c.px(gx + 2 + look, gy - 9, "Q") }
+    const boo = (f % 80) >= 60 && (f % 80) < 72
+    if (boo) { c.ellipse(gx + look, gy - 2, 2, 3, "k"); c.px(gx + look, gy - 3, "b") }
+    else c.rect(gx - 1 + look, gy - 3, 2, 2, "k")
+  }))
+
+// ===================================================================== haunted library (Haunted theme wallpaper)
+// One-point perspective: bookshelf walls converge on a stone fireplace. Lit by real lamps
+// (fire, chandelier, sconces, candelabra, jack-o'-lanterns) with pxl's lighting(), then bloom.
+const LW = 220, LH = 478, VPX = 110, VPY = 250
+const BX0 = 62, BX1 = 158, BY0 = 168, BY1 = 330          // back wall
+const CEIL_Y = 62, FLOOR_Y = 433                          // where ceiling / floor meet the screen edges
+const wallTop = (x) => x <= BX0 ? CEIL_Y + (BY0 - CEIL_Y) * (x / BX0) : CEIL_Y + (BY0 - CEIL_Y) * ((LW - x) / (LW - BX1))
+const wallBot = (x) => x <= BX0 ? FLOOR_Y + (BY1 - FLOOR_Y) * (x / BX0) : FLOOR_Y + (BY1 - FLOOR_Y) * ((LW - x) / (LW - BX1))
+const floorX = (xb, y) => VPX + (xb - VPX) * (y - VPY) / (LH - VPY)   // floor line through VP and (xb, LH)
+const ceilX = (xt, y) => VPX + (xt - VPX) * (VPY - y) / VPY          // ceiling line through VP and (xt, 0)
+const BOOKS = ["A", "b", "B", "p", "P", "g", "n", "e", "E", "y", "r", "Q"]
+const rnd = (i) => { const v = Math.sin(i * 12.9898) * 43758.5453; return v - Math.floor(v) }
+
+// a side wall of shelves; near = screen edge (x 0 or 220), far = back-wall edge
+function shelfWall(c, side) {
+  const xs = side < 0 ? [0, BX0] : [BX1, LW]
+  const near = side < 0 ? xs[0] : xs[1], far = side < 0 ? xs[1] : xs[0]
+  const t = (x) => Math.abs(x - near) / (BX0)                  // 0 near .. 1 far
+  for (let x = xs[0]; x < xs[1]; x++) { c.vline(x, Math.round(wallTop(x)), Math.round(wallBot(x) - wallTop(x)), "w") }
+  const SH = [0.06, 0.24, 0.42, 0.60, 0.78, 0.96]
+  // books: columns narrow toward the far end
+  let x = near, i = side < 0 ? 0 : 500
+  while (side < 0 ? x < far : x > far) {
+    const tt = t(x), bw = Math.max(1, Math.round(6 * (1 - tt) + 1))
+    for (let k = 0; k < SH.length - 1; k++) {
+      const top = wallTop(x), h = wallBot(x) - top
+      const y0 = top + h * SH[k], y1 = top + h * SH[k + 1]
+      const bh = (y1 - y0) * (0.62 + 0.3 * rnd(i * 7 + k))
+      const col = BOOKS[Math.floor(rnd(i * 13 + k * 3) * BOOKS.length)]
+      if (rnd(i * 5 + k) < 0.08) continue                     // a gap on the shelf
+      const bx = side < 0 ? x : x - bw + 1
+      c.rect(bx, Math.round(y1 - bh), bw, Math.round(bh), col)
+      if (bw >= 3) { c.hline(bx, Math.round(y1 - bh * 0.8), bw, "j"); c.hline(bx, Math.round(y1 - bh * 0.25), bw, "j") }
+      if (bw >= 2) c.vline(side < 0 ? bx + bw - 1 : bx, Math.round(y1 - bh), Math.round(bh), "k")
+    }
+    x += side < 0 ? bw : -bw; i++
+  }
+  // shelf boards and uprights in perspective
+  for (const f of SH) {
+    const y = (xx) => wallTop(xx) + (wallBot(xx) - wallTop(xx)) * f
+    c.line(xs[0], Math.round(y(xs[0])), xs[1] - 1, Math.round(y(xs[1] - 1)), "V")
+    c.line(xs[0], Math.round(y(xs[0])) + 1, xs[1] - 1, Math.round(y(xs[1] - 1)) + 1, "W")
+  }
+  for (const f of [0, 0.5, 0.97]) {
+    const ux = Math.round(near + (far - near) * f)
+    c.line(ux, Math.round(wallTop(ux)), ux, Math.round(wallBot(ux)), "v")
+  }
+  // crown moulding along the top edge
+  c.line(xs[0], Math.round(wallTop(xs[0])), xs[1] - 1, Math.round(wallTop(xs[1] - 1)), "V")
+  c.line(xs[0], Math.round(wallTop(xs[0])) + 2, xs[1] - 1, Math.round(wallTop(xs[1] - 1)) + 2, "j")
+}
+
+sprite("_bat_hang", { w: 7, h: 6 }, rect(2, 0, 3, 1, "k"), rect(2, 1, 3, 3, "k"), px(1, 2, "k"), px(5, 2, "k"), px(1, 3, "k"), px(5, 3, "k"), px(2, 4, "k"), px(4, 4, "k"), px(3, 5, "k"), px(2, 2, "R"))
+
+sprite("_wingchair", { w: 34, h: 40, outline: "k" }, (c) => {
+  c.rect(4, 2, 26, 26, "b"); c.ellipse(17, 3, 13, 3, "b")
+  c.rect(0, 10, 7, 22, "A"); c.rect(27, 10, 7, 22, "A"); c.ellipse(3, 10, 3, 3, "A"); c.ellipse(30, 10, 3, 3, "A")
+  c.rect(6, 22, 22, 8, "A"); c.hline(7, 22, 20, "R")
+  for (const [x, y] of [[10, 8], [17, 8], [24, 8], [13, 14], [21, 14]]) c.px(x, y, "r")
+  c.rect(2, 30, 30, 4, "b"); c.line(4, 34, 3, 39, "v", 2); c.line(30, 34, 31, 39, "v", 2)
+  c.vline(5, 3, 20, "R")
+})
+
+sprite("_table", { w: 40, h: 46 }, (c) => {
+  // round reading table with candelabra and an open grimoire
+  c.ellipse(20, 28, 18, 5, "v"); c.ellipse(20, 27, 17, 4, "V"); c.ellipse(20, 30, 18, 3, "W")
+  c.rect(18, 32, 4, 10, "W"); c.line(20, 41, 12, 45, "W", 2); c.line(20, 41, 28, 45, "W", 2)
+  c.poly([8, 26, 19, 24, 19, 28, 9, 30], "t"); c.poly([21, 24, 31, 26, 30, 30, 21, 28], "i"); c.vline(20, 24, 5, "x")
+  for (let k = 0; k < 3; k++) { c.hline(10 + k, 26 + k, 7, "x"); c.hline(22, 26 + k, 7, "x") }
+  c.ellipse(32, 23, 3, 1, "Y"); c.vline(32, 10, 13, "Y"); c.line(32, 14, 27, 11, "Y"); c.line(32, 14, 37, 11, "Y")
+  for (const x of [26, 31, 36]) { c.rect(x, 3 + (x === 31 ? -2 : 0), 2, 8, "t"); c.px(x, 1 + (x === 31 ? -2 : 0), "F"); c.px(x, 0 + (x === 31 ? -2 : 0), "l") }
+}, lamp(31, 1, { r: 40, color: "#ffb35c", power: 0.9 }))
+
+sprite("_bust_raven", { w: 20, h: 28 }, (c) => {
+  // Pallas bust with a raven on top (Poe)
+  c.rect(4, 22, 12, 6, "3"); c.hline(3, 22, 14, "4"); c.ellipse(10, 18, 6, 5, "3"); c.ellipse(10, 12, 4, 5, "4"); c.px(8, 11, "2"); c.px(12, 11, "2")
+  c.ellipse(10, 5, 5, 3, "k"); c.ellipse(13, 2, 2, 2, "k"); c.poly([15, 2, 19, 3, 15, 3], "y"); c.px(13, 1, "I")
+  c.poly([5, 5, 1, 9, 6, 7], "k"); c.line(7, 4, 12, 3, "Q")
+})
+
+scene("hw_library", { w: LW, h: LH, bg: "k" },
+  // ceiling: dark boards, beams converging on the back wall, cross beams
+  layer("ceiling", (c) => {
+    c.poly([0, 0, LW, 0, LW, CEIL_Y, BX1, BY0, BX0, BY0, 0, CEIL_Y], "w")
+    for (let xt = -60; xt <= 280; xt += 12) c.line(Math.round(ceilX(xt, 0)), 0, Math.round(ceilX(xt, BY0)), BY0, "1")
+    for (const xt of [-40, 40, 110, 180, 260]) {
+      for (let d = -1; d <= 1; d++) c.line(Math.round(ceilX(xt, 0)) + d, 0, Math.round(ceilX(xt, BY0)), BY0, d === -1 ? "v" : "W")
+    }
+    for (const g of [0.08, 0.3, 0.52, 0.72, 0.88]) {
+      const y = Math.round(BY0 * g), x0 = y < CEIL_Y ? 0 : Math.round(BX0 * (y - CEIL_Y) / (BY0 - CEIL_Y)), x1 = LW - x0
+      c.rect(x0, y, x1 - x0, Math.max(2, Math.round(6 * (1 - g))), "W"); c.hline(x0, y, x1 - x0, "v"); c.hline(x0, y + Math.max(2, Math.round(6 * (1 - g))), x1 - x0, "k")
+    }
+  }),
+  layer("bats", ...[[30, 18], [76, 38], [150, 18], [184, 38], [120, 72]].map(([x, y]) => stamp("_bat_hang", x, y))),
+  // back wall: damask above, panelling below, stone fireplace, sconces, portraits
+  layer("backwall",
+    rect(BX0, BY0, BX1 - BX0, BY1 - BY0, "D"), pattern("_damask", BX0, BY0 + 4, BX1 - BX0, 100),
+    rect(BX0, BY0 + 104, BX1 - BX0, BY1 - BY0 - 104, "W"), hline(BX0, BY0 + 104, BX1 - BX0, "j"), hline(BX0, BY0 + 105, BX1 - BX0, "v"),
+    ...[0, 1, 2, 3].map((i) => box(BX0 + 3 + i * 24, BY0 + 110, 20, 44, "w")),
+    rect(BX0, BY0, BX1 - BX0, 3, "V"), hline(BX0, BY0 + 3, BX1 - BX0, "k"),
+    // portraits flanking the chimney
+    ...[BX0 + 6, BX1 - 22].map((x) => [rect(x, BY0 + 18, 16, 22, "Y"), rect(x + 2, BY0 + 20, 12, 18, "d"), ellipse(x + 8, BY0 + 27, 3, 4, "x"), rect(x + 5, BY0 + 31, 6, 6, "k")]).flat()),
+  layer("fireplace", (c) => {
+    const fx0 = 84, fx1 = 136, fy0 = 262
+    c.rect(96, BY0 + 6, 28, fy0 - BY0 - 6, "2")                                        // chimney breast
+    for (let y = BY0 + 8; y < fy0; y += 5) for (let x = 96 + ((y / 5) % 2) * 4; x < 124; x += 8) c.box(x, y, 8, 5, "1")
+    c.rect(fx0, fy0, fx1 - fx0, BY1 - fy0, "3")
+    for (let y = fy0; y < BY1; y += 5) for (let x = fx0 + ((y / 5) % 2) * 4; x < fx1; x += 8) c.box(x, y, 8, 5, "2")
+    c.rect(fx0 - 4, fy0 - 6, fx1 - fx0 + 8, 6, "4"); c.hline(fx0 - 4, fy0 - 6, fx1 - fx0 + 8, "i"); c.hline(fx0 - 4, fy0 - 1, fx1 - fx0 + 8, "1")
+    c.poly([96, BY1, 96, 286, 102, 278, 110, 275, 118, 278, 124, 286, 124, BY1], "k")   // firebox
+    c.rect(98, 320, 24, 4, "W"); c.line(99, 323, 120, 318, "v", 2); c.line(100, 318, 121, 323, "W", 2)
+    c.flame(110, 320, 22, "lFfo", { seed: 3, wind: 0.08 }); c.flame(103, 321, 12, "lFfo", { seed: 7, wind: -0.1 }); c.flame(117, 321, 12, "lFfo", { seed: 9, wind: 0.12 })
+    c.lamp(110, 312, { r: 150, color: "#ff8c3a", power: 1.3 })
+    // mantel dressing: candles, skull, raven on a bust
+    for (const x of [86, 92, 130]) { c.rect(x, fy0 - 14, 2, 8, "t"); c.px(x, fy0 - 15, "F"); c.px(x, fy0 - 16, "l"); c.lamp(x, fy0 - 16, { r: 30, color: "#ffc070", power: 0.6 }) }
+    c.ellipse(101, fy0 - 9, 4, 3, "t"); c.rect(98, fy0 - 9, 6, 3, "t"); c.px(99, fy0 - 9, "k"); c.px(102, fy0 - 9, "k")
+  }),
+  layer("bust", stamp("_bust_raven", 112, 228)),
+  // side walls of books
+  layer("walls", (c) => { shelfWall(c, -1); shelfWall(c, 1) }),
+  layer("sconces", ...[[30, 230], [190, 230]].map(([x, y]) => [rect(x - 1, y, 3, 10, "Y"), ellipse(x, y, 4, 1, "j"), rect(x - 1, y - 8, 3, 8, "t"),
+    px(x, y - 9, "F"), px(x, y - 10, "l"), lamp(x, y - 10, { r: 60, color: "#ffb35c", power: 0.85 })]).flat()),
+  // floor: planks converging, staggered joints, long rug runner
+  layer("floor", (c) => {
+    c.poly([0, FLOOR_Y, BX0, BY1, BX1, BY1, LW, FLOOR_Y, LW, LH, 0, LH], "W")
+    for (let xb = -400; xb <= 620; xb += 26) c.line(Math.round(floorX(xb, LH)), LH, Math.round(floorX(xb, BY1)), BY1, "w")
+    let k = 0
+    for (let y = BY1 + 2, dy = 3; y < LH; y += dy, dy += 1.4, k++) {
+      for (let xb = -400 + (k % 2) * 13; xb <= 620; xb += 52) {
+        const xa = Math.round(floorX(xb, y)), xb2 = Math.round(floorX(xb + 26, y))
+        if (xa >= 0 || xb2 >= 0) c.hline(Math.max(0, xa), Math.round(y), Math.max(1, Math.min(LW, xb2) - Math.max(0, xa)), "w")
+      }
+    }
+    // rug runner toward the hearth
+    const rug = (y) => [Math.round(floorX(48, y)), Math.round(floorX(172, y))]
+    for (let y = BY1 + 6; y < LH; y++) {
+      const [a, b] = rug(y); c.hline(a, y, b - a, "b")
+      const [ia, ib] = [Math.round(floorX(60, y)), Math.round(floorX(160, y))]; c.hline(ia, y, ib - ia, "A")
+      c.px(a, y, "j"); c.px(b - 1, y, "j"); c.px(ia, y, "y"); c.px(ib - 1, y, "y")
+    }
+    for (let y = BY1 + 14, dy = 6; y < LH; y += dy, dy += 3) { const x = Math.round(floorX(110, y)), w = Math.max(1, Math.round((y - VPY) / 26)); c.poly([x, y - w, x + w, y, x, y + w, x - w, y], "j") }
+  }),
+  layer("props", stamp("_wingchair", 6, 392), stamp("_table", 168, 386),
+    stamp("_jack_big", 72, 318), stamp("_pumpkin", 138, 322), stamp("_jack_big", 190, 446, { flip: "x" }),
+    lamp(85, 326, { r: 26, color: "#ff9a30", power: 0.6 }), lamp(203, 454, { r: 30, color: "#ff9a30", power: 0.6 }),
+    // books and papers on the floor
+    ...[[60, 452, "A"], [64, 449, "p"], [150, 470, "g"]].map(([x, y, col]) => [rect(x, y, 12, 3, col), hline(x, y, 12, "j")]).flat(),
+    poly([92, 462, 104, 458, 108, 464, 96, 468], "t"), poly([120, 440, 128, 438, 130, 443, 122, 445], "i")),
+  // chandelier: iron ring with candles, hung from the middle cross beam
+  layer("chandelier", (c) => {
+    c.vline(110, 37, 40, "1"); c.ellipse(110, 82, 22, 4, "2"); c.ellipse(110, 82, 20, 3, "1"); c.ellipse(110, 86, 6, 3, "2")
+    for (let k = 0; k < 7; k++) {
+      const x = Math.round(110 + Math.cos(k * TAU / 7) * 20), y = Math.round(82 + Math.sin(k * TAU / 7) * 3)
+      c.rect(x, y - 7, 2, 7, "t"); c.px(x, y - 8, "F"); c.px(x, y - 9, "l")
+      if (k % 2 === 0) c.lamp(x, y - 9, { r: 70, color: "#ffc070", power: 0.7 })
+    }
+    c.line(92, 84, 110, 37, "1"); c.line(128, 84, 110, 37, "1")
+  }),
+  layer("webs", stamp("_cobweb", BX0, BY0 + 4), stamp("_cobweb", BX1 - 22, BY0 + 4, { flip: "x" }), stamp("_cobweb", 0, CEIL_Y), stamp("_cobweb", LW - 22, CEIL_Y, { flip: "x" })),
+  lighting({ cell: 2, smooth: true, ambient: 0.17, ambientColor: "#6a72c8", emit: "lFfI" }),
+  glow("lF", { r: 8, strength: 0.4, bands: 4 }),
+  post({ bloom: { above: 0.7, strength: 0.5 }, vignette: 0.35 }))
+
+// ===================================================================== ghost run (two SMALL widgets, 92x92 each)
+// One ghost travels between two paintings on the bookshelf wall. Both widgets share the clock,
+// so the loop is one 30 s sequence (frame = 1/8 s):
+//   A, top left (graveyard):   0-12 rises from behind the tombstone, 12-84 flies loops,
+//                              84-100 dives behind the dead tree.
+//   B, bottom right (parlour): 124-140 slides out from behind the clock, 140-172 spins 360,
+//                              172-196 glides behind the armchair, 196-212 pops up and waves,
+//                              212-236 flies into the fireplace and up the chimney.
+// Each painting = background (behind the ghost) + ghost layer + foreground (in front of it).
+const QS = 92, QF = 8                                     // size, frame width
+const inPic = (x, y) => x >= QF && x < QS - QF && y >= QF && y < QS - QF
+const easeIO = (t) => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t)
+const lerp = (a, b, t) => a + (b - a) * t
+
+// The ghost, drawn about 22 px tall at s = 1. `turn` 0..1 is a full spin: 0 front, .25 right,
+// .5 back, .75 left. Its hem waves with the frame.
+// Box round the ghost drawn last (set by ghost(), read by the occluder clip of the same frame):
+// each frame only needs the furniture pixels that can cover the ghost, the still image below
+// shows the rest, which keeps the frame fonts small.
+let GHOST_BOX = null
+const nearGhost = (x, y) => GHOST_BOX !== null && x >= GHOST_BOX[0] && x <= GHOST_BOX[2] && y >= GHOST_BOX[1] && y <= GHOST_BOX[3]
+function ghost(c, x, y, f, { s = 1, turn = 0, wave = false, peek = 0 } = {}) {
+  GHOST_BOX = [Math.floor(x - 14 * s), Math.floor(y - 13 * s), Math.ceil(x + 14 * s), Math.ceil(y + 13 * s)]
+  const a = turn * TAU, sx = Math.max(0.35, Math.abs(Math.cos(a))), side = Math.sin(a)   // side > 0: facing right
+  const hw = Math.round(7 * s * (0.55 + 0.45 * sx)), top = Math.round(y - 11 * s), mid = Math.round(y - 4 * s), hem = Math.round(y + 8 * s)
+  c.ellipse(Math.round(x), top + Math.round(6 * s), hw, Math.round(6 * s), "i")
+  c.poly([x - hw, mid, x + hw, mid, x + hw + 2 * s, hem, x - hw - 2 * s, hem].map(Math.round), "i")
+  const n = 4
+  for (let k = 0; k < n; k++) {
+    const hx = x - hw - 2 * s + k * (2 * hw + 4 * s) / n, w = (2 * hw + 4 * s) / n, d = (k + Math.floor(f / 2)) % 2
+    c.poly([hx, hem, hx + w, hem, hx + w / 2 + (d ? 1 : -1), hem + 3 * s + d].map(Math.round), "i")
+  }
+  // shading on the side away from the moon/candles
+  c.vline(Math.round(x + hw - 1), top + 4, hem - top - 4, "t")
+  // arms
+  const arm = wave ? Math.round(Math.sin(f * 1.6) * 3) : Math.round(Math.sin(f * 0.4))
+  if (sx > 0.5 || side < 0) c.line(Math.round(x - hw), mid + 2, Math.round(x - hw - 4 * s), mid - 1 + arm, "i", 2)
+  if (sx > 0.5 || side > 0) c.line(Math.round(x + hw), mid + 2, Math.round(x + hw + 4 * s), mid - 1 - (wave ? arm : 0), "i", 2)
+  // face: front shows two eyes and a mouth, a side shows one eye, the back shows none
+  const facing = Math.cos(a)
+  if (facing > -0.2) {
+    const off = Math.round(side * 3 * s), ey = top + Math.round(5 * s)
+    const blink = f % 37 === 0
+    for (const dx of facing > 0.6 ? [-2.5, 2.5] : [side > 0 ? 2 : -2]) {
+      const ex = Math.round(x + dx * s + off)
+      if (blink) c.hline(ex - 1, ey + 1, 2, "k"); else { c.rect(ex - 1, ey, 2, 3, "k"); c.px(ex - 1, ey, "Q") }
+    }
+    if (facing > 0.6) { const mx = Math.round(x + off); peek ? c.ellipse(mx, ey + 6, 1, 2, "k") : c.rect(mx - 1, ey + 5, 2, 2, "k") }
+  }
+}
+
+// No frames: each widget shows the bookshelf wall itself (cut from the calibrated wallpaper by
+// the app) with these objects drawn over it at widget scale. Objects stay clear of the widget's
+// edges so the edges stay pure wallpaper. Art = what sits behind the ghost; *_fg = the parts in
+// front of it (the ghost goes behind them).
+const inQ = (x, y) => x >= 0 && y >= 0 && x < QS && y < QS
+
+// --- A, top left: a secret bookcase door standing ajar onto a dark passage
+const DOOR_X0 = 50, DOOR_X1 = 72, DOOR_Y0 = 16, DOOR_Y1 = 84
+const bookStripes = (c, x0, y0, w, h, seed) => {
+  for (let y = y0 + 3; y < y0 + h - 4; y += 12) {
+    for (let x = x0, i = 0; x < x0 + w; i++) { const bw = 2 + Math.floor(rnd(seed + i * 3 + y) * 3), bh = 8 + Math.floor(rnd(seed + i + y * 7) * 3)
+      c.rect(x, y + 10 - bh, Math.min(bw, x0 + w - x), bh, BOOKS[Math.floor(rnd(seed * 5 + i + y) * BOOKS.length)]); x += bw }
+    c.hline(x0, y + 10, w, "V"); c.hline(x0, y + 11, w, "w")
+  }
+}
+scene("hw_ghost_a", { w: QS, h: QS },
+  // dark passage behind the door: stone arch receding into blackness
+  rect(DOOR_X0 - 2, DOOR_Y0 - 2, DOOR_X1 - DOOR_X0 + 4, DOOR_Y1 - DOOR_Y0 + 4, "W"),
+  grad(DOOR_X0, DOOR_Y0, DOOR_X1 - DOOR_X0, DOOR_Y1 - DOOR_Y0, "kd", "h", 0.5),
+  ...Array.from({ length: 5 }, (_, i) => hline(DOOR_X0 + 2, DOOR_Y1 - 4 - i * 3, DOOR_X1 - DOOR_X0 - 6 - i * 2, i % 2 ? "1" : "2")),
+  rect(DOOR_X0 + 9, DOOR_Y0 + 20, 2, 6, "t"), px(DOOR_X0 + 9, DOOR_Y0 + 19, "F"), px(DOOR_X0 + 9, DOOR_Y0 + 18, "l"),
+  lamp(DOOR_X0 + 9, DOOR_Y0 + 18, { r: 40, color: "#ffb35c", power: 0.8 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }),
+  glow("lF", { r: 6, strength: 0.4, bands: 3 }))
+scene("hw_ghost_a_fg", { w: QS, h: QS },
+  // jambs and lintel of the opening
+  rect(DOOR_X0 - 3, DOOR_Y0 - 3, DOOR_X1 - DOOR_X0 + 6, 3, "v"), hline(DOOR_X0 - 3, DOOR_Y0 - 3, DOOR_X1 - DOOR_X0 + 6, "V"),
+  rect(DOOR_X0 - 3, DOOR_Y0, 3, DOOR_Y1 - DOOR_Y0, "v"), vline(DOOR_X0 - 3, DOOR_Y0, DOOR_Y1 - DOOR_Y0, "V"),
+  // the door: a bookcase section swung open towards us on its right hinge (seen at an angle)
+  (c) => {
+    const hx = DOOR_X1, w = 14
+    c.poly([hx, DOOR_Y0 - 2, hx + w, DOOR_Y0 - 6, hx + w, DOOR_Y1 + 4, hx, DOOR_Y1], "W")
+    for (let y = DOOR_Y0 + 2; y < DOOR_Y1 - 2; y += 11) {
+      for (let x = hx + 1; x < hx + w - 1; x++) {
+        const t = (x - hx) / w, top = Math.round(y - 4 * t), col = BOOKS[Math.floor(rnd(x * 7 + y) * BOOKS.length)]
+        c.vline(x, top, 8 + Math.round(t), col)
+      }
+      c.line(hx, y + 9, hx + w - 1, y + 9 - 4 + 1, "V"); c.line(hx, y + 10, hx + w - 1, y + 10 - 4 + 1, "k")
+    }
+    c.line(hx, DOOR_Y0 - 2, hx + w, DOOR_Y0 - 6, "V"); c.line(hx, DOOR_Y1, hx + w, DOOR_Y1 + 4, "k")
+    c.vline(hx, DOOR_Y0 - 2, DOOR_Y1 - DOOR_Y0 + 2, "k"); c.vline(hx + w, DOOR_Y0 - 6, DOOR_Y1 - DOOR_Y0 + 10, "V")
+    c.circ(hx + 2, DOOR_Y0 + 32, 1, "J")
+  }, lamp(DOOR_X0 + 9, DOOR_Y0 + 18, { r: 40, color: "#ffb35c", power: 0.8 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }))
+anim("hw_ghost_a_fx", { w: QS, h: QS, frames: 240, fps: 8 }, clip(inQ, (c) => {
+  const f = c.frame
+  GHOST_BOX = null
+  if (f < 12) { const t = easeIO(f / 12); ghost(c, 60, lerp(70, 44, t), f, { peek: f > 8, s: 0.8 + 0.2 * t }) }              // drifts out of the passage
+  else if (f < 84) {                                                                                                         // two loops over the shelves
+    const t = (f - 12) / 72, a = -Math.PI / 2 + t * TAU * 2
+    const x = 34 + Math.cos(a) * 18, y = 40 + Math.sin(a) * 14 + Math.sin(t * TAU * 4) * 2
+    ghost(c, x, y, f, { turn: Math.sin(a + Math.PI / 2) > 0 ? 0.75 : 0.25 })
+  }
+  else if (f < 100) { const t = easeIO((f - 84) / 16); ghost(c, lerp(34, 74, t), lerp(26, 50, t), f, { turn: 0.25, s: 1 - 0.25 * t }) } // into the passage, behind the door
+}),
+  // iOS draws the animated layer above every image, so what the ghost goes behind is part of it
+  clip(nearGhost, stamp("hw_ghost_a_fg", 0, 0)))
+scene("hw_ghost_a_preview", { w: QS, h: QS, bg: "w" }, stamp("hw_ghost_a", 0, 0), stamp("hw_ghost_a_fx", 0, 0), stamp("hw_ghost_a_fg", 0, 0))
+
+// --- B, bottom right: fireplace and wingback chair standing on the floor (widget's bottom edge)
+scene("hw_ghost_b", { w: QS, h: QS },
+  // fireplace body and firebox (the ghost comes out from behind its right side)
+  rect(6, 40, 40, 52, "3"), (c) => { for (let y = 40; y < 92; y += 5) for (let x = 6 + ((y / 5) % 2) * 4; x < 46; x += 8) c.box(x, y, 8, 5, "2") },
+  poly([14, 92, 14, 64, 20, 58, 26, 56, 32, 58, 38, 64, 38, 92], "k"),
+  rect(16, 84, 20, 3, "W"), line(17, 86, 35, 82, "v", 2),
+  (c) => { c.flame(26, 84, 12, "lFfo", { seed: 5, wind: 0.05 }); c.flame(20, 85, 7, "lFfo", { seed: 8 }); c.flame(31, 85, 7, "lFfo", { seed: 11 }) },
+  rect(2, 34, 48, 6, "4"), hline(2, 34, 48, "i"), hline(2, 39, 48, "1"),
+  rect(8, 26, 2, 8, "t"), px(8, 25, "F"), px(8, 24, "l"), rect(40, 28, 2, 6, "t"), px(40, 27, "F"), px(40, 26, "l"),
+  ellipse(24, 31, 4, 3, "t"), rect(21, 31, 6, 3, "t"), px(22, 31, "k"), px(25, 31, "k"),
+  lamp(26, 78, { r: 70, color: "#ff8c3a", power: 1.1 }), lamp(8, 24, { r: 30, color: "#ffc070", power: 0.6 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }),
+  glow("lF", { r: 8, strength: 0.4, bands: 3 }))
+scene("hw_ghost_b_fg", { w: QS, h: QS },
+  // the whole stone surround and mantel, the firebox opening cut out: the ghost slides out from
+  // behind its right side and at the end flies into the firebox and up the chimney
+  rect(6, 40, 40, 52, "3"), (c) => { for (let y = 40; y < 92; y += 5) for (let x = 6 + ((y / 5) % 2) * 4; x < 46; x += 8) c.box(x, y, Math.min(8, 46 - x), 5, "2") },
+  poly([14, 92, 14, 64, 20, 58, 26, 56, 32, 58, 38, 64, 38, 92], "_"),
+  rect(2, 34, 48, 6, "4"), hline(2, 34, 48, "i"), hline(2, 39, 48, "1"),
+  rect(8, 26, 2, 8, "t"), px(8, 25, "F"), px(8, 24, "l"), rect(40, 28, 2, 6, "t"), px(40, 27, "F"), px(40, 26, "l"),
+  ellipse(24, 31, 4, 3, "t"), rect(21, 31, 6, 3, "t"), px(22, 31, "k"), px(25, 31, "k"),
+  // wingback chair (right)
+  rect(56, 56, 28, 22, "b"), ellipse(70, 56, 14, 5, "b"), rect(52, 64, 7, 18, "A"), rect(81, 64, 7, 18, "A"),
+  ellipse(55, 64, 3, 3, "A"), ellipse(84, 64, 3, 3, "A"), rect(58, 74, 24, 7, "A"), hline(58, 74, 24, "R"),
+  ...[[62, 60], [70, 60], [78, 60]].map(([x, y]) => px(x, y, "r")), vline(57, 57, 18, "R"),
+  rect(54, 81, 32, 4, "b"), line(56, 85, 55, 90, "v", 2), line(84, 85, 85, 90, "v", 2),
+  lamp(26, 78, { r: 70, color: "#ff8c3a", power: 1.1 }), lamp(40, 26, { r: 30, color: "#ffc070", power: 0.6 }), lighting({ cell: 2, smooth: true, ambient: 0.42, ambientColor: "#8478c0", emit: "lFfI" }))
+anim("hw_ghost_b_fx", { w: QS, h: QS, frames: 240, fps: 8 }, clip(inQ, (c) => {
+  const f = c.frame
+  GHOST_BOX = null
+  if (f >= 124 && f < 140) { const t = easeIO((f - 124) / 16); ghost(c, lerp(36, 52, t), lerp(58, 30, t), f, { turn: 0.25 }) }       // out from behind the fireplace
+  else if (f >= 140 && f < 172) { const t = (f - 140) / 32; ghost(c, 52, 30 + Math.sin(t * TAU) * 2, f, { turn: easeIO(t) }) }      // 360 spin
+  else if (f >= 172 && f < 196) { const t = easeIO((f - 172) / 24); ghost(c, lerp(52, 70, t), lerp(30, 70, t), f, { turn: 0.25 }) }  // behind the chair
+  else if (f >= 196 && f < 212) { const t = easeIO((f - 196) / 8); ghost(c, 70, lerp(70, 40, t), f, { wave: true, peek: f > 204 }) } // pops up, waves
+  else if (f >= 212 && f < 236) {                                                                                          // into the fire and up the chimney
+    const t = easeIO((f - 212) / 24), s2 = lerp(1, 0.45, t)
+    ghost(c, lerp(70, 26, t), lerp(40, 72, t) - Math.sin(t * Math.PI) * 10, f, { s: s2, turn: 0.75 })
+  }
+}),
+  clip(nearGhost, stamp("hw_ghost_b_fg", 0, 0)))
+scene("hw_ghost_b_preview", { w: QS, h: QS, bg: "w" }, stamp("hw_ghost_b", 0, 0), stamp("hw_ghost_b_fx", 0, 0), stamp("hw_ghost_b_fg", 0, 0))
+
+// the floor the app lays under the bottom-right widget, wide enough for any screen position
+sprite("hw_floor_strip", { w: 440, h: 140 }, (c) => {
+  c.rect(0, 0, 440, 140, "W"); c.hline(0, 0, 440, "k"); c.hline(0, 1, 440, "V"); c.hline(0, 2, 440, "j")
+  for (let i = 0; i < 20; i++) c.hline(0, 7 + i * 7, 440, "w")
+  for (let i = 0; i < 20; i++) for (let j = 0; j < 10; j++) c.vline((j * 47 + i * 19) % 440, i * 7 + 1, 6, "w")
+  c.rect(120, 24, 200, 46, "b"); c.box(120, 24, 200, 46, "j"); c.rect(124, 28, 192, 38, "A")
+  for (let i = 0; i < 23; i++) c.poly([126 + i * 8, 26, 129 + i * 8, 23, 132 + i * 8, 26, 129 + i * 8, 29], "j")
+  c.ellipse(220, 47, 30, 11, "b"); c.poly([220, 40, 227, 47, 220, 54, 213, 47], "j")
+})
+
+// brass sconce with two candles, hung above each ghost widget: its light is the warm glow the
+// app paints round the widget's edge (which hides the light rim iOS draws round widgets)
+sprite("hw_sconce", { w: 22, h: 18 }, (c) => {
+  c.ellipse(11, 14, 4, 3, "Y"); c.ellipse(11, 14, 2, 2, "j"); c.px(10, 13, "J")
+  c.line(11, 14, 4, 10, "Y"); c.line(11, 14, 18, 10, "Y"); c.ellipse(4, 10, 2, 1, "j"); c.ellipse(18, 10, 2, 1, "j")
+  for (const x of [3, 17]) { c.rect(x, 3, 2, 7, "t"); c.vline(x + 1, 3, 7, "x"); c.px(x, 2, "k"); c.px(x, 1, "F"); c.px(x, 0, "l"); c.px(x + 1, 1, "f") }
+})
+
+// rows of books for the app's adaptive bookcase wall (it cuts these to fit each shelf):
+// bottom-aligned on a transparent strip, unlit (the app lights the wall), now and then a prop
+for (let v = 1; v <= 3; v++) {
+  sprite("lib_books_" + v, { w: 440, h: 36 }, (c) => {
+    let x = 0, i = v * 1000
+    while (x < 440) {
+      const r = rnd(i)
+      if (r < 0.03) { skull(c, x, 23); x += 12 }
+      else if (r < 0.06) { bottle(c, x, 18, 7, 18, "Q", ["R", "G", "N", "P"][i % 4], i % 2 ? "flask" : "tall"); x += 10 }
+      else if (r < 0.1) { x += 4 + Math.floor(rnd(i + 3) * 6) }                                  // gap
+      else if (r < 0.13) {                                                                       // a leaning book
+        const col = BOOKS[Math.floor(rnd(i + 5) * BOOKS.length)]
+        c.poly([x, 36, x + 4, 36, x + 12, 12, x + 8, 12], col); c.line(x + 4, 36, x + 12, 12, "k"); x += 13
+      } else {
+        const bw = 2 + Math.floor(rnd(i + 1) * 4), bh = 18 + Math.floor(rnd(i + 2) * 17), col = BOOKS[Math.floor(rnd(i + 4) * BOOKS.length)]
+        c.rect(x, 36 - bh, bw, bh, col); c.vline(x + bw - 1, 36 - bh, bh, "k")
+        if (bw >= 3) { c.hline(x, 36 - bh + 3, bw, "j"); c.hline(x, 32, bw, "j") }
+        if (bw >= 4 && rnd(i + 9) < 0.4) c.rect(x + 1, 36 - bh + Math.floor(bh / 2) - 1, bw - 2, 2, "k")
+        x += bw
+      }
+      i++
+    }
+  })
+}
+
+// the whole run: A at the top left, B at the bottom right, on the bookshelf wall
+scene("hw_ghost_run_preview", { w: 220, h: 400, bg: "k" },
+  stamp("hw_library2", 0, 0), stamp("hw_floor_strip", -110, 349),
+  stamp("hw_ghost_a", 12, 47), stamp("hw_ghost_a_fx", 12, 47), stamp("hw_ghost_a_fg", 12, 47),
+  stamp("hw_ghost_b", 116, 257), stamp("hw_ghost_b_fx", 116, 257), stamp("hw_ghost_b_fg", 116, 257))
+
 // previews (static + animated layer)
 scene("hw_window_preview", { w: WW2, h: WH2 }, stamp("hw_window", 0, 0), stamp("hw_window_fx", 0, 0))
 scene("hw_portrait_preview", { w: PS, h: PS }, stamp("hw_portrait", 0, 0), stamp("hw_portrait_fx", 0, 0))
+scene("hw_ghost_preview", { w: GS, h: GS }, stamp("hw_ghost_frame", 0, 0), stamp("hw_ghost_fx", 0, 0))
+scene("hw_window_tall_preview", { w: TS, h: TS }, stamp("hw_window_tall", 0, 0), stamp("hw_window_tall_fx", 0, 0))

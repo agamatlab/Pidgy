@@ -99,7 +99,7 @@ final class RenderingTests: XCTestCase {
         }
         let calShot = Self.homeScreen(wallpaper: wallpaper, transform: truth, wallpaperMap: wallMap,
                                       widget: rect, content: chart, widgetMap: widgetMap)
-        let cal = try CalibrationManager.calibrate(screenshot: calShot, wallpaper: wallpaper, widgetPointSize: pointSize, displayScale: 3)
+        let cal = try CalibrationManager.calibrate(screenshot: calShot, wallpaper: wallpaper, pointSizes: [.primary: pointSize], displayScale: 3)
         XCTAssertEqual(cal.widgetRect, rect)
         XCTAssertEqual(cal.transform.scale, 1.1, accuracy: 0.002)
         XCTAssertEqual(cal.transform.translationX, -32, accuracy: 2)
@@ -142,8 +142,8 @@ final class RenderingTests: XCTestCase {
         let phone = PixelSize(width: 1320, height: 2868), k = 9
         let widget = PixelRect(x: 75, y: 901, width: 1170, height: 1170)
         let zoom = WallpaperTransform(scale: 1.118, translationX: -85, translationY: -268)
-        let with = WallpaperRenderer.roomWallpaper(room: room, stand: stand, screen: phone, pxPerArtPixel: k,
-                                                   widgetRect: widget, transform: zoom)
+        let with = WallpaperRenderer.roomWallpaper(room: room, attachments: [.init(art: stand, rect: widget, under: true)], screen: phone,
+                                                   pxPerArtPixel: k, transform: zoom)
         let plain = WallpaperRenderer.sceneWallpaper(art: room, screen: phone, pxPerArtPixel: k)
         // First screen row (below the widget's top) at the widget's centre column showing the stand.
         let cx = Double(widget.x + widget.width / 2)
@@ -176,8 +176,8 @@ final class RenderingTests: XCTestCase {
         let zoom = WallpaperTransform(scale: 1.118, translationX: -85, translationY: -268)
         let wallMap = ColorMap(scale: [1.21, 0.98, 0.97], offset: [13, 0, 0])
         let widgetMap = ColorMap(scale: [2.55, 1.23, 1.46], offset: [30, 20, 38])
-        let wallpaper = WallpaperRenderer.roomWallpaper(room: room, stand: stand, screen: phone, pxPerArtPixel: 9,
-                                                        widgetRect: widget, transform: zoom, underlays: [(tank, widget)], wallpaperColorMap: wallMap)
+        let wallpaper = WallpaperRenderer.roomWallpaper(room: room, attachments: [.init(art: stand, rect: widget, under: true)], screen: phone,
+                                                        pxPerArtPixel: 9, transform: zoom, underlays: [(tank, widget)], wallpaperColorMap: wallMap)
         let bg = WidgetBackgroundRenderer.tank(art: tank, size: PixelSize(width: 1170, height: 1170), widgetColorMap: widgetMap)
         func shown(_ c: RGBA, _ m: ColorMap) -> [Double] {
             [m.apply(Double(c.r), channel: 0), m.apply(Double(c.g), channel: 1), m.apply(Double(c.b), channel: 2)]
@@ -188,6 +188,45 @@ final class RenderingTests: XCTestCase {
             let underlay = shown(wallpaper.pixel(Int(w.x), Int(w.y)), wallMap)
             let widgetPx = shown(bg.pixel(sx - widget.x + 40, sy - widget.y), widgetMap)
             for c in 0..<3 { XCTAssertEqual(underlay[c], widgetPx[c], accuracy: 6, "channel \(c) at \(sx),\(sy)") }
+        }
+    }
+
+    /// Haunted on the user's phone: two Small widgets (top left, bottom right) as bookcase
+    /// compartments. The widgets show the wallpaper behind them with their objects on top, so their
+    /// edges are seamless; writes a composite of the Home Screen for review when PIDGY_PREVIEW_DIR is set.
+    func testHauntedBookcaseOnUsersPhone() throws {
+        let phone = PixelSize(width: 1320, height: 2868)
+        let device = DeviceInfo(modelIdentifier: "iPhone19,7", modelName: "iPhone", osVersion: "iOS 27.0", screenPixelSize: phone,
+                                screenPointSize: PixelSize(width: 440, height: 956), displayScale: 3, appearance: "dark")
+        let a = PixelRect(x: 75, y: 283, width: 552, height: 552), b = PixelRect(x: 693, y: 1519, width: 552, height: 552)
+        var p = CalibrationProfile(device: device, widgetBounds: a, appearance: "dark")
+        p.roleBounds = ["small": a, "small2": b]
+        p.wallpaperTransform = WallpaperTransform(scale: 1.118, translationX: -85, translationY: -268)
+        let theme = Theme.hauntedWindow
+        let wallpaper = try XCTUnwrap(ThemeWallpaper.render(theme: theme, profile: p, screen: phone, pxPerArtPixel: 6))
+
+        // the Home Screen as iOS shows it: wallpaper zoomed, widgets on top
+        var screen = Self.homeScreen(wallpaper: wallpaper, transform: p.wallpaperTransform, wallpaperMap: .identity,
+                                     widget: PixelRect(x: 0, y: 0, width: 0, height: 0), content: { _, _ in .clear }, widgetMap: .identity)
+        for (role, r) in [(WidgetRole.small, a), (.small2, b)] {
+            let art = try XCTUnwrap(theme.art(for: role))
+            let img = try XCTUnwrap(SceneBundle.image(art.staticArt).flatMap(PixelBuffer.load(url:)))
+            let wall = WidgetBackgroundRenderer.background(wallpaper: wallpaper, profile: p, rect: r)
+            var bg = WidgetBackgroundRenderer.tank(art: img, size: PixelSize(width: r.width, height: r.height), widgetColorMap: .identity, wall: wall)
+            if let fgName = art.foreground, let fg = SceneBundle.image(fgName).flatMap(PixelBuffer.load(url:)) {
+                let o = WidgetBackgroundRenderer.overlay(art: fg, size: PixelSize(width: r.width, height: r.height), widgetColorMap: .identity)
+                bg.blit(o, x: 0, y: 0)
+            }
+            // seamless: just inside the widget's edges (away from its objects) it matches the wall
+            for (x, y) in [(3, r.height / 2), (r.width / 2, 3), (r.width - 4, r.height / 3)] {
+                let w = p.wallpaperTransform.toWallpaper(CGPoint(x: Double(r.x + x) + 0.5, y: Double(r.y + y) + 0.5))
+                XCTAssertEqual(bg.pixel(x, y), wallpaper.pixel(Int(w.x), Int(w.y)), "\(role) edge at \(x),\(y)")
+            }
+            for y in 0..<r.height { for x in 0..<r.width { screen.set(r.x + x, r.y + y, bg.pixel(x, y)) } }
+        }
+        if let dir = ProcessInfo.processInfo.environment["PIDGY_PREVIEW_DIR"], let png = screen.pngData() {
+            try png.write(to: URL(fileURLWithPath: dir).appendingPathComponent("haunted_home.png"))
+            try wallpaper.pngData()?.write(to: URL(fileURLWithPath: dir).appendingPathComponent("haunted_wallpaper.png"))
         }
     }
 }

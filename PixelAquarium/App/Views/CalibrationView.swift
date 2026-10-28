@@ -51,6 +51,8 @@ struct CalibrationView: View {
             }
             Text(model.settings.theme == .midnightManor
                  ? "A Victorian parlour at midnight. Add two widgets: Pidgy · Large (the witch portrait) and Pidgy · Medium (the Gothic window), e.g. the window in the top two rows and the portrait under it. Save the room to Photos and set it as your Home Screen wallpaper (don't pinch or move it)."
+                 : model.settings.theme == .hauntedWindow
+                 ? "Halloween v2: a candle-lit wall of bookshelves and one ghost running a loop across two Small widgets that melt into the wall. Add Pidgy · Small in the top-left corner and Pidgy · Small 2 in the bottom-right corner (just above the dock), nothing else. Save the room to Photos and set it as your Home Screen wallpaper (don't pinch or move it), then calibrate so both widgets match the wall."
                  : model.settings.style == .tank
                  ? "The widget is a glass tank standing on a cabinet in a pixel-art room. Its edge is meant to be seen, so the iOS widget rim looks like the tank's glass. Save the room to Photos and set it as your Home Screen wallpaper (don't pinch or move it)."
                  : "Saves the full-screen water wallpaper (\(model.device.screenPixelSize.width)×\(model.device.screenPixelSize.height)) to Photos. Set it as the Home Screen wallpaper and don't pinch or move it. The widget's background is cut from this exact image, so after generating again you must re-apply it and redo step 2.")
@@ -76,7 +78,7 @@ struct CalibrationView: View {
     private var calibrateSection: some View {
         Section("2 · Calibrate (one screenshot)") {
             Text(model.usesObjectStyle
-                 ? "Shows a colour chart on each widget (pink border on the Large one, cyan on the Medium one). Go to the Home Screen, wait until the widgets show it, take a screenshot, come back and import it. The app measures where each widget is and how iOS changes its colours, starts the animation, and saves a new room wallpaper fitted around the widgets. Apply that one to finish."
+                 ? "Shows a colour chart on each widget (pink = Large, cyan = Medium, yellow = Small, blue = Small 2). Go to the Home Screen, wait until the widgets show it, take a screenshot, come back and import it. The app measures where each widget is and how iOS changes its colours, starts the animation, and saves a new room wallpaper fitted around the widgets. Apply that one to finish."
                  : "Shows a colour chart with a pink border on the widget. Go to the Home Screen, wait until the widget shows it, take a screenshot, come back and import it. The app measures where the widget is, how iOS zooms the wallpaper and how iOS changes the widget's colours, then starts the aquarium.")
                 .font(.footnote).foregroundStyle(.secondary)
             Button("Show calibration chart on widget") {

@@ -120,6 +120,8 @@ final class SharedConfigurationStore {
 
     var wallpaperURL: URL { baseURL.appendingPathComponent("wallpaper.png") }
     var widgetBackgroundURL: URL { baseURL.appendingPathComponent("widget_background.png") }
+    func foregroundURL(_ role: WidgetRole) -> URL { baseURL.appendingPathComponent("widget_foreground_\(role.rawValue).png") }
+
     func backgroundURL(_ role: WidgetRole) -> URL {
         role == .primary ? widgetBackgroundURL : baseURL.appendingPathComponent("widget_background_\(role.rawValue).png")
     }
@@ -173,7 +175,7 @@ final class SharedConfigurationStore {
     var hasWidgetBackground: Bool { FileManager.default.fileExists(atPath: widgetBackgroundURL.path) }
 
     func resetCalibration() {
-        for url in [profileURL, alignmentURL, wallpaperURL] + WidgetRole.allCases.map(backgroundURL) {
+        for url in [profileURL, alignmentURL, wallpaperURL] + WidgetRole.allCases.map(backgroundURL) + WidgetRole.allCases.map(foregroundURL) {
             try? FileManager.default.removeItem(at: url)
         }
         var s = settings

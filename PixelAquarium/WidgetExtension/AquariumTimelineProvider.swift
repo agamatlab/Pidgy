@@ -6,6 +6,7 @@ struct AquariumEntry: TimelineEntry {
     let role: WidgetRole
     let settings: WidgetSettings
     let background: UIImage?
+    let foreground: UIImage?
     let posterFrame: CGImage?
     let engine: AquariumAnimationEngine?
     let error: String?
@@ -43,6 +44,9 @@ struct AquariumTimelineProvider: TimelineProvider {
         }
         // Calibrated background for this widget, else the theme's own art for it.
         let themeArt = settings.theme.theme.art(for: role).flatMap { SceneBundle.image($0.staticArt) }
+        let fgArt = settings.theme.theme.art(for: role)?.foreground.flatMap { SceneBundle.image($0) }
+        let foreground = settings.mode == .calibration ? nil :
+            (UIImage(contentsOfFile: store.foregroundURL(role).path) ?? fgArt.flatMap { UIImage(contentsOfFile: $0.path) })
         let background = settings.mode == .calibration ? nil :
             (UIImage(contentsOfFile: store.backgroundURL(role).path) ?? themeArt.flatMap { UIImage(contentsOfFile: $0.path) })
         if recordHeartbeat {
@@ -51,7 +55,7 @@ struct AquariumTimelineProvider: TimelineProvider {
                                                displayHeightPoints: context.displaySize.height,
                                                backgroundLoaded: background != nil, error: loadError), role: role)
         }
-        return AquariumEntry(date: Date(), role: role, settings: settings, background: background,
+        return AquariumEntry(date: Date(), role: role, settings: settings, background: background, foreground: foreground,
                              posterFrame: poster, engine: engine, error: loadError)
     }
 }

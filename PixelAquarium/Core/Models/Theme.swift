@@ -7,17 +7,51 @@ enum WidgetRole: String, Codable, CaseIterable {
     case primary
     /// Medium widget.
     case secondary
+    /// Small widget.
+    case small
+    /// Second Small widget (its own kind, so two Small widgets can show different things).
+    case small2
 
-    var kind: String { self == .primary ? SharedConfigurationStore.widgetKind : "SecondaryWidget" }
+    var kind: String {
+        switch self {
+        case .primary: return SharedConfigurationStore.widgetKind
+        case .secondary: return "SecondaryWidget"
+        case .small: return "SmallWidget"
+        case .small2: return "SmallWidget2"
+        }
+    }
+
+    /// Border colour of the calibration chart, so one screenshot tells the widgets apart.
+    var calibrationColor: RGBA {
+        switch self {
+        case .primary: return .calibrationMagenta
+        case .secondary: return .calibrationCyan
+        case .small: return .calibrationYellow
+        case .small2: return .calibrationBlue
+        }
+    }
 }
 
 enum ThemeId: String, Codable, CaseIterable, Identifiable {
     case aquarium
     case midnightManor
+    case hauntedWindow
 
     var id: String { rawValue }
-    var title: String { self == .aquarium ? "Aquarium" : "Midnight Manor" }
-    var theme: Theme { self == .aquarium ? .aquarium : .midnightManor }
+    var title: String {
+        switch self {
+        case .aquarium: return "Aquarium"
+        case .midnightManor: return "Manor"
+        case .hauntedWindow: return "Haunted"
+        }
+    }
+    var theme: Theme {
+        switch self {
+        case .aquarium: return .aquarium
+        case .midnightManor: return .midnightManor
+        case .hauntedWindow: return .hauntedWindow
+        }
+    }
 }
 
 /// Static description of a theme: wallpaper art and what each widget shows.
@@ -26,6 +60,14 @@ struct Theme {
         /// Bundle PNG drawn as the widget background (and painted under the widget in the wallpaper).
         var staticArt: String
         var motion: Motion
+        /// Furniture pasted into the wallpaper right under the widget (aquarium cabinet, window seat).
+        var under: String? = nil
+        /// Something pasted right above it (the nail and wire a picture frame hangs from).
+        var over: String? = nil
+        /// Drawn over the animation: things the animated character goes behind.
+        var foreground: String? = nil
+        /// Light the wall around the widget's edge (hides the light rim iOS draws round widgets).
+        var edgeGlow = false
     }
 
     enum Motion {
@@ -39,19 +81,39 @@ struct Theme {
     /// Points per art pixel; wallpaper and widget art share it so their pixels match.
     var artPixelPoints: Int
     var roomArt: String
-    /// Optional furniture pasted under the primary widget (the aquarium's cabinet).
-    var standArt: String?
-    var primary: WidgetArt
+    /// Build the wall as a bookcase laid out round the calibrated widgets (BookshelfRoom);
+    /// `roomArt` then only supplies the ceiling.
+    var adaptiveBookshelf = false
+    var primary: WidgetArt?
     var secondary: WidgetArt?
+    var small: WidgetArt? = nil
+    var small2: WidgetArt? = nil
 
-    func art(for role: WidgetRole) -> WidgetArt? { role == .primary ? primary : secondary }
+    func art(for role: WidgetRole) -> WidgetArt? {
+        switch role {
+        case .primary: return primary
+        case .secondary: return secondary
+        case .small: return small
+        case .small2: return small2
+        }
+    }
 
-    static let aquarium = Theme(id: .aquarium, artPixelPoints: 3, roomArt: "room_art.png", standArt: "stand_art.png",
-                                primary: WidgetArt(staticArt: "tank_art.png", motion: .fish), secondary: nil)
+    static let aquarium = Theme(id: .aquarium, artPixelPoints: 3, roomArt: "room_art.png",
+                                primary: WidgetArt(staticArt: "tank_art.png", motion: .fish, under: "stand_art.png"), secondary: nil)
 
-    static let midnightManor = Theme(id: .midnightManor, artPixelPoints: 2, roomArt: "hw_room.png", standArt: nil,
+    static let midnightManor = Theme(id: .midnightManor, artPixelPoints: 2, roomArt: "hw_room.png",
                                      primary: WidgetArt(staticArt: "hw_portrait.png", motion: .layer(fontPrefix: "HWPortrait")),
                                      secondary: WidgetArt(staticArt: "hw_window.png", motion: .layer(fontPrefix: "HWWindow")))
+
+    /// Halloween v2: a candle-lit wall of bookshelves; one ghost runs a 30 s loop across two Small
+    /// widgets that blend into the wall (no frames). Top left: out of a secret door, loops, back
+    /// in. Bottom right: out from behind the fireplace, a spin, behind the chair, out of the screen.
+    static let hauntedWindow = Theme(id: .hauntedWindow, artPixelPoints: 2, roomArt: "hw_library2.png", adaptiveBookshelf: true,
+                                     primary: nil, secondary: nil,
+                                     small: WidgetArt(staticArt: "hw_ghost_a.png", motion: .layer(fontPrefix: "HWGhostA"),
+                                                      over: "hw_sconce.png", foreground: "hw_ghost_a_fg.png"),
+                                     small2: WidgetArt(staticArt: "hw_ghost_b.png", motion: .layer(fontPrefix: "HWGhostB"),
+                                                       over: "hw_sconce.png", foreground: "hw_ghost_b_fg.png"))
 }
 
 extension SceneBundle {

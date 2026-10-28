@@ -8,6 +8,8 @@ enum CalibrationChart {
     static let borderPoints: CGFloat = 16
     static let columns = 6
     static let rows = 6
+    /// Low levels are needed: iOS 27 boosts red ~2.5x, so only dark reds stay measurable. Some
+    /// patches therefore resemble border colours; border detection tells them apart by shape.
     private static let levels: [Double] = [16, 60, 105, 150, 195, 240]
 
     /// Each channel takes every level equally often and the channels vary independently.

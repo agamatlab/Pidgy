@@ -59,25 +59,61 @@ enum CalibrationManager {
                          width: size.width, height: size.height)
     }
 
-    /// Bounding box of pixels in a calibration border colour (magenta = Large widget, cyan =
-    /// Medium widget): channels that are 255 in the colour must be high, 0 channels low.
-    static func detectWidgetRect(in img: PixelBuffer, color: RGBA = .calibrationMagenta, minimumPixels: Int = 5000) -> PixelRect? {
-        var minX = Int.max, minY = Int.max, maxX = -1, maxY = -1, count = 0
+    /// Bounding box of a calibration border (magenta = Large, cyan = Medium, yellow = Small).
+    /// A pixel matches when the colour's 255-channels are high and its 0-channels low. The
+    /// border is the largest connected ring of matching pixels: chart patches that happen to
+    /// look like a border colour are small solid blocks, and stray pixels (brass, eyes) are tiny,
+    /// so a candidate must be at least `minSide` px each way and mostly empty inside.
+    static func detectWidgetRect(in img: PixelBuffer, color: RGBA = .calibrationMagenta, minSide: Int = 300) -> PixelRect? {
+        let step = 3, gw = img.width / step, gh = img.height / step
         let want = [color.r, color.g, color.b].map { $0 > 127 }
-        for y in 0..<img.height {
-            for x in 0..<img.width {
-                let c = img.pixel(x, y)
+        var mask = [Bool](repeating: false, count: gw * gh)
+        for gy in 0..<gh {
+            for gx in 0..<gw {
+                let c = img.pixel(gx * step + 1, gy * step + 1)
                 let v = [Int(c.r), Int(c.g), Int(c.b)]
                 let highs = (0..<3).filter { want[$0] }.map { v[$0] }
-                if (0..<3).allSatisfy({ want[$0] ? v[$0] > 180 : v[$0] < 80 }), (highs.max()! - highs.min()!) < 60 {
-                    count += 1
-                    minX = min(minX, x); maxX = max(maxX, x)
-                    minY = min(minY, y); maxY = max(maxY, y)
-                }
+                mask[gy * gw + gx] = (0..<3).allSatisfy({ want[$0] ? v[$0] > 180 : v[$0] < 80 }) && (highs.max()! - highs.min()!) < 60
             }
         }
-        guard count >= minimumPixels else { return nil }
-        return PixelRect(x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1)
+        var seen = [Bool](repeating: false, count: gw * gh)
+        var best: (box: PixelRect, count: Int)?
+        for start in 0..<(gw * gh) where mask[start] && !seen[start] {
+            var stack = [start], count = 0, x0 = gw, y0 = gh, x1 = -1, y1 = -1
+            seen[start] = true
+            while let i = stack.popLast() {
+                count += 1
+                let x = i % gw, y = i / gw
+                x0 = min(x0, x); x1 = max(x1, x); y0 = min(y0, y); y1 = max(y1, y)
+                for (nx, ny) in [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)] where nx >= 0 && ny >= 0 && nx < gw && ny < gh {
+                    let j = ny * gw + nx
+                    if mask[j] && !seen[j] { seen[j] = true; stack.append(j) }
+                }
+            }
+            let w = x1 - x0 + 1, h = y1 - y0 + 1
+            guard w * step >= minSide, h * step >= minSide, Double(count) < 0.7 * Double(w * h) else { continue }
+            if count > best?.count ?? 0 {
+                best = (PixelRect(x: x0 * step, y: y0 * step, width: w * step, height: h * step), count)
+            }
+        }
+        return best.map { refineEdges($0.box, in: img, want: want) }
+    }
+
+    /// Exact pixel edges around a coarse box: outermost rows/columns (within 6 px of it) that
+    /// are mostly border-coloured.
+    private static func refineEdges(_ box: PixelRect, in img: PixelBuffer, want: [Bool]) -> PixelRect {
+        func matches(_ x: Int, _ y: Int) -> Bool {
+            guard x >= 0, y >= 0, x < img.width, y < img.height else { return false }
+            let c = img.pixel(x, y), v = [Int(c.r), Int(c.g), Int(c.b)]
+            return (0..<3).allSatisfy { want[$0] ? v[$0] > 180 : v[$0] < 80 }
+        }
+        func rowHit(_ y: Int) -> Bool { stride(from: box.x + box.width / 4, to: box.maxX - box.width / 4, by: 4).filter { matches($0, y) }.count > box.width / 16 }
+        func colHit(_ x: Int) -> Bool { stride(from: box.y + box.height / 4, to: box.maxY - box.height / 4, by: 4).filter { matches(x, $0) }.count > box.height / 16 }
+        let top = ((box.y - 6)...(box.y + 6)).first(where: rowHit) ?? box.y
+        let bottom = ((box.maxY - 7)...(box.maxY + 5)).reversed().first(where: rowHit) ?? box.maxY - 1
+        let left = ((box.x - 6)...(box.x + 6)).first(where: colHit) ?? box.x
+        let right = ((box.maxX - 7)...(box.maxX + 5)).reversed().first(where: colHit) ?? box.maxX - 1
+        return PixelRect(x: left, y: top, width: right - left + 1, height: bottom - top + 1)
     }
 
     /// Centroid of green fiducial pixels in each of the four expected zones (nil if absent).
@@ -113,34 +149,32 @@ enum CalibrationManager {
         var widgetColorMap: ColorMap
         /// Outside-widget agreement after the fit (0-255); large = wrong wallpaper applied.
         var wallpaperResidual: Double
-        /// The Medium widget, when one is on screen.
-        var secondaryRect: PixelRect?
+        /// Every widget found, by role. `widgetRect` is the first of Large, Medium, Small.
+        var rects: [WidgetRole: PixelRect]
     }
 
-    /// One screenshot does everything: widget in Calibration mode (magenta border + colour
-    /// chart) over the generated wallpaper.
-    static func calibrate(screenshot: PixelBuffer, wallpaper: PixelBuffer, widgetPointSize: CGSize?,
-                          displayScale: Double, secondaryPointSize: CGSize? = nil) throws -> Calibration {
-        let expected = widgetPointSize.map {
-            PixelSize(width: Int(($0.width * displayScale).rounded()), height: Int(($0.height * displayScale).rounded()))
+    /// One screenshot does everything: every widget in Calibration mode (coloured border + colour
+    /// chart) over the generated wallpaper. `pointSizes` are the widgets' reported sizes.
+    static func calibrate(screenshot: PixelBuffer, wallpaper: PixelBuffer, pointSizes: [WidgetRole: CGSize],
+                          displayScale: Double) throws -> Calibration {
+        func pixels(_ s: CGSize) -> PixelSize { PixelSize(width: Int((s.width * displayScale).rounded()), height: Int((s.height * displayScale).rounded())) }
+        var rects: [WidgetRole: PixelRect] = [:]
+        for role in WidgetRole.allCases {
+            guard let box = detectWidgetRect(in: screenshot, color: role.calibrationColor) else { continue }
+            // A box that doesn't match the widget's own reported size is not that widget.
+            if let size = pointSizes[role].map(pixels), abs(box.width - size.width) > 16 || abs(box.height - size.height) > 16 { continue }
+            rects[role] = snap(box, to: pointSizes[role].map(pixels))
         }
-        var d = detect(screenshot: screenshot, wallpaperSize: PixelSize(width: wallpaper.width, height: wallpaper.height),
-                       expectedWidgetSize: expected)
+        guard let chartRole = WidgetRole.allCases.first(where: { rects[$0] != nil }), let rect = rects[chartRole] else {
+            throw CalibrationError.message("No calibration widget was found. Tap \"Show calibration chart\", wait until the widgets show the colour chart with a coloured border, then take the screenshot.")
+        }
+        let widgets = WidgetRole.allCases.compactMap { rects[$0] }
+
         // Green fiducials only exist in the calibration grid; in the aquarium, green weeds
         // near the edges would be mistaken for them.
-        let hasFiducials = WallpaperRenderer.fiducialCenters(size: PixelSize(width: wallpaper.width, height: wallpaper.height))
-            .allSatisfy { wallpaper.pixel(Int($0.x), Int($0.y)) == .fiducialGreen }
-        if !hasFiducials {
-            d.transform = nil
-            d.fiducialsFound = 0
-        }
-        guard let rect = d.widgetRect else {
-            throw CalibrationError.message("The magenta calibration widget was not found. Set Calibration mode, wait until the widget shows the colour chart, then take the screenshot.")
-        }
-        let secondary = detectWidgetRect(in: screenshot, color: .calibrationCyan).map {
-            snap($0, to: secondaryPointSize.map { PixelSize(width: Int(($0.width * displayScale).rounded()), height: Int(($0.height * displayScale).rounded())) })
-        }
-        let widgets = [rect] + (secondary.map { [$0] } ?? [])
+        let wallSize = PixelSize(width: wallpaper.width, height: wallpaper.height)
+        let hasFiducials = WallpaperRenderer.fiducialCenters(size: wallSize).allSatisfy { wallpaper.pixel(Int($0.x), Int($0.y)) == .fiducialGreen }
+        let d = hasFiducials ? detect(screenshot: screenshot, wallpaperSize: wallSize) : Detection(widgetRect: nil, fiducialsFound: 0, transform: nil)
         var transform = d.transform ?? .identity
         var score: Double?
         if d.transform == nil {
@@ -150,12 +184,12 @@ enum CalibrationManager {
         }
         let wallMap = WallpaperRegistration.fitWallpaperColors(screenshot: screenshot, wallpaper: wallpaper,
                                                                transform: transform, exclude: widgets) ?? .identity
-        let pointSize = widgetPointSize ?? CGSize(width: Double(rect.width) / displayScale, height: Double(rect.height) / displayScale)
+        let pointSize = pointSizes[chartRole] ?? CGSize(width: Double(rect.width) / displayScale, height: Double(rect.height) / displayScale)
         let observed = CalibrationChart.readPatches(screenshot: screenshot, widgetRect: rect, widgetPointSize: pointSize)
         let widgetMap = CalibrationChart.fitWidgetMap(observed: observed) ?? .identity
         let residual = wallpaperResidual(screenshot: screenshot, wallpaper: wallpaper, transform: transform, map: wallMap, exclude: widgets)
         return Calibration(widgetRect: rect, transform: transform, registrationScore: score, fiducialsFound: d.fiducialsFound,
-                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual, secondaryRect: secondary)
+                           wallpaperColorMap: wallMap, widgetColorMap: widgetMap, wallpaperResidual: residual, rects: rects)
     }
 
     private static func wallpaperResidual(screenshot: PixelBuffer, wallpaper: PixelBuffer, transform: WallpaperTransform,

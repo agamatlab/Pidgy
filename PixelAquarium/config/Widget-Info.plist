@@ -61,6 +61,38 @@
 		<string>AquaFrames13.ttf</string>
 		<string>AquaFrames14.ttf</string>
 		<string>AquaFrames15.ttf</string>
+		<string>HWGhostA0.ttf</string>
+		<string>HWGhostA1.ttf</string>
+		<string>HWGhostA2.ttf</string>
+		<string>HWGhostA3.ttf</string>
+		<string>HWGhostA4.ttf</string>
+		<string>HWGhostA5.ttf</string>
+		<string>HWGhostA6.ttf</string>
+		<string>HWGhostA7.ttf</string>
+		<string>HWGhostA8.ttf</string>
+		<string>HWGhostA9.ttf</string>
+		<string>HWGhostA10.ttf</string>
+		<string>HWGhostA11.ttf</string>
+		<string>HWGhostA12.ttf</string>
+		<string>HWGhostA13.ttf</string>
+		<string>HWGhostA14.ttf</string>
+		<string>HWGhostA15.ttf</string>
+		<string>HWGhostB0.ttf</string>
+		<string>HWGhostB1.ttf</string>
+		<string>HWGhostB2.ttf</string>
+		<string>HWGhostB3.ttf</string>
+		<string>HWGhostB4.ttf</string>
+		<string>HWGhostB5.ttf</string>
+		<string>HWGhostB6.ttf</string>
+		<string>HWGhostB7.ttf</string>
+		<string>HWGhostB8.ttf</string>
+		<string>HWGhostB9.ttf</string>
+		<string>HWGhostB10.ttf</string>
+		<string>HWGhostB11.ttf</string>
+		<string>HWGhostB12.ttf</string>
+		<string>HWGhostB13.ttf</string>
+		<string>HWGhostB14.ttf</string>
+		<string>HWGhostB15.ttf</string>
 		<string>HWPortrait0.ttf</string>
 		<string>HWPortrait1.ttf</string>
 		<string>HWPortrait2.ttf</string>
@@ -93,6 +125,22 @@
 		<string>HWWindow13.ttf</string>
 		<string>HWWindow14.ttf</string>
 		<string>HWWindow15.ttf</string>
+		<string>HWWindowTall0.ttf</string>
+		<string>HWWindowTall1.ttf</string>
+		<string>HWWindowTall2.ttf</string>
+		<string>HWWindowTall3.ttf</string>
+		<string>HWWindowTall4.ttf</string>
+		<string>HWWindowTall5.ttf</string>
+		<string>HWWindowTall6.ttf</string>
+		<string>HWWindowTall7.ttf</string>
+		<string>HWWindowTall8.ttf</string>
+		<string>HWWindowTall9.ttf</string>
+		<string>HWWindowTall10.ttf</string>
+		<string>HWWindowTall11.ttf</string>
+		<string>HWWindowTall12.ttf</string>
+		<string>HWWindowTall13.ttf</string>
+		<string>HWWindowTall14.ttf</string>
+		<string>HWWindowTall15.ttf</string>
 	</array>
 </dict>
 </plist>

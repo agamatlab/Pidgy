@@ -75,6 +75,38 @@ targets:
         - AquaFrames13.ttf
         - AquaFrames14.ttf
         - AquaFrames15.ttf
+        - HWGhostA0.ttf
+        - HWGhostA1.ttf
+        - HWGhostA2.ttf
+        - HWGhostA3.ttf
+        - HWGhostA4.ttf
+        - HWGhostA5.ttf
+        - HWGhostA6.ttf
+        - HWGhostA7.ttf
+        - HWGhostA8.ttf
+        - HWGhostA9.ttf
+        - HWGhostA10.ttf
+        - HWGhostA11.ttf
+        - HWGhostA12.ttf
+        - HWGhostA13.ttf
+        - HWGhostA14.ttf
+        - HWGhostA15.ttf
+        - HWGhostB0.ttf
+        - HWGhostB1.ttf
+        - HWGhostB2.ttf
+        - HWGhostB3.ttf
+        - HWGhostB4.ttf
+        - HWGhostB5.ttf
+        - HWGhostB6.ttf
+        - HWGhostB7.ttf
+        - HWGhostB8.ttf
+        - HWGhostB9.ttf
+        - HWGhostB10.ttf
+        - HWGhostB11.ttf
+        - HWGhostB12.ttf
+        - HWGhostB13.ttf
+        - HWGhostB14.ttf
+        - HWGhostB15.ttf
         - HWPortrait0.ttf
         - HWPortrait1.ttf
         - HWPortrait2.ttf
@@ -107,6 +139,22 @@ targets:
         - HWWindow13.ttf
         - HWWindow14.ttf
         - HWWindow15.ttf
+        - HWWindowTall0.ttf
+        - HWWindowTall1.ttf
+        - HWWindowTall2.ttf
+        - HWWindowTall3.ttf
+        - HWWindowTall4.ttf
+        - HWWindowTall5.ttf
+        - HWWindowTall6.ttf
+        - HWWindowTall7.ttf
+        - HWWindowTall8.ttf
+        - HWWindowTall9.ttf
+        - HWWindowTall10.ttf
+        - HWWindowTall11.ttf
+        - HWWindowTall12.ttf
+        - HWWindowTall13.ttf
+        - HWWindowTall14.ttf
+        - HWWindowTall15.ttf
     dependencies:
       - target: AquariumWidgetExtension
   AquariumWidgetExtension:
@@ -169,6 +217,38 @@ targets:
         - AquaFrames13.ttf
         - AquaFrames14.ttf
         - AquaFrames15.ttf
+        - HWGhostA0.ttf
+        - HWGhostA1.ttf
+        - HWGhostA2.ttf
+        - HWGhostA3.ttf
+        - HWGhostA4.ttf
+        - HWGhostA5.ttf
+        - HWGhostA6.ttf
+        - HWGhostA7.ttf
+        - HWGhostA8.ttf
+        - HWGhostA9.ttf
+        - HWGhostA10.ttf
+        - HWGhostA11.ttf
+        - HWGhostA12.ttf
+        - HWGhostA13.ttf
+        - HWGhostA14.ttf
+        - HWGhostA15.ttf
+        - HWGhostB0.ttf
+        - HWGhostB1.ttf
+        - HWGhostB2.ttf
+        - HWGhostB3.ttf
+        - HWGhostB4.ttf
+        - HWGhostB5.ttf
+        - HWGhostB6.ttf
+        - HWGhostB7.ttf
+        - HWGhostB8.ttf
+        - HWGhostB9.ttf
+        - HWGhostB10.ttf
+        - HWGhostB11.ttf
+        - HWGhostB12.ttf
+        - HWGhostB13.ttf
+        - HWGhostB14.ttf
+        - HWGhostB15.ttf
         - HWPortrait0.ttf
         - HWPortrait1.ttf
         - HWPortrait2.ttf
@@ -201,6 +281,22 @@ targets:
         - HWWindow13.ttf
         - HWWindow14.ttf
         - HWWindow15.ttf
+        - HWWindowTall0.ttf
+        - HWWindowTall1.ttf
+        - HWWindowTall2.ttf
+        - HWWindowTall3.ttf
+        - HWWindowTall4.ttf
+        - HWWindowTall5.ttf
+        - HWWindowTall6.ttf
+        - HWWindowTall7.ttf
+        - HWWindowTall8.ttf
+        - HWWindowTall9.ttf
+        - HWWindowTall10.ttf
+        - HWWindowTall11.ttf
+        - HWWindowTall12.ttf
+        - HWWindowTall13.ttf
+        - HWWindowTall14.ttf
+        - HWWindowTall15.ttf
   PixelAquariumTests:
     type: bundle.unit-test
     platform: iOS

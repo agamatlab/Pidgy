@@ -15,6 +15,10 @@ struct AquariumWidgetView: View {
                     background.frame(width: geo.size.width, height: geo.size.height)
                 }
                 content(size: geo.size)
+                if let fg = entry.foreground {
+                    Image(uiImage: fg).resizable().interpolation(.none).widgetAccentedRenderingMode(.fullColor)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                }
                 if (entry.settings.showDebugOverlay && entry.settings.mode != .calibration) || entry.error != nil {
                     debugOverlay(size: geo.size)
                 }
@@ -26,7 +30,8 @@ struct AquariumWidgetView: View {
     @ViewBuilder
     private var background: some View {
         if entry.settings.mode == .calibration {
-            entry.role == .primary ? Color(red: 1, green: 0, blue: 1) : Color(red: 0, green: 1, blue: 1)
+            let c = entry.role.calibrationColor
+            Color(.sRGB, red: Double(c.r) / 255, green: Double(c.g) / 255, blue: Double(c.b) / 255)
         } else if let image = entry.background {
             Image(uiImage: image).resizable().interpolation(.none).widgetAccentedRenderingMode(.fullColor)
         } else {
@@ -37,7 +42,7 @@ struct AquariumWidgetView: View {
     @ViewBuilder
     private func content(size: CGSize) -> some View {
         if entry.settings.mode == .calibration {
-            CalibrationPattern(size: size, scale: displayScale, border: entry.role == .primary ? .calibrationMagenta : .calibrationCyan)
+            CalibrationPattern(size: size, scale: displayScale, border: entry.role.calibrationColor)
         } else if let engine = entry.engine, case .layer(let prefix)? = entry.settings.theme.theme.art(for: entry.role)?.motion {
             // Full-widget animated layer over the theme art.
             if entry.settings.mode == .animatedAquarium {

@@ -4,6 +4,12 @@ import XCTest
 final class CalibrationTests: XCTestCase {
     private let screen = PixelSize(width: 600, height: 1200)
 
+    /// A widget in Calibration mode: border-coloured ring (16 pt = 48 px) around chart content.
+    private func drawWidget(_ img: inout PixelBuffer, _ r: PixelRect, _ color: RGBA) {
+        img.fillRect(x: r.x, y: r.y, width: r.width, height: r.height, color)
+        img.fillRect(x: r.x + 48, y: r.y + 48, width: r.width - 96, height: r.height - 96, RGBA(r: 105, g: 150, b: 60))
+    }
+
     func testNormalization() {
         let r = PixelRect(x: 60, y: 600, width: 480, height: 300)
         let n = r.normalized(in: screen)
@@ -32,8 +38,7 @@ final class CalibrationTests: XCTestCase {
     func testDetectionOnSyntheticScreenshot() throws {
         var shot = WallpaperRenderer.calibrationWallpaper(size: screen)
         let widget = PixelRect(x: 70, y: 640, width: 460, height: 420)
-        shot.fillRect(x: widget.x, y: widget.y, width: widget.width, height: widget.height, .calibrationMagenta)
-        shot.fillRect(x: widget.x + 200, y: widget.y + 200, width: 40, height: 3, RGBA(r: 255, g: 255, b: 255))
+        drawWidget(&shot, widget, .calibrationMagenta)
 
         let d = CalibrationManager.detect(screenshot: shot, wallpaperSize: screen)
         XCTAssertEqual(d.widgetRect, widget)
@@ -48,7 +53,7 @@ final class CalibrationTests: XCTestCase {
     /// the known widget size is centred on the box instead.
     func testDetectionSnapsToReportedWidgetSize() {
         var shot = WallpaperRenderer.calibrationWallpaper(size: screen)
-        shot.fillRect(x: 73, y: 643, width: 454, height: 414, .calibrationMagenta)
+        drawWidget(&shot, PixelRect(x: 73, y: 643, width: 454, height: 414), .calibrationMagenta)
         let d = CalibrationManager.detect(screenshot: shot, wallpaperSize: screen,
                                           expectedWidgetSize: PixelSize(width: 460, height: 420))
         XCTAssertEqual(d.widgetRect, PixelRect(x: 70, y: 640, width: 460, height: 420))
@@ -57,10 +62,39 @@ final class CalibrationTests: XCTestCase {
     /// Midnight Manor: the Large widget shows a magenta border, the Medium one cyan; both are found.
     func testFindsLargeAndMediumWidgets() {
         var shot = WallpaperRenderer.calibrationWallpaper(size: screen)
-        shot.fillRect(x: 40, y: 120, width: 520, height: 240, .calibrationCyan)
-        shot.fillRect(x: 40, y: 420, width: 520, height: 520, .calibrationMagenta)
-        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationCyan), PixelRect(x: 40, y: 120, width: 520, height: 240))
+        drawWidget(&shot, PixelRect(x: 40, y: 20, width: 520, height: 340), .calibrationCyan)
+        drawWidget(&shot, PixelRect(x: 40, y: 420, width: 520, height: 520), .calibrationMagenta)
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationCyan), PixelRect(x: 40, y: 20, width: 520, height: 340))
         XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationMagenta), PixelRect(x: 40, y: 420, width: 520, height: 520))
+    }
+
+    /// Yellow-ish pixels elsewhere (brass pulls, cat eyes) must not stretch the Small widget's box.
+    func testBorderDetectionIgnoresStrayPixels() {
+        var shot = WallpaperRenderer.calibrationWallpaper(size: screen)
+        drawWidget(&shot, PixelRect(x: 150, y: 100, width: 400, height: 400), .calibrationYellow)
+        for (x, y) in [(20, 900), (580, 1150), (100, 40)] { shot.fillRect(x: x, y: y, width: 3, height: 3, RGBA(r: 228, g: 196, b: 42)) }
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationYellow), PixelRect(x: 150, y: 100, width: 400, height: 400))
+    }
+
+    /// Haunted theme: Medium + Small charts, no Large widget. Their pink-looking chart patches
+    /// must not be taken for a Large widget, and each border is found exactly.
+    func testChartPatchesAreNotMistakenForWidgets() {
+        let phone = PixelSize(width: 1320, height: 2868)
+        var shot = PixelBuffer(width: phone.width, height: phone.height, fill: RGBA(r: 70, g: 50, b: 90))
+        func chart(_ rect: PixelRect, _ border: RGBA) {
+            shot.fillRect(x: rect.x, y: rect.y, width: rect.width, height: rect.height, border)
+            let pt = CGSize(width: Double(rect.width) / 3, height: Double(rect.height) / 3)
+            for (i, c) in CalibrationChart.colors.enumerated() {
+                let r = CalibrationChart.patchRect(i, widgetSize: pt)
+                shot.fillRect(x: rect.x + Int(r.minX * 3), y: rect.y + Int(r.minY * 3), width: Int(r.width * 3) + 1, height: Int(r.height * 3) + 1, c)
+            }
+        }
+        let medium = PixelRect(x: 75, y: 300, width: 1170, height: 552), small = PixelRect(x: 75, y: 920, width: 552, height: 552)
+        chart(medium, .calibrationCyan)
+        chart(small, .calibrationYellow)
+        XCTAssertNil(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationMagenta))
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationCyan), medium)
+        XCTAssertEqual(CalibrationManager.detectWidgetRect(in: shot, color: .calibrationYellow), small)
     }
 
     func testProfilePersistsAcrossStoreInstances() throws {

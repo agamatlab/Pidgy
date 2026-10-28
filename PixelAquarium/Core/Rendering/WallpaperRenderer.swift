@@ -12,20 +12,32 @@ enum WallpaperRenderer {
     /// corners iOS rounds off show the tank's square base instead of the wall. The result is
     /// pre-compensated by `wallpaperColorMap` so the room shows its designed colours, matching
     /// the (also compensated) widget.
-    static func roomWallpaper(room: PixelBuffer, stand: PixelBuffer?, screen: PixelSize, pxPerArtPixel k: Int,
-                              widgetRect: PixelRect?, transform: WallpaperTransform,
-                              underlays: [(art: PixelBuffer, rect: PixelRect)] = [], wallpaperColorMap: ColorMap = .identity) -> PixelBuffer {
+    /// Furniture attached to a widget: pasted centred under its bottom edge or over its top edge.
+    struct Attachment {
+        var art: PixelBuffer
+        /// Widget rectangle in screen pixels; nil (not calibrated yet) uses a default spot.
+        var rect: PixelRect?
+        var under: Bool
+    }
+
+    static func roomWallpaper(room: PixelBuffer, attachments: [Attachment], screen: PixelSize, pxPerArtPixel k: Int,
+                              transform: WallpaperTransform,
+                              underlays: [(art: PixelBuffer, rect: PixelRect)] = [], glows: [PixelRect] = [],
+                              wallpaperColorMap: ColorMap = .identity) -> PixelBuffer {
         let ox = (room.width * k - screen.width) / 2, oy = (room.height * k - screen.height) / 2
-        var centerX = Double(room.width) / 2, bottom = Double(room.height) * 0.72
-        if let r = widgetRect {
-            let w = transform.toWallpaper(r.cgRect)                 // screen px -> wallpaper px
-            centerX = (Double(w.midX) + Double(ox)) / Double(k)     // wallpaper px -> art px
-            bottom = (Double(w.maxY) + Double(oy)) / Double(k)
-        }
         var art = room
-        // 2 art px of overlap: the opaque widget hides the stand's top edge, so small
-        // calibration errors never open a gap between tank and stand.
-        if let stand { art.blit(stand, x: Int((centerX - Double(stand.width) / 2).rounded()), y: Int(bottom.rounded()) - 2) }
+        for a in attachments {
+            var centerX = Double(room.width) / 2, edge = Double(room.height) * 0.72
+            if let r = a.rect {
+                let w = transform.toWallpaper(r.cgRect)                 // screen px -> wallpaper px
+                centerX = (Double(w.midX) + Double(ox)) / Double(k)     // wallpaper px -> art px
+                edge = (Double(a.under ? w.maxY : w.minY) + Double(oy)) / Double(k)
+            } else if !a.under { continue }
+            // 2 art px of overlap: the opaque widget hides the joint, so small calibration
+            // errors never open a gap between the widget and its furniture.
+            let y = a.under ? Int(edge.rounded()) - 2 : Int(edge.rounded()) + 2 - a.art.height
+            art.blit(a.art, x: Int((centerX - Double(a.art.width) / 2).rounded()), y: y)
+        }
         var out = sceneWallpaper(art: art, screen: screen, pxPerArtPixel: k)
         for (tank, r) in underlays {
             let area = transform.toWallpaper(r.cgRect).insetBy(dx: -2, dy: -2)
@@ -39,8 +51,34 @@ enum WallpaperRenderer {
                 }
             }
         }
+        for r in glows { edgeGlow(&out, around: r, transform: transform) }
         if wallpaperColorMap != .identity { out.applyColorMap(wallpaperColorMap.inverse) }
         return out
+    }
+
+    /// Warm candle light on the wall along a widget's rounded outline, inside and out. iOS draws a
+    /// thin light rim round every widget; on a near-black wall it shows, on lit wall it vanishes.
+    /// The widget's background is cut from this same wallpaper, so the glow continues across the
+    /// edge seamlessly.
+    static func edgeGlow(_ img: inout PixelBuffer, around r: PixelRect, transform: WallpaperTransform,
+                         reach: Double = 70, strength: Double = 1.6, corner: Double = 80) {
+        let area = transform.toWallpaper(r.cgRect).insetBy(dx: -reach / transform.scale - 2, dy: -reach / transform.scale - 2)
+        let hx = Double(r.width) / 2, hy = Double(r.height) / 2, cx = Double(r.x) + hx, cy = Double(r.y) + hy
+        let cr = min(corner, min(hx, hy))
+        for wy in max(0, Int(area.minY))..<min(img.height, Int(area.maxY) + 1) {
+            for wx in max(0, Int(area.minX))..<min(img.width, Int(area.maxX) + 1) {
+                let p = transform.toScreen(CGPoint(x: Double(wx) + 0.5, y: Double(wy) + 0.5))
+                // distance to the rounded-rect outline (screen px)
+                let qx = abs(p.x - cx) - (hx - cr), qy = abs(p.y - cy) - (hy - cr)
+                let outside = hypot(max(qx, 0), max(qy, 0)) + min(max(qx, qy), 0) - cr
+                let f = max(0, 1 - abs(outside) / reach)
+                guard f > 0 else { continue }
+                let g = f * f * strength
+                let c = img.pixel(wx, wy)
+                func lift(_ v: UInt8, _ warm: Double) -> UInt8 { UInt8(max(0, min(255, (Double(v) * (1 + g) + warm * g).rounded()))) }
+                img.set(wx, wy, RGBA(r: lift(c.r, 26), g: lift(c.g, 16), b: lift(c.b, 6)))
+            }
+        }
     }
 
     /// Scene wallpaper: the art upscaled by whole device pixels per art pixel (nearest
@@ -148,6 +186,22 @@ enum WidgetBackgroundRenderer {
         let map = widgetColorMap.inverse
         var out = wall.flatMap { $0.width == size.width && $0.height == size.height ? $0 : nil }
             ?? PixelBuffer(width: size.width, height: size.height, fill: RGBA(r: 77, g: 54, b: 64))
+        for y in 0..<size.height {
+            let ay = min(art.height - 1, y * art.height / size.height)
+            for x in 0..<size.width {
+                let c = art.pixel(min(art.width - 1, x * art.width / size.width), ay)
+                guard c.a >= 128 else { continue }
+                out.set(x, y, RGBA(r: apply(c.r, map, 0), g: apply(c.g, map, 1), b: apply(c.b, map, 2)))
+            }
+        }
+        return out
+    }
+
+    /// Foreground art (things in front of the animation), scaled to the widget and tint-compensated
+    /// like the background, transparent elsewhere.
+    static func overlay(art: PixelBuffer, size: PixelSize, widgetColorMap: ColorMap) -> PixelBuffer {
+        let map = widgetColorMap.inverse
+        var out = PixelBuffer(width: size.width, height: size.height)
         for y in 0..<size.height {
             let ay = min(art.height - 1, y * art.height / size.height)
             for x in 0..<size.width {
